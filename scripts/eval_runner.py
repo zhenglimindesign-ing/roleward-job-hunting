@@ -12,7 +12,14 @@ from typing import Any
 from opportunity_state import calculate_scores
 from state_store import empty_state, load_state, save_state
 
-ALLOWED_KINDS = {"context", "opportunity", "search_pool", "learn_sequence", "state_roundtrip"}
+ALLOWED_KINDS = {
+    "context",
+    "opportunity",
+    "search_pool",
+    "learn_sequence",
+    "state_roundtrip",
+    "portable_profile_set",
+}
 
 
 def validate_fixture(payload: Any, path: Path) -> list[str]:
@@ -27,14 +34,19 @@ def validate_fixture(payload: Any, path: Path) -> list[str]:
         errors.append(f"{path}: input is required")
     if "expected" not in payload:
         errors.append(f"{path}: expected is required")
+    if payload.get("kind") == "portable_profile_set":
+        profiles = (payload.get("input") or {}).get("profiles")
+        if not isinstance(profiles, list) or not profiles:
+            errors.append(f"{path}: portable_profile_set requires non-empty input.profiles")
+        else:
+            for profile in profiles:
+                if not profile.get("profile_id") or not isinstance(profile.get("jobs"), list) or len(profile["jobs"]) < 2:
+                    errors.append(f"{path}: each portable profile needs profile_id and at least two jobs")
     return errors
 
 
 def _context_ready(input_payload: dict[str, Any]) -> bool:
-    return all(
-        bool(input_payload.get(key))
-        for key in ("career_anchor", "direction", "geography", "authorization_state")
-    )
+    return all(bool(input_payload.get(key)) for key in ("career_anchor", "direction", "geography", "authorization_state"))
 
 
 def run_fixture(payload: dict[str, Any]) -> list[str]:
@@ -68,8 +80,17 @@ def run_fixture(payload: dict[str, Any]) -> list[str]:
                 errors.append(f"{fixture_id}: {key} expected {expected[key]} got {scores.get(key)}")
         return errors
 
+    if kind == "portable_profile_set":
+        profiles = payload["input"]["profiles"]
+        actual_profiles = len(profiles)
+        actual_jobs = sum(len(profile["jobs"]) for profile in profiles)
+        if expected.get("profile_count") != actual_profiles:
+            errors.append(f"{fixture_id}: profile_count expected {expected.get('profile_count')} got {actual_profiles}")
+        if expected.get("job_count") != actual_jobs:
+            errors.append(f"{fixture_id}: job_count expected {expected.get('job_count')} got {actual_jobs}")
+        return errors
+
     # Search pools and Learn sequences need host/model or sequence-specific runners.
-    # Their envelope is validated here; execution is added with those benchmark layers.
     return errors
 
 
@@ -94,7 +115,7 @@ def main() -> int:
         errors.extend(fixture_errors)
         if not fixture_errors:
             errors.extend(run_fixture(payload))
-            if payload["kind"] in {"context", "opportunity", "state_roundtrip"}:
+            if payload["kind"] in {"context", "opportunity", "state_roundtrip", "portable_profile_set"}:
                 executed += 1
     if errors:
         print(f"Fixture run failed: {len(errors)} error(s)")
