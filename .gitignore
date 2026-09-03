@@ -1,0 +1,17 @@
+# Roleward private local Alpha state
+/state/*
+!/state/README.md
+/sources/*
+!/sources/README.md
+/application-files/*
+!/application-files/README.md
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
