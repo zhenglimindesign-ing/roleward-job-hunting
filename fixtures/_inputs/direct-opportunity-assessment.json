@@ -1,0 +1,25 @@
+{
+  "job": {
+    "company": "Example AI",
+    "title": "Senior Product Manager, AI Platform",
+    "location": "Berlin, Germany",
+    "url": "https://jobs.example.com/ai-pm?utm_source=test",
+    "live_status": "verified_live",
+    "text": "Own AI platform product direction. Lead enterprise workflows. Strong product strategy required. Regulated-domain experience preferred."
+  },
+  "requirements": [
+    {"id": "r1", "materiality": "core", "coverage": "met"},
+    {"id": "r2", "materiality": "core", "coverage": "partial"},
+    {"id": "r3", "materiality": "important", "coverage": "met"}
+  ],
+  "direction_alignment": 90,
+  "screening_dimensions": [3, 3, 2, 3],
+  "career_value_dimensions": [4, 3, 3, 2],
+  "recommendation": "pursue",
+  "employability": "role_sponsorship_confirmed",
+  "evidence_confidence": "high",
+  "core_hiring_reason": "Strong B2B platform/product evidence with a credible AI transition case.",
+  "why_worth_time": "High direction alignment and strong career value.",
+  "main_concern": "One core AI-platform scope requirement is only partially evidenced.",
+  "what_to_verify": null
+}
