@@ -64,7 +64,7 @@ After import, show a **Structured Context Review**, not an opaque prose summary 
 
 ## Precision Scan
 
-Read `references/search-policy.md`, `references/pursuit-policy.md`, and `references/tool-boundary.md`.
+Read `references/search-policy.md`, `references/pursuit-policy.md`, and `references/tool-boundary.md`. When local persistence is available, use `scripts/scan_state.py` to create trigger-agnostic Scan runs, apply confirmed hard constraints, and persist discovery observations into the Opportunity reservoir.
 
 Default behavior:
 
@@ -85,7 +85,7 @@ The Scan entrypoint is conceptually trigger-agnostic: `manual` and future `sched
 
 ## Pursuit
 
-Read `references/pursuit-policy.md` and `references/score-policy.md`. Use `scripts/opportunity_state.py` for deterministic Opportunity identity, source snapshots, accepted score arithmetic, and assessment persistence when local state is available.
+Read `references/pursuit-policy.md` and `references/score-policy.md`. Use `scripts/opportunity_state.py` for deterministic Opportunity identity, source snapshots, accepted score arithmetic, system-assessment persistence, and separate user Pursuit decisions when local state is available.
 
 Primary question:
 

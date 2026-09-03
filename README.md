@@ -16,7 +16,7 @@ Roleward is designed to reduce wasted job-search effort: fewer opportunities, be
 - Persistence: local structured files
 - Current discovery: host web/search capabilities
 - Manual Precision Scan is sufficient for Alpha acceptance
-- Future scheduled triggers must reuse the same Scan workflow
+- Future scheduled triggers reuse the same Scan workflow
 - No Roleward production backend dependency
 - No automatic application or professional-message sending
 
@@ -37,13 +37,27 @@ Roleward is designed to reduce wasted job-search effort: fewer opportunities, be
 python3 scripts/validate_skill.py
 python3 scripts/smoke_context.py
 python3 scripts/smoke_opportunity.py
+python3 scripts/smoke_scan.py
 python3 scripts/eval_runner.py
-python3 scripts/state_store.py --path state/roleward-state.json validate
 ```
 
 ## Current build status
 
-Phase 6 Alpha Build is in progress. The initial foundation plus deterministic context/state and direct-opportunity/Pursuit vertical-slice helpers are implemented locally and are being published here before broader Precision Scan, Positioning/Application, and Track/Learn work.
+Phase 6 Alpha Build is in progress.
+
+Implemented so far:
+
+- Agent Skill entrypoint and focused policy references;
+- local structured persistence and authority/provenance rules;
+- Structured Context Review and First Scan readiness;
+- direct-Opportunity identity, immutable source snapshots, score arithmetic, and Pursuit assessment persistence;
+- trigger-agnostic `manual | scheduled` Scan-run contract;
+- deterministic confirmed hard-constraint checks;
+- Opportunity reservoir/discovery persistence;
+- user Pursuit decision stored separately from system recommendation;
+- synthetic smoke fixtures and deterministic validation.
+
+Host-driven broad Precision Scan judgment, Positioning/Application, and Track/Learn remain in progress.
 
 ## Privacy
 
