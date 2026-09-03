@@ -1,0 +1,20 @@
+{
+  "id": "smoke-opportunity-score",
+  "kind": "opportunity",
+  "input": {
+    "requirements": [
+      {"id": "r1", "materiality": "core", "coverage": "met"},
+      {"id": "r2", "materiality": "core", "coverage": "partial"},
+      {"id": "r3", "materiality": "important", "coverage": "met"}
+    ],
+    "direction_alignment": 90,
+    "screening_dimensions": [3, 3, 2, 3],
+    "career_value_dimensions": [4, 3, 3, 2]
+  },
+  "expected": {
+    "overall_match": 80,
+    "capability_match": 80,
+    "screening_legibility": 70,
+    "career_value": 75
+  }
+}

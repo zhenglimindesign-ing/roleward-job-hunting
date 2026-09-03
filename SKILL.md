@@ -137,7 +137,7 @@ Zero contacts is valid. Do not fabricate familiarity or recipient context. Keep 
 
 ## Track & Learn
 
-Read `references/learn-policy.md` and `references/state-policy.md`.
+Read `references/learn-policy.md` and `references/state-policy.md`. When local persistence is available, use `scripts/learn_state.py` for application/outcome history, conservative signal aggregation, and explicit promotion of an inferred preference only after user confirmation.
 
 Track conversationally: Applied, Screening, Interview, Offer, Rejected, Withdrawn, or another explicit state.
 

@@ -38,6 +38,9 @@ python3 scripts/validate_skill.py
 python3 scripts/smoke_context.py
 python3 scripts/smoke_opportunity.py
 python3 scripts/smoke_scan.py
+python3 scripts/smoke_application.py
+python3 scripts/smoke_learn.py
+python3 scripts/smoke_eval.py
 python3 scripts/eval_runner.py
 ```
 
@@ -55,9 +58,11 @@ Implemented so far:
 - deterministic confirmed hard-constraint checks;
 - Opportunity reservoir/discovery persistence;
 - user Pursuit decision stored separately from system recommendation;
-- synthetic smoke fixtures and deterministic validation.
+- Positioning revision + Human Review gate + artifact provenance;
+- application/outcome history and conservative Learn signal lifecycle;
+- executable deterministic eval fixtures and monotonicity/dimension-separation checks.
 
-Host-driven broad Precision Scan judgment, Positioning/Application, and Track/Learn remain in progress.
+Host-driven broad Precision Scan judgment, the frozen real/private benchmark, baseline comparison, and real dogfood remain in progress.
 
 ## Privacy
 
