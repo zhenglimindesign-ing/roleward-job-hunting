@@ -111,7 +111,7 @@ Assessment scores are orientation signals, not probabilities. Display them in 5-
 
 ## Positioning Review
 
-Read `references/positioning-policy.md`.
+Read `references/positioning-policy.md`. When local persistence is available, use `scripts/application_state.py` to persist Positioning drafts/reviews and to enforce the Human Review gate before recording outward application artifacts.
 
 For a pursued opportunity, generate a concise Positioning Brief before outward application materials:
 

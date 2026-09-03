@@ -62,6 +62,7 @@ def validate(root: Path) -> list[str]:
         "scripts/context_state.py",
         "scripts/opportunity_state.py",
         "scripts/scan_state.py",
+        "scripts/application_state.py",
         "scripts/eval_runner.py",
     ]
     for relative in required:
