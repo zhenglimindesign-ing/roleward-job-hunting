@@ -3,34 +3,78 @@
   "$id": "https://roleward.example/schemas/roleward-state-v0.schema.json",
   "title": "Roleward Job Hunting Local Alpha State",
   "type": "object",
-  "required": ["schema_version", "profile", "search_policy", "opportunities", "signals", "updated_at"],
+  "required": [
+    "schema_version",
+    "profile",
+    "search_policy",
+    "opportunities",
+    "signals",
+    "updated_at"
+  ],
   "properties": {
-    "schema_version": {"const": "roleward.job-hunting.state.v0"},
+    "schema_version": {
+      "const": "roleward.job-hunting.state.v0"
+    },
     "profile": {
       "type": "object",
-      "required": ["career_evidence", "direction", "constraints", "preferences", "sources"],
+      "required": [
+        "career_evidence",
+        "direction",
+        "constraints",
+        "preferences",
+        "sources"
+      ],
       "properties": {
-        "career_evidence": {"type": "array"},
-        "direction": {"type": "object"},
-        "constraints": {"type": "array"},
-        "preferences": {"type": "array"},
-        "sources": {"type": "array"}
+        "career_evidence": {
+          "type": "array"
+        },
+        "direction": {
+          "type": "object"
+        },
+        "constraints": {
+          "type": "array"
+        },
+        "preferences": {
+          "type": "array"
+        },
+        "sources": {
+          "type": "array"
+        }
       },
       "additionalProperties": true
     },
-    "search_policy": {"type": "object"},
-    "opportunities": {"type": "object"},
+    "search_policy": {
+      "type": "object"
+    },
+    "opportunities": {
+      "type": "object"
+    },
     "signals": {
       "type": "object",
-      "required": ["decision_observations", "inferred_signals", "learned_signals"],
+      "required": [
+        "decision_observations",
+        "inferred_signals",
+        "learned_signals"
+      ],
       "properties": {
-        "decision_observations": {"type": "array"},
-        "inferred_signals": {"type": "array"},
-        "learned_signals": {"type": "array"}
+        "decision_observations": {
+          "type": "array"
+        },
+        "inferred_signals": {
+          "type": "array"
+        },
+        "learned_signals": {
+          "type": "array"
+        }
       },
       "additionalProperties": true
     },
-    "updated_at": {"type": "string"}
+    "updated_at": {
+      "type": "string"
+    },
+    "scan_runs": {
+      "type": "object"
+    }
   },
   "additionalProperties": true
 }

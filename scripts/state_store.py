@@ -31,6 +31,7 @@ def empty_state() -> dict[str, Any]:
         },
         "search_policy": {},
         "opportunities": {},
+        "scan_runs": {},
         "signals": {
             "decision_observations": [],
             "inferred_signals": [],
@@ -51,6 +52,7 @@ def validate_state(state: Any) -> list[str]:
         ("profile", dict),
         ("search_policy", dict),
         ("opportunities", dict),
+        ("scan_runs", dict),
         ("signals", dict),
     ):
         if not isinstance(state.get(key), expected):

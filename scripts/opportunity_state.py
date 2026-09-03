@@ -52,7 +52,8 @@ def opportunity_identity(company: str, title: str, url: str | None) -> str:
 def snapshot(job: dict[str, Any]) -> dict[str, Any]:
     source_text = str(job.get("text") or "")
     canonical = normalize_url(job.get("url"))
-    digest = hashlib.sha256(source_text.encode("utf-8")).hexdigest()
+    digest_seed = json.dumps({"canonical_url": canonical, "title": job.get("title"), "company": job.get("company"), "source_text": source_text}, sort_keys=True, ensure_ascii=False)
+    digest = hashlib.sha256(digest_seed.encode("utf-8")).hexdigest()
     return {
         "id": f"snap-{digest[:16]}",
         "observed_at": utc_now(),
@@ -173,6 +174,32 @@ def record_assessment(state: dict[str, Any], payload: dict[str, Any]) -> dict[st
     return {"opportunity_id": opp_id, "snapshot_id": snap_id, "assessment": assessment}
 
 
+def record_decision(state: dict[str, Any], opportunity_id: str, decision: str, reason: str | None = None) -> dict[str, Any]:
+    normalized = decision.lower()
+    if normalized not in RECOMMENDATIONS:
+        raise ValueError(f"decision must be one of {sorted(RECOMMENDATIONS)}")
+    if opportunity_id not in state["opportunities"]:
+        raise KeyError(f"Unknown opportunity: {opportunity_id}")
+    record = {
+        "id": f"decision-{hashlib.sha256((opportunity_id + normalized + utc_now()).encode()).hexdigest()[:12]}",
+        "decision": normalized,
+        "reason": reason,
+        "created_at": utc_now(),
+    }
+    state["opportunities"][opportunity_id]["pursuit_decisions"].append(record)
+    state["opportunities"][opportunity_id]["current_decision_id"] = record["id"]
+    if reason:
+        state["signals"]["decision_observations"].append({
+            "id": f"observation-{record['id'].split('-', 1)[1]}",
+            "opportunity_id": opportunity_id,
+            "statement": reason,
+            "authority": "user_observation",
+            "created_at": utc_now(),
+        })
+    state.setdefault("audit_log", []).append({"event": "pursuit_decision_recorded", "opportunity_id": opportunity_id, "decision_id": record["id"], "at": utc_now()})
+    return record
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--state", default="state/roleward-state.json")
@@ -186,6 +213,11 @@ def main() -> int:
     p.add_argument("--title", required=True)
     p.add_argument("--url")
 
+    p = sub.add_parser("decision")
+    p.add_argument("--opportunity-id", required=True)
+    p.add_argument("--decision", choices=sorted(RECOMMENDATIONS), required=True)
+    p.add_argument("--reason")
+
     args = parser.parse_args()
     if args.command == "identity":
         print(opportunity_identity(args.company, args.title, args.url))
@@ -193,8 +225,11 @@ def main() -> int:
 
     state_path = Path(args.state)
     state = load_state(state_path)
-    payload = json.loads(Path(args.input).read_text(encoding="utf-8"))
-    result = record_assessment(state, payload)
+    if args.command == "decision":
+        result = record_decision(state, args.opportunity_id, args.decision, args.reason)
+    else:
+        payload = json.loads(Path(args.input).read_text(encoding="utf-8"))
+        result = record_assessment(state, payload)
     save_state(state_path, state)
     print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
     return 0
