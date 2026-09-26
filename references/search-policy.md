@@ -4,6 +4,29 @@
 
 Return a deliberately small set of opportunities genuinely worth the user's review time. Zero results is valid.
 
+## Visible defaults and conversational changes
+
+The existing helper default is **at most 5 results per Scan**, not a target to
+fill. Use a saved `search_policy.max_results` when present. Explain the effective
+limit, confirmed geography/remote scope and target direction at first Scan and
+when they change. Label defaults as defaults, not as confirmed user preferences.
+With sufficient context, proceed without requesting approval of every setting.
+Manual Scan is the default; do not imply automatic scheduled searches exist.
+
+Accept requests such as "以后每次最多给我 3 个" directly. Persist an explicit
+ongoing change through `scripts/context_state.py confirm-field` using
+`--field search_policy.max_results --value-json 3`, then reload the same state
+and check the effective plan. Keep helper commands internal to the Skill.
+Validate that the count is a positive integer before saving. For a one-off
+request such as "这次只看 1 个", use `scripts/scan_state.py start --max-results 1`;
+this changes only that Scan's plan and preserves the saved preference. If a
+requested change is ambiguous in a way that matters, ask only for that missing
+detail.
+
+When asked about settings, summarize the effective values and their authority
+in plain language. Preserve confirmed hard constraints and previous Scan plans.
+Increasing the result limit never relaxes quality or eligibility requirements.
+
 ## Discovery
 
 Use both title-led and capability-led / title-agnostic discovery.

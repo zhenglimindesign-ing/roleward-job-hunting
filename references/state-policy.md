@@ -30,6 +30,47 @@ Schema id: `roleward.job-hunting.state.v0`.
 
 ## Update rules
 
+### Workspace, continuity and visible receipts
+
+Resolve one absolute state path for the current job-search workspace and reuse it
+across helper calls (`--path` for `state_store.py`, `--state` for workflow helpers).
+The default is `state/roleward-state.json` inside that workspace, not inside the
+shared installed Skill package. Check the established workspace before creating
+an empty state. If the user expects existing history and its location cannot be
+resolved from available context, ask for the workspace; do not claim it is empty.
+
+At first use or on request, explain briefly: explicit reports of applications
+and outcomes are saved locally; continuity requires access to the same state;
+external job sites and inboxes are not automatically synchronized. Give the
+resolved location when explaining storage. A new conversation can reuse this
+record, but it does not inherit the full conversation or imply cloud backup.
+
+For each meaningful write:
+
+1. Resolve the exact opportunity/field and the user's intent before writing.
+   A clear report of an action already taken is enough to record it. An intention
+   to apply, approval of positioning or a completed CV is not an application.
+2. Use the existing helper, check success, reload the same file and verify the
+   relevant field or event. Return a concise receipt only for verified writes,
+   for example "已记录：A 公司的产品经理岗位已投递。" Do not dump IDs or JSON.
+3. If saving or readback fails, say the change has not been verified as saved;
+   retain the update in the current conversation, identify the blocker and
+   retry only after checking current state. Do not create a duplicate event
+   merely because a previous write's result was uncertain.
+
+Before repeating an identical status report, inspect the existing current status
+and history; acknowledge an already-recorded event instead of appending it again.
+For a correction, preserve earlier history and append the corrected current
+status. Helper `created_at` timestamps are recording times, not evidence of the
+actual application/interview date.
+
+For "查看投递记录" or a return to the workflow, read the saved state and show
+company, role, current status and relevant recorded progress in plain language.
+Distinguish reviewed opportunities from submitted applications. Derive the next
+step from actual decisions, positioning reviews and artifacts; do not guess
+missing approvals, reasons, dates or external results. If persistence is
+unavailable, clearly scope continuity to the current conversation.
+
 ### Explicit user correction
 
 Update current user-owned state immediately when clear. Preserve the previous state when it explains prior outputs.
