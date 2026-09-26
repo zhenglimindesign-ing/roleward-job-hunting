@@ -49,9 +49,22 @@ def _first_list(container: dict[str, Any], keys: tuple[str, ...]) -> list[str]:
     return []
 
 
+def _positive_result_limit(value: Any) -> int:
+    if isinstance(value, bool) or not isinstance(value, (int, str)):
+        raise ValueError("max_results must be a positive integer")
+    try:
+        limit = int(value)
+    except ValueError as exc:
+        raise ValueError("max_results must be a positive integer") from exc
+    if limit < 1:
+        raise ValueError("max_results must be a positive integer")
+    return limit
+
+
 def build_search_plan(state: dict[str, Any]) -> dict[str, Any]:
     direction = state["profile"]["direction"]
     policy = state["search_policy"]
+    configured_limit = _unwrap(policy.get("max_results"))
     role_terms = _first_list(direction, ("target_roles", "capability_direction", "target_direction"))
     geographies = _first_list(policy, ("geographies", "geography", "locations", "remote_scope"))
     seniority = _first_list(policy, ("seniority", "seniority_range")) or _first_list(direction, ("seniority",))
@@ -66,16 +79,18 @@ def build_search_plan(state: dict[str, Any]) -> dict[str, Any]:
         "seniority": seniority,
         "authorization_state": authorization_state,
         "excluded_companies": _confirmed_list(policy, "excluded_companies"),
-        "max_results": int(_unwrap(policy.get("max_results")) or DEFAULT_MAX_RESULTS),
+        "max_results": _positive_result_limit(DEFAULT_MAX_RESULTS if configured_limit is None else configured_limit),
         "coverage_modes": ["title_led", "capability_led"],
     }
 
 
-def start_scan(state: dict[str, Any], trigger: str) -> dict[str, Any]:
+def start_scan(state: dict[str, Any], trigger: str, *, max_results: int | None = None) -> dict[str, Any]:
     if trigger not in TRIGGERS:
         raise ValueError(f"trigger must be one of {sorted(TRIGGERS)}")
-    state.setdefault("scan_runs", {})
     plan = build_search_plan(state)
+    if max_results is not None:
+        plan["max_results"] = _positive_result_limit(max_results)
+    state.setdefault("scan_runs", {})
     seed = json.dumps({"plan": plan, "at": utc_now()}, sort_keys=True).encode("utf-8")
     run_id = f"scan-{hashlib.sha256(seed).hexdigest()[:12]}"
     state["scan_runs"][run_id] = {
@@ -165,7 +180,7 @@ def ingest_candidates(state: dict[str, Any], scan_id: str, candidates: list[dict
 
 def finalize_scan(state: dict[str, Any], scan_id: str) -> dict[str, Any]:
     run = state["scan_runs"][scan_id]
-    max_results = int(run["plan"].get("max_results") or DEFAULT_MAX_RESULTS)
+    max_results = _positive_result_limit(run["plan"].get("max_results", DEFAULT_MAX_RESULTS))
     selected = [
         item["opportunity_id"]
         for item in run["candidates"]
@@ -185,6 +200,7 @@ def main() -> int:
 
     p = sub.add_parser("start")
     p.add_argument("--trigger", choices=sorted(TRIGGERS), default="manual")
+    p.add_argument("--max-results", type=int, help="Override this Scan only; leave the saved preference unchanged")
 
     p = sub.add_parser("ingest")
     p.add_argument("--scan-id", required=True)
@@ -198,7 +214,7 @@ def main() -> int:
     state = load_state(path)
 
     if args.command == "start":
-        result = start_scan(state, args.trigger)
+        result = start_scan(state, args.trigger, max_results=args.max_results)
     elif args.command == "ingest":
         payload = json.loads(Path(args.input).read_text(encoding="utf-8"))
         result = ingest_candidates(state, args.scan_id, payload["candidates"])

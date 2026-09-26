@@ -49,6 +49,40 @@ Route the user's request to the smallest relevant workflow:
 3. Inspect the current action's required context. Do not ask for optional fields just to make a profile look complete.
 4. Load only the references needed for the current workflow.
 
+## Conversation and continuity
+
+The Skill owns workflow navigation and record keeping. Accept ordinary language;
+users do not need stage names, special commands, Opportunity IDs, or reminders
+to save. Resolve references such as "this one" from the conversation and saved
+state; ask one focused question when more than one opportunity could match.
+
+- At first use, briefly explain the current search scope, result limit and how
+  tracking works. Use existing context and the defaults in
+  `references/search-policy.md`; do not turn this into a setup questionnaire.
+- Continue work already authorized by the user's request. When a user decision
+  is needed, name the decision and explain what it unlocks. Preserve the
+  Positioning Review gate and the boundary on external actions.
+- When handing back a meaningful result, make the current stage and one useful
+  next action clear in natural prose. A concrete question is appropriate when
+  input is needed; a generic offer of further help is not a handoff. Do not
+  append a menu to a simple answer or invent work after the request is complete.
+- After saving a profile/preference change, decision, material or outcome,
+  verify the persisted record and give a short receipt identifying what changed.
+  Follow `references/state-policy.md` for persistence and failure handling.
+
+Use the handoff relevant to the current stage:
+
+| Current result | Skill's responsibility |
+| --- | --- |
+| Context is ready | Start the requested Scan or JD assessment; if the user only asked to import context, explain the available next action. |
+| Scan results | Recommend a starting opportunity and invite a choice when none was made. For zero results, explain the limiting factor and a concrete next action within the confirmed scope. |
+| Pursuit assessment | Resolve tool-verifiable unknowns within scope. If the user has chosen to pursue, draft Positioning; otherwise make the pursue/skip decision easy to answer. |
+| Positioning draft | Ask for confirmation or correction of the proposed positioning and consequential claims. Explain which requested materials follow review. |
+| Positioning approved | Generate the already-requested materials. Ask which artifact is needed only when that is genuinely unspecified. |
+| Application materials | Link the actual files and identify any remaining user action. Materials being ready does not mean an application was submitted. |
+| User reports an outcome | Resolve the opportunity, save and verify the update, then acknowledge it. Offer further preparation only when useful; do not fabricate an interview date, follow-up deadline or reminder. |
+| User returns or asks for history | Load the same state, summarize relevant progress and the next unresolved decision. Do not repeat onboarding or claim that saved state contains the full prior conversation. |
+
 ## Understand Me
 
 Read `references/context-policy.md` and `references/state-policy.md`. When local persistence is available, use `scripts/context_state.py` for deterministic source registration, confirmed-field updates, readiness checks, and Structured Context Review.
