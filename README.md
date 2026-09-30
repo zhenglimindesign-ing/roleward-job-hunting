@@ -1,5 +1,7 @@
 # Roleward Job Hunting
 
+**English** | [简体中文](README.zh-CN.md)
+
 **A precision-first AI job hunting skill for deciding where your effort is actually worth spending.**
 
 Roleward learns your real career context, helps you find or evaluate opportunities, decides which ones are worth pursuing, and turns that decision into truthful positioning and application materials.
@@ -87,6 +89,8 @@ Should I pursue this role?
 ```
 
 Roleward will route both requests into the same underlying workflow.
+
+You can write in any language; Roleward should reply in the language you use. Field names and values saved to local state stay in English.
 
 ### 3. Review your context before trusting downstream decisions
 

@@ -1,5 +1,7 @@
 # Roleward Job Hunting Usage Guide
 
+**English** | [简体中文](USAGE.zh-CN.md)
+
 This guide explains what to ask Roleward, what it should return, and how the main workflows connect.
 
 Roleward is not organized around a menu of features. The same persistent career context should support the whole loop:
@@ -219,6 +221,8 @@ Use the reviewed Positioning Brief to tailor my resume for this role.
 Keep every factual claim grounded in my confirmed career evidence.
 Do not exaggerate independent AI work into formal production experience.
 ```
+
+Resumes, cover letters and other materials default to the language of the target role or market; ask if you need a different language.
 
 ### Cover letter
 

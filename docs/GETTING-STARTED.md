@@ -1,5 +1,7 @@
 # Getting Started with Roleward Job Hunting
 
+**English** | [简体中文](GETTING-STARTED.zh-CN.md)
+
 Roleward Job Hunting is a Codex-first Alpha for running a more deliberate job search: understand your real background, find fewer but better opportunities, decide what is worth pursuing, position yourself truthfully, and learn from outcomes.
 
 This guide covers the current recommended Alpha setup.
@@ -62,6 +64,8 @@ Read SKILL.md and use Roleward Job Hunting.
 I want to set up my job search, but I do not have a clean career summary ready.
 Ask only the questions needed to establish my Career Anchor, Direction, Geography and Authorization state.
 ```
+
+You can talk to Codex in any language. Roleward should reply in the language you use; field names and values saved to local state stay in English.
 
 ### Step 3 — review your context
 

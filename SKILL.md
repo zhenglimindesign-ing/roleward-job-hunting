@@ -69,6 +69,14 @@ state; ask one focused question when more than one opportunity could match.
 - After saving a profile/preference change, decision, material or outcome,
   verify the persisted record and give a short receipt identifying what changed.
   Follow `references/state-policy.md` for persistence and failure handling.
+- Reply in the language the user writes in, unless they ask for another one.
+  Translate stage names, decision labels and score dimensions in user-facing
+  prose; add the canonical English term once where the translation could be
+  ambiguous. Keep persisted enum values, IDs and schema field names in their
+  canonical English form, and quote source material in its original language.
+- Write application materials in the language of the target role or market
+  unless the user asks otherwise. Translation must not add or strengthen claims
+  beyond the authorized evidence and reviewed Positioning.
 
 Use the handoff relevant to the current stage:
 
