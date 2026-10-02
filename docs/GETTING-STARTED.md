@@ -214,7 +214,7 @@ not a backup of your job-search history. If there are local code changes, preser
 and reconcile them before updating. Then load the existing state and check that
 your context and opportunity history remain available.
 
-A prior local user-level installation, discovery and update were verified with private data preserved. This candidate has not replaced that installation, and a general install/update flow remains unverified. The dedicated repository workspace remains the recommended Alpha setup; see [Alpha status](ALPHA-STATUS.md).
+A prior local user-level installation, discovery and update were verified with private data preserved. This combined package has not replaced that installation, and a general install/update flow remains unverified. The dedicated repository workspace remains the recommended Alpha setup; see [Alpha status](ALPHA-STATUS.md).
 
 ## Troubleshooting
 
@@ -246,7 +246,7 @@ Treat the displayed scores as orientation signals, not probabilities. The primar
 
 ### I want Roleward available across all Codex projects
 
-The prior local user-level package was discovered and updated with private data preserved. This candidate has not replaced it, and a generally reproducible one-step install/update experience remains unverified. Use the dedicated workspace path for the current Alpha; see [Alpha status](ALPHA-STATUS.md).
+The prior local user-level package was discovered and updated with private data preserved. This combined package has not replaced it, and a generally reproducible one-step install/update experience remains unverified. Use the dedicated workspace path for the current Alpha; see [Alpha status](ALPHA-STATUS.md).
 
 ## Reporting a problem
 

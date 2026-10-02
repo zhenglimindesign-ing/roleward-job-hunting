@@ -1,10 +1,9 @@
 # Alpha status
 
-As of 2026-10-02, this is an **Alpha candidate for public main** combining the
-previously verified local integrity fixes with the public conversation and
-bilingual updates. The public repository contains the earlier Alpha foundation
-and those conversation/language changes. This combined candidate has not yet been
-merged into main or declared semantically accepted.
+As of 2026-10-02, this **Alpha implementation** combines the previously verified
+local integrity fixes with the public conversation and bilingual updates.
+This integration does not declare semantic acceptance or create a formal
+versioned release.
 
 ## First Alpha scope
 
@@ -39,9 +38,9 @@ These checks do not establish live search quality or personal usefulness.
 | Score interpretation | Arithmetic replays; requirement grouping and ratings can change scores by 10–20 points | Review grouping/rating anchors; keep scores secondary and avoid probability claims |
 | Personal use and useful materials | One personal workflow has reached reviewed positioning and prepared resume files; synthetic helpers also cover persistence | Gather broader user feedback; prepared files do not prove an application was submitted or that hiring outcomes improved |
 | Live Search precision | Personal live scans have occurred; aggregate worth-review precision has not been established | Evaluate a bounded scan before claiming measured discovery quality |
-| Codex installation and updates | The prior local package was discovered and updated, with private-data preservation checked; this combined candidate has not replaced it | Reuse prior evidence and check release-specific changes; do not claim a universal one-step installer |
+| Codex installation and updates | The prior local package was discovered and updated, with private-data preservation checked; this combined package has not replaced it | Reuse prior evidence and check release-specific changes; do not claim a universal one-step installer |
 | Other runtime environments | No second-environment acceptance is established | Validate an environment before advertising support for it |
-| Publication | Candidate for public main; license still TBD | Review and merge the specific change set; an Alpha announcement does not certify the formal semantic gates |
+| Publication | Public Alpha implementation; license still TBD | Confirm the exact branch/commit before sharing; an Alpha announcement does not certify the formal semantic gates |
 
 The earlier recommendation to accept Pursuit with residuals predates the
 controlled repeat. It must not be read as current acceptance. Frozen benchmark

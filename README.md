@@ -8,7 +8,7 @@ Roleward learns your real career context, helps you find or evaluate opportuniti
 
 It is designed to help you apply **better, not more**.
 
-> **Alpha · Codex-first.** The current recommended Alpha experience is to use this repository as a dedicated local Codex job-search workspace. A prior local user-level installation was discovered and updated with private data preserved. This candidate has not replaced that installation, and a generally reproducible install/update flow remains unverified.
+> **Alpha · Codex-first.** The current recommended Alpha experience is to use this repository as a dedicated local Codex job-search workspace. A prior local user-level installation was discovered and updated with private data preserved. This combined package has not replaced that installation, and a generally reproducible install/update flow remains unverified.
 
 ## Why Roleward?
 
@@ -177,7 +177,7 @@ See [Alpha status and remaining checks](docs/ALPHA-STATUS.md) for the current ev
 - Local file access and Python 3.11+ are required for structured persistence/helpers.
 - Current live discovery depends on the host having web/search access.
 - Manual Precision Scan is sufficient for Alpha; production-grade scheduled scanning is not yet part of this public Alpha.
-- A prior local user-level Codex installation, discovery and update were verified with private data preserved. This candidate has not replaced that installation, and a general install/update flow remains unverified; the dedicated repository workspace is the current recommended path.
+- A prior local user-level Codex installation, discovery and update were verified with private data preserved. This combined package has not replaced that installation, and a general install/update flow remains unverified; the dedicated repository workspace is the current recommended path.
 - Scores are secondary decision aids and may vary between runs; Roleward is evaluated primarily on recommendation quality, evidence credibility and decision usefulness.
 - No Roleward production backend is required for the current Alpha.
 
