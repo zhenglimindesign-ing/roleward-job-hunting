@@ -57,3 +57,14 @@ Keep a persistent Opportunity reservoir so a strong still-live role is not forgo
 ## User result
 
 Lead with the small result set. Search coverage, dedupe details, filter diagnostics, and query plans are builder/eval or progressive-disclosure material, not default user output.
+
+## Persisted shortlist
+
+Record source verification status on each discovery observation. Keep all
+observations in the reservoir, but select each logical Opportunity at most once
+before applying the result cap. The latest observation in the Scan controls
+selection. Only `verified_live` sources enter actionable results; closed or
+unverified sources remain available for inspection or a later verification pass.
+A legacy in-progress observation without verification status needs rechecking
+before selection. This source gate does not convert unknown sponsorship into
+confirmed ineligibility.

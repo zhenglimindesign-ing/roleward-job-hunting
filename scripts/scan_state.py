@@ -165,6 +165,7 @@ def ingest_candidates(state: dict[str, Any], scan_id: str, candidates: list[dict
         discovery = {
             "scan_id": scan_id,
             "source_snapshot_id": snap_id,
+            "live_status": candidate["job"].get("live_status", "unknown"),
             "disposition": disposition,
             "reasons": candidate.get("reasons") or [],
             "hard_constraint_check": check,
@@ -181,10 +182,14 @@ def ingest_candidates(state: dict[str, Any], scan_id: str, candidates: list[dict
 def finalize_scan(state: dict[str, Any], scan_id: str) -> dict[str, Any]:
     run = state["scan_runs"][scan_id]
     max_results = _positive_result_limit(run["plan"].get("max_results", DEFAULT_MAX_RESULTS))
+    # Keep every discovery observation, but let the latest observation govern
+    # each unique opportunity. De-duplicate before applying the shortlist cap.
+    latest = {item["opportunity_id"]: item for item in run["candidates"]}
     selected = [
-        item["opportunity_id"]
-        for item in run["candidates"]
+        opportunity_id
+        for opportunity_id, item in latest.items()
         if item["disposition"] in {"worth_review", "verify_first"}
+        and item.get("live_status") == "verified_live"
     ][:max_results]
     run["selected_opportunity_ids"] = selected
     run["status"] = "complete"

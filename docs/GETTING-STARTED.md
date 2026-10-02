@@ -23,6 +23,8 @@ Current Alpha requirements:
 - Python 3.11+ for local persistence and helper scripts;
 - web/search access in the host if you want a fresh live job scan.
 
+The workflow helpers use the Python standard library. PyYAML is needed only for the contributor package validator; it is not a requirement for a normal job-search session.
+
 ## Recommended Alpha setup: dedicated Codex workspace
 
 The current recommended path is to use the public repository itself as a dedicated local job-search workspace.
@@ -189,11 +191,30 @@ Record that as the confirmed rejection reason and tell me what â€” if anything â
 
 One outcome should not become a permanent market rule.
 
+## Continuing in a new conversation
+
+Open the same job-search workspace and say:
+
+```text
+Read SKILL.md and load my existing Roleward state.
+Show my current search direction and the last opportunity I worked on.
+Continue from there; do not initialize a new profile or discard earlier history.
+```
+
+The local state is the continuity record. A new conversation must load it before
+asking you to repeat your background. If the state is missing, check the selected
+workspace before creating a replacement.
+
 ## Updating Roleward itself
 
-If you cloned the repository, update the local code from the latest `main` before a new test or after a documented release.
+If you cloned the repository, use a documented release when updating. Ask Codex
+to inspect local changes first and back up `state/`, `sources/` and
+`application-files/`. Git ignores these private directories, so a code commit is
+not a backup of your job-search history. If there are local code changes, preserve
+and reconcile them before updating. Then load the existing state and check that
+your context and opportunity history remain available.
 
-Because reusable Codex user-level installation is still being product-smoke-tested, the dedicated repository-workspace flow remains the recommended Alpha setup for now.
+A prior local user-level installation, discovery and update were verified with private data preserved. This combined package has not replaced that installation, and a general install/update flow remains unverified. The dedicated repository workspace remains the recommended Alpha setup; see [Alpha status](ALPHA-STATUS.md).
 
 ## Troubleshooting
 
@@ -225,7 +246,11 @@ Treat the displayed scores as orientation signals, not probabilities. The primar
 
 ### I want Roleward available across all Codex projects
 
-Codex supports reusable user-level Skills, but Roleward's public one-step install/update experience is still being validated. The current Alpha docs intentionally recommend the dedicated workspace path until that flow is smoke-tested end to end.
+The prior local user-level package was discovered and updated with private data preserved. This combined package has not replaced it, and a generally reproducible one-step install/update experience remains unverified. Use the dedicated workspace path for the current Alpha; see [Alpha status](ALPHA-STATUS.md).
+
+## Reporting a problem
+
+Open a [GitHub issue](https://github.com/zhenglimindesign-ing/roleward-job-hunting/issues). Include what you asked, what you expected, what happened, and the version or commit if available. Remove private career details, resumes and local state before sharing.
 
 ## Next
 

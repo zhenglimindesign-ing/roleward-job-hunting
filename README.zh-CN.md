@@ -10,7 +10,7 @@ Roleward 会了解你真实的职业背景，帮你寻找或评估机会，判�
 
 它的目标是帮你投得**更好，而不是更多**。
 
-> **Alpha · Codex 优先。** 当前推荐的 Alpha 用法，是把本仓库作为一个专用的本地 Codex 求职工作区。可复用的用户级 Skill 安装方式仍在做产品冒烟测试。
+> **Alpha · Codex 优先。** 当前推荐的 Alpha 用法，是把本仓库作为一个专用的本地 Codex 求职工作区。此前的本机用户级安装已验证发现、更新及私人资料保留；本次整合包尚未替换该安装包，通用安装/更新流程仍待验收。
 
 ## 为什么是 Roleward？
 
@@ -173,13 +173,19 @@ Alpha 围绕本地结构化文件设计。
 
 ## 当前 Alpha 的边界
 
+当前验证证据和限制，见 [Alpha 状态与后续检查（英文）](docs/ALPHA-STATUS.md)。
+
 - 主要测试宿主：**Codex**。
 - 结构化持久化和辅助脚本需要本地文件访问权限和 Python 3.11+。
 - 当前的实时职位发现，依赖宿主具备网页/搜索能力。
 - 手动触发的精准扫描即可满足 Alpha；生产级的定时扫描还不在本次公开 Alpha 的范围内。
-- 可复用的用户级 Codex Skill 安装/更新流程仍在验证中；上面介绍的专用仓库工作区，是当前推荐的方式。
+- 此前的本机用户级 Codex 安装、发现及更新已通过验证，私人资料保持不变。本次整合包尚未替换该安装包，通用安装/更新流程仍待验收；专用仓库工作区仍是当前推荐方式。
 - 分数只是辅助决策的次要信号，每次运行可能不同；评估 Roleward 主要看推荐质量、证据可信度和决策是否有用。
 - 当前 Alpha 不需要 Roleward 生产后端。
+
+## 反馈
+
+遇到问题时，可以在 [GitHub Issues](https://github.com/zhenglimindesign-ing/roleward-job-hunting/issues) 反馈。说明你的请求、预期结果、实际结果和可获取的版本。分享前请去掉私人职业信息、简历和本地状态。
 
 ## 贡献者与开发者
 
@@ -201,10 +207,20 @@ python3 scripts/smoke_scan.py
 python3 scripts/smoke_application.py
 python3 scripts/smoke_learn.py
 python3 scripts/smoke_eval.py
+python3 scripts/smoke_pursuit_eval.py
+python3 scripts/smoke_application_integrity.py
+python3 scripts/smoke_scan_selection.py
+python3 scripts/smoke_journey.py
+python3 scripts/smoke_search_settings.py
 python3 scripts/eval_runner.py
 ```
 
+包校验脚本要求所选 Python 环境中已安装 PyYAML。
+`eval_runner.py` 会区分三类内容：可执行的确定性 fixture、可移植 fixture 的结构检查，以及延后处理的语义用例。结构检查通过并不能证明模型的判断质量。可移植输入的准备方式和生成后的严格评分，见 `fixtures/README.md`（英文）。
+
 内部产品与评估决策的权威记录位于私有的 Roleward 主仓库。本公开仓库是可分发的实现层。
+
+GitHub PR 和 `main` 更新会在 Python 3.11、3.14 上自动运行同一组确定性包检查、工作流及样例检查。这些检查不执行模型判断质量评测。
 
 ## 许可证
 

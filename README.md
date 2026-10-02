@@ -8,7 +8,7 @@ Roleward learns your real career context, helps you find or evaluate opportuniti
 
 It is designed to help you apply **better, not more**.
 
-> **Alpha · Codex-first.** The current recommended Alpha experience is to use this repository as a dedicated local Codex job-search workspace. Reusable user-level Skill installation is still being product-smoke-tested.
+> **Alpha · Codex-first.** The current recommended Alpha experience is to use this repository as a dedicated local Codex job-search workspace. A prior local user-level installation was discovered and updated with private data preserved. This combined package has not replaced that installation, and a generally reproducible install/update flow remains unverified.
 
 ## Why Roleward?
 
@@ -171,13 +171,19 @@ See [Getting Started](docs/GETTING-STARTED.md#local-state-and-privacy) for detai
 
 ## Current Alpha boundaries
 
+See [Alpha status and remaining checks](docs/ALPHA-STATUS.md) for the current evidence and limitations.
+
 - Primary tested host: **Codex**.
 - Local file access and Python 3.11+ are required for structured persistence/helpers.
 - Current live discovery depends on the host having web/search access.
 - Manual Precision Scan is sufficient for Alpha; production-grade scheduled scanning is not yet part of this public Alpha.
-- Reusable user-level Codex Skill installation/update flow is still being verified; the dedicated repository-workspace flow above is the current recommended path.
+- A prior local user-level Codex installation, discovery and update were verified with private data preserved. This combined package has not replaced that installation, and a general install/update flow remains unverified; the dedicated repository workspace is the current recommended path.
 - Scores are secondary decision aids and may vary between runs; Roleward is evaluated primarily on recommendation quality, evidence credibility and decision usefulness.
 - No Roleward production backend is required for the current Alpha.
+
+## Feedback
+
+Report problems in [GitHub Issues](https://github.com/zhenglimindesign-ing/roleward-job-hunting/issues). Share your request, expected result, actual result, and version if available. Remove private career details, resumes and local state.
 
 ## For contributors and builders
 
@@ -199,10 +205,23 @@ python3 scripts/smoke_scan.py
 python3 scripts/smoke_application.py
 python3 scripts/smoke_learn.py
 python3 scripts/smoke_eval.py
+python3 scripts/smoke_pursuit_eval.py
+python3 scripts/smoke_application_integrity.py
+python3 scripts/smoke_scan_selection.py
+python3 scripts/smoke_journey.py
+python3 scripts/smoke_search_settings.py
 python3 scripts/eval_runner.py
 ```
 
+The package validator requires PyYAML in the selected Python environment.
+`eval_runner.py` distinguishes executable deterministic fixtures from portable
+fixture structure checks and deferred semantic cases. A structure check is not
+evidence of model judgment quality. See `fixtures/README.md` for portable input
+preparation and strict post-generation scoring.
+
 Internal product and eval authority lives in the private canonical Roleward repository. This public repository is the distributable implementation surface.
+
+GitHub PRs and updates to `main` run the same deterministic package, workflow and fixture checks on Python 3.11 and 3.14. These checks do not run a model-quality evaluation.
 
 ## License
 
