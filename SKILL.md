@@ -1,13 +1,15 @@
 ---
 name: roleward-job-hunting
 description: A precision-first job hunting workflow for understanding a candidate, finding a small set of worthwhile opportunities, deciding Pursue/Verify first/Pass, positioning truthfully, preparing application materials, tracking outcomes, and learning conservatively. Use for job discovery, job-fit/pursuit decisions, tailored applications, or job-search state continuity.
-compatibility: Designed for Codex and other Agent Skills-compatible hosts. Current job discovery requires web access. Local Alpha persistence and deterministic helpers require local file access and Python 3.11+.
 metadata:
   roleward-version: "0.1.0-alpha"
   state-schema: "roleward.job-hunting.state.v0"
 ---
 
 # Roleward Job Hunting
+
+Runtime requirements: local file access and Python 3.11+ for persistence/helpers;
+host web/search access for current job discovery. Codex is the current Alpha host.
 
 Use this skill to help a job seeker invest time in fewer, better opportunities.
 The core loop is:
@@ -48,6 +50,13 @@ Route the user's request to the smallest relevant workflow:
 2. If state is absent, create it only after obtaining source material or explicit user input.
 3. Inspect the current action's required context. Do not ask for optional fields just to make a profile look complete.
 4. Load only the references needed for the current workflow.
+
+Resolve scripts and references relative to this Skill package. Keep private state,
+sources and generated materials in the user's chosen job-search workspace.
+The CLI defaults resolve `state/roleward-state.json` from the working directory;
+if the package lives elsewhere, run its scripts from the user workspace or pass
+an absolute state path (`--path` for `state_store.py`, `--state` for workflow helpers).
+Do not place private runtime data inside a shared installed Skill directory.
 
 ## Conversation and continuity
 

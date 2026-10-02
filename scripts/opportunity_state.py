@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 import re
+from copy import deepcopy
 from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
@@ -119,6 +120,33 @@ def calculate_scores(payload: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def verification_errors(recommendation: str, plans: Any) -> list[str]:
+    """Check plan structure; semantic feasibility remains a host judgment."""
+    if not isinstance(plans, list):
+        return ["verification_plan must be a list"]
+    errors = []
+    before_application = False
+    for index, plan in enumerate(plans):
+        if not isinstance(plan, dict):
+            errors.append(f"verification_plan[{index}] must be an object")
+            continue
+        valid = True
+        for field in ("target", "method"):
+            if not isinstance(plan.get(field), str) or not plan[field].strip():
+                errors.append(f"verification_plan[{index}].{field} must be non-empty text")
+                valid = False
+        when = plan.get("when")
+        if when not in ("before_application", "during_process"):
+            errors.append(f"verification_plan[{index}].when must be before_application or during_process")
+        if when == "before_application":
+            before_application |= valid
+            if recommendation == "pursue":
+                errors.append("Pursue must not retain an unresolved pre-application gate")
+    if recommendation == "verify_first" and not before_application:
+        errors.append("Verify first requires an actionable before_application verification plan")
+    return errors
+
+
 def upsert_opportunity(state: dict[str, Any], job: dict[str, Any]) -> tuple[str, str]:
     company = str(job.get("company") or "Unknown company")
     title = str(job.get("title") or "Unknown role")
@@ -152,8 +180,12 @@ def record_assessment(state: dict[str, Any], payload: dict[str, Any]) -> dict[st
     recommendation = str(payload["recommendation"]).lower()
     if recommendation not in RECOMMENDATIONS:
         raise ValueError(f"recommendation must be one of {sorted(RECOMMENDATIONS)}")
-    opp_id, snap_id = upsert_opportunity(state, payload["job"])
+    plans = payload.get("verification_plan", [])
+    errors = verification_errors(recommendation, plans)
+    if errors:
+        raise ValueError("Invalid Pursuit verification:\n- " + "\n- ".join(errors))
     scores = calculate_scores(payload)
+    opp_id, snap_id = upsert_opportunity(state, payload["job"])
     assessment = {
         "id": f"assessment-{hashlib.sha256((opp_id + snap_id + utc_now()).encode()).hexdigest()[:12]}",
         "created_at": utc_now(),
@@ -166,7 +198,10 @@ def record_assessment(state: dict[str, Any], payload: dict[str, Any]) -> dict[st
         "why_worth_time": payload.get("why_worth_time"),
         "main_concern": payload.get("main_concern"),
         "what_to_verify": payload.get("what_to_verify"),
-        "requirements": payload.get("requirements", []),
+        "verification_plan": deepcopy(plans),
+        "requirements": deepcopy(payload.get("requirements", [])),
+        "screening_dimensions": deepcopy(payload["screening_dimensions"]),
+        "career_value_dimensions": deepcopy(payload["career_value_dimensions"]),
     }
     state["opportunities"][opp_id]["pursuit_assessments"].append(assessment)
     state["opportunities"][opp_id]["current_assessment_id"] = assessment["id"]

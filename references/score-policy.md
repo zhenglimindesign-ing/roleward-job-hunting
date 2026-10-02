@@ -25,6 +25,11 @@ Formula:
 
 Only capability-assessable requirements participate.
 
+Split the JD into atomic requirements before scoring. Declared exposure does
+not establish depth, ownership, tenure, or seniority. Do not mark an entire
+compound requirement Met when only part is supported. Missing job facts are
+not candidate gaps; hard eligibility belongs to Employability.
+
 ## Direction Alignment
 
 Internal component. Measures alignment with the user's confirmed current search/career direction. It excludes employability and longer-term career value.
@@ -43,10 +48,16 @@ Evaluate inherent truthful hire-case legibility after reasonable tailoring, not 
 
 Four 0–4 dimensions:
 
-1. Direct professional evidence
-2. Role/seniority continuity
-3. Domain/product-surface continuity
-4. Inference burden / credibility gaps
+1. Direct professional evidence: 0 no credible core hire case; 1 remote
+   adjacency; 2 meaningful adjacent professional evidence; 3 strong direct
+   continuity; 4 obvious direct continuity.
+2. Role/seniority continuity: 0 structural mismatch/reset; 1 several inferential
+   jumps; 2 one meaningful jump; 3 mostly legible continuity; 4 immediately legible.
+3. Domain/product-surface continuity: 0 missing core domain/surface; 1 weak
+   analogy; 2 credible adjacent transfer; 3 strong continuity; 4 direct match.
+4. Inference burden / credibility gaps: 0 unsupported equivalence; 1 several
+   major gaps; 2 one major or several moderate gaps; 3 limited manageable gaps;
+   4 no meaningful inferential leap.
 
 Convert the 16-point total to 0–100, then display nearest 5.
 
@@ -62,6 +73,13 @@ Four 0–4 dimensions:
 4. Optionality vs reset cost
 
 Convert to 0–100, then display nearest 5. Prestige alone cannot drive a high score.
+
+Retain the atomic requirement ratings, Direction input, and four component
+ratings for Screening Legibility and Career Value in evaluation/state records.
+Keep brief evidence-based explanations alongside evaluation results.
+Use `scripts/opportunity_state.py`
+for arithmetic. These details are progressive disclosure, not extra default
+user-facing scores. Displayed totals alone cannot explain repeat-score drift.
 
 ## Employability
 

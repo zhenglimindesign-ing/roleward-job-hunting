@@ -6,6 +6,10 @@
 /application-files/*
 !/application-files/README.md
 
+# Local analysis and evaluation deliverables may contain private evidence.
+/work/
+/outputs/
+
 # Python
 __pycache__/
 *.py[cod]

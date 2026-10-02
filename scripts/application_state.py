@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
@@ -33,6 +34,20 @@ def _career_evidence_ids(state: dict[str, Any]) -> set[str]:
     }
 
 
+def _require_current_source(opp: dict[str, Any], revision: dict[str, Any]) -> None:
+    if not revision.get("source_snapshot_id") or revision["source_snapshot_id"] != opp.get("current_snapshot_id"):
+        raise ValueError("Positioning must reference the current job source; create and review a fresh draft")
+
+
+def _current_assessment_id(opp: dict[str, Any]) -> str | None:
+    assessment_id = opp.get("current_assessment_id")
+    assessment = next((item for item in opp.get("pursuit_assessments", [])
+                       if item.get("id") == assessment_id), None)
+    if assessment and assessment.get("source_snapshot_id") == opp.get("current_snapshot_id"):
+        return assessment_id
+    return None
+
+
 def record_positioning_draft(state: dict[str, Any], opportunity_id: str, content: dict[str, Any]) -> dict[str, Any]:
     opp = _opportunity(state, opportunity_id)
     revision = {
@@ -40,8 +55,8 @@ def record_positioning_draft(state: dict[str, Any], opportunity_id: str, content
         "status": "draft",
         "created_at": utc_now(),
         "source_snapshot_id": opp.get("current_snapshot_id"),
-        "pursuit_assessment_id": opp.get("current_assessment_id"),
-        "content": content,
+        "pursuit_assessment_id": _current_assessment_id(opp),
+        "content": deepcopy(content),
     }
     opp.setdefault("positioning_revisions", []).append(revision)
     opp["current_positioning_id"] = revision["id"]
@@ -56,6 +71,7 @@ def review_positioning(
     source = next((item for item in opp.get("positioning_revisions", []) if item.get("id") == revision_id), None)
     if source is None:
         raise KeyError(f"Unknown positioning revision: {revision_id}")
+    _require_current_source(opp, source)
     reviewed = {
         "id": _id("positioning", opportunity_id + revision_id),
         "status": "reviewed",
@@ -63,7 +79,7 @@ def review_positioning(
         "parent_revision_id": revision_id,
         "source_snapshot_id": source.get("source_snapshot_id"),
         "pursuit_assessment_id": source.get("pursuit_assessment_id"),
-        "content": edited_content if edited_content is not None else source.get("content", {}),
+        "content": deepcopy(edited_content if edited_content is not None else source.get("content", {})),
     }
     opp["positioning_revisions"].append(reviewed)
     opp["current_positioning_id"] = reviewed["id"]
@@ -79,6 +95,7 @@ def _reviewed_positioning(opp: dict[str, Any]) -> dict[str, Any]:
     revision = next((item for item in opp.get("positioning_revisions", []) if item.get("id") == revision_id), None)
     if revision is None or revision.get("status") != "reviewed":
         raise ValueError("Current reviewed Positioning revision is missing or invalid")
+    _require_current_source(opp, revision)
     return revision
 
 
@@ -114,8 +131,9 @@ def record_artifact(
     sha256 = None
     if local_path:
         path = Path(local_path)
-        if path.exists() and path.is_file():
-            sha256 = hashlib.sha256(path.read_bytes()).hexdigest()
+        if not path.is_file():
+            raise ValueError("local_path must identify an existing file before recording an artifact")
+        sha256 = hashlib.sha256(path.read_bytes()).hexdigest()
 
     artifact = {
         "id": _id("artifact", opportunity_id + artifact_type),
@@ -127,10 +145,10 @@ def record_artifact(
         "evidence_ids": sorted({str(ref) for claim in claims for ref in claim.get("evidence_ids", [])}),
         "local_path": local_path,
         "sha256": sha256,
-        "metadata": payload.get("metadata") or {},
+        "metadata": deepcopy(payload.get("metadata") or {}),
     }
     if artifact_type == "contact_shortlist":
-        artifact["contacts"] = payload.get("contacts") or []
+        artifact["contacts"] = deepcopy(payload.get("contacts") or [])
     opp.setdefault("application_artifacts", []).append(artifact)
     state.setdefault("audit_log", []).append({"event": "application_artifact_recorded", "opportunity_id": opportunity_id, "artifact_id": artifact["id"], "artifact_type": artifact_type, "at": utc_now()})
     return artifact
