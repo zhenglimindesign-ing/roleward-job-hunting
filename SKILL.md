@@ -1,5 +1,6 @@
 ---
 name: roleward-job-hunting
+license: MIT
 description: A precision-first job hunting workflow for understanding a candidate, finding a small set of worthwhile opportunities, deciding Pursue/Verify first/Pass, positioning truthfully, preparing application materials, tracking outcomes, and learning conservatively. Use for job discovery, job-fit/pursuit decisions, tailored applications, or job-search state continuity.
 metadata:
   roleward-version: "0.1.0-alpha"

@@ -40,7 +40,7 @@ These checks do not establish live search quality or personal usefulness.
 | Live Search precision | Personal live scans have occurred; aggregate worth-review precision has not been established | Evaluate a bounded scan before claiming measured discovery quality |
 | Codex installation and updates | The prior local package was discovered and updated, with private-data preservation checked; this combined package has not replaced it | Reuse prior evidence and check release-specific changes; do not claim a universal one-step installer |
 | Other runtime environments | No second-environment acceptance is established | Validate an environment before advertising support for it |
-| Publication | Public Alpha implementation; license still TBD | Confirm the exact branch/commit before sharing; an Alpha announcement does not certify the formal semantic gates |
+| Publication | Public Alpha implementation; MIT license | Confirm the exact branch/commit before sharing; an Alpha announcement does not certify the formal semantic gates |
 
 The earlier recommendation to accept Pursuit with residuals predates the
 controlled repeat. It must not be read as current acceptance. Frozen benchmark

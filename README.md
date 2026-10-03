@@ -225,4 +225,8 @@ GitHub PRs and updates to `main` run the same deterministic package, workflow an
 
 ## License
 
-TBD. No open-source license is implied until one is explicitly added.
+This project's original skill instructions, source code, and accompanying
+documentation are licensed under the [MIT License](LICENSE).
+
+Personal resumes, private job-search state, user-provided materials, and
+third-party content retain their respective ownership and licensing terms.
