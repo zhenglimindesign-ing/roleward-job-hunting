@@ -246,6 +246,12 @@ information. Do not post private resumes or local state.
 
 ## For contributors and builders
 
+Contributions are welcome. Start with the [contribution guide](CONTRIBUTING.md)
+and [public contributor contract](docs/CONTRIBUTOR-CONTRACT.md). Documentation
+and reproducible fixes can go directly to a PR; propose new workflows or
+judgment changes in an Issue first. Synthetic behavior cases and useful
+disagreements are especially helpful. Never publish private career data.
+
 Use Python 3.11+ and PyYAML 6.0.3 for package validation. Optional document
 checks also need `requirements-resume.txt`.
 
