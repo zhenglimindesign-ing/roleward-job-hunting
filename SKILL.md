@@ -10,7 +10,9 @@ metadata:
 # Roleward Job Hunting
 
 Runtime requirements: local file access and Python 3.11+ for persistence/helpers;
-host web/search access for current job discovery. Codex is the current Alpha host.
+host web/search access for current job discovery. Codex is the currently verified
+Alpha host; the core follows the portable Agent Skills shape, and named-host
+support requires host-specific acceptance.
 
 Use this skill to help a job seeker invest time in fewer, better opportunities.
 The core loop is:
