@@ -60,12 +60,16 @@ emphasize older proof through bullet selection or a truthful summary rather than
 changing dates. A reviewed positioning reason can change section order while
 preserving section semantics. Do not redesign the layout for each generation.
 
-The extracted Roleward template uses Noto Sans, Letter portrait, grayscale text,
-plain headings and bullets, no avatar, tables, text boxes or skill graphics.
-Its PDF embeds OFL fonts; DOCX specifies the same font but an editor may substitute
-it if unavailable. The Skill uses readable 10.5 pt body text. Aim for one or two
-pages through content editing, never by shrinking type to force a page count.
-Original PDF layout preservation and a full resume editor are outside Alpha.
+The default is the `standard` template in [resume template](resume-template.md):
+A4 portrait, left-aligned name, blue navigation, separate employer/role/date
+hierarchy and hanging bullets. Its shared parameters are in
+`assets/resume-standard-v1.json`. Arial is preferred when available; the bundled
+OFL Noto Sans is the recorded fallback. PDF embeds the selected font; DOCX specifies
+the same family but an editor may substitute it. Keep readable 10.5 pt body text.
+Aim for one or two pages through relevant content editing and reviewed reflow,
+never by shrinking type to force a page count. Honor an explicit user template
+or style; do not open a template picker for ordinary default generation.
+Exact source-PDF layout preservation and a full resume editor remain outside Alpha.
 
 ## Export and binding
 

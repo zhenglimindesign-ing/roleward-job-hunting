@@ -14,7 +14,7 @@ from pathlib import Path
 
 from application_state import _reviewed_positioning, record_artifact
 from resume_ir import ResumeIR, iter_lines, sha256_json
-from resume_renderers import RENDER_VERSION, render_docx, render_pdf
+from resume_renderers import RENDER_VERSION, render_docx, render_pdf, template_metadata
 from resume_source import extract_source
 from state_store import load_state, save_state
 
@@ -167,14 +167,14 @@ def export_resume(base: ResumeIR, tailored: ResumeIR, state: dict, opportunity_i
             if all(row["artifact_id"] in ids for row in existing["files"].values()) and all(existing.get(k) == v for k, v in binding.items()):
                 return existing
         raise ValueError("Existing export cannot be reconciled safely; preserve it and use a new output folder")
-    result = {**binding, "render_version": RENDER_VERSION, "pdf_pages": page_count,
+    result = {**binding, **template_metadata(), "render_version": RENDER_VERSION, "pdf_pages": page_count,
               "visual_review_required": True, "files": {}}
     for fmt, data in files.items():
         paths[fmt].write_bytes(data)
     for fmt, path in paths.items():
         artifact = record_artifact(state, opportunity_id, "resume", {
             "local_path": str(path), "claims": [],
-            "metadata": {**binding, "format": fmt, "render_version": RENDER_VERSION}})
+            "metadata": {**binding, **template_metadata(), "format": fmt, "render_version": RENDER_VERSION}})
         result["files"][fmt] = {"path": str(path), "sha256": artifact["sha256"], "artifact_id": artifact["id"]}
     manifest_path.write_text(json.dumps(result, indent=2) + "\n")
     return result

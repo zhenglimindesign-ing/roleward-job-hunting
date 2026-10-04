@@ -46,7 +46,8 @@ not satisfy coverage. Baseline header/body lines reference those fact IDs. `stra
 must equal the existing reviewed Positioning revision ID.
 
 Exports retain source/IR hashes, Job source snapshot, Positioning revision,
-renderer version and per-file hashes. Repeating a reconciled identical export
+renderer version, template/configuration identity, actual font selection and
+per-file hashes. Repeating a reconciled identical export
 does not append duplicate artifact records. If an export/save is interrupted,
 preserve the files and inspect state before retrying. The helper intentionally
 fails on unresolved coverage, changed career headers, stale positioning,
@@ -56,6 +57,9 @@ Sources, IR, state and exports belong under the workspace's Git-ignored
 `sources/`, `state/` and `application-files/`. Public fixtures contain invented
 candidates only. Never add a real resume or private benchmark to the package.
 
-The fixed template was extracted from Roleward's existing ResumeIR/rendering
-contract. This extraction does not connect the Skill to Web storage or user
-accounts. OFL font redistribution terms are in `assets/fonts/OFL.txt`.
+The built-in `standard` design is specified in
+[`references/resume-template.md`](../references/resume-template.md) and
+`assets/resume-standard-v1.json`. Optional presentation fields preserve older
+ResumeIR inputs while supporting separate role/date/topic hierarchy and reviewed
+page breaks. The template does not connect to Web storage or user accounts.
+OFL fallback font redistribution terms are in `assets/fonts/OFL.txt`.
