@@ -136,7 +136,7 @@ class ResumeTests(unittest.TestCase):
         from pdfminer.high_level import extract_text
         from pdfminer.pdfpage import PDFPage
         from resume_ir import iter_lines
-        fixture = json.loads((self.root / "fixtures/resume/standard-template-v1.json").read_text())
+        fixture = json.loads((self.root / "fixtures/_inputs/resume/standard-template-v1.json").read_text())
         self.assertTrue(fixture["fictional"])
         ir = ResumeIR.model_validate(fixture["resume"])
         pdf, docx = render_pdf(ir), render_docx(ir)
@@ -154,7 +154,7 @@ class ResumeTests(unittest.TestCase):
         self.assertIn("continued", word_text)
 
     def test_invalid_or_stranded_page_break_is_rejected(self):
-        fixture = json.loads((self.root / "fixtures/resume/standard-template-v1.json").read_text())
+        fixture = json.loads((self.root / "fixtures/_inputs/resume/standard-template-v1.json").read_text())
         ir = ResumeIR.model_validate(fixture["resume"])
         entry = ir.sections[1].entries[0]
         entry.break_before_line_id = "missing"

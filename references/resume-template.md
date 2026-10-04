@@ -53,7 +53,7 @@ Do not strand an employer or topic heading, clip content, or reduce body type to
 force two pages. If source content needs editing, preserve the existing evidence
 and Positioning requirements.
 
-The fictional input `fixtures/resume/standard-template-v1.json` is a full-length
+The fictional input `fixtures/_inputs/resume/standard-template-v1.json` is a full-length
 layout example, not real career evidence or a semantic-quality acceptance set.
 Normal outward materials still use `scripts/resume_artifacts.py` and the reviewed
 Positioning gate. A successful render is not submission readiness or proof that
