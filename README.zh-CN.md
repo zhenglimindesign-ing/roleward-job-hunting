@@ -225,13 +225,15 @@ target，只是 second-host acceptance 尚未关闭。
 
 其他仍未关闭的 Gate 包括：
 
-- Pursuit 建议稳定性仍处于 **HOLD**，等待 PM adjudication；
+- 两条 Pursuit 规则已采用；单次独立评测达到原定数值门槛（真实案例 11/12，
+  跨背景案例 10/10），仍保留一例核实时机分歧，尚未证明更广泛的稳定性；
 - 实时搜索的 aggregate worth-review precision 尚未正式验收；
-- Resume 固定模板、DOCX/PDF 和 fidelity guard 已实现，但建议的人工质量标准仍需要 PM 验收；
-- 独立新用户 first-user usefulness check 仍未完成；
+- 简历已有独立文件评审和最终排版检查；申请前仍由用户确认内容准确代表自己；
+- 本轮按用户要求跳过真实首次使用测试，其使用体验尚未验证；
 - production scheduled Scan、通用安装/自动更新、后端同步和自动外部动作都不属于当前 Alpha。
 
-技术测试通过并不等于推荐质量或真实招聘结果已经被证明。详见
+整体发布状态仍保留 **HOLD**：公开仓库可以使用，但本轮不会因此创建 tag/release
+或做公开推广。技术测试通过并不等于真实招聘结果已经被证明。详见
 [Alpha 状态](docs/ALPHA-STATUS.md)。
 
 ## 反馈

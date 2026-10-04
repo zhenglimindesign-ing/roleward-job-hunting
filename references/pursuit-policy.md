@@ -40,6 +40,21 @@ is otherwise worthwhile. Do not label an interview request as pre-application
 research merely to satisfy the gate. Keep legacy `what_to_verify` prose as
 supporting context; it does not replace the structured plan.
 
+### Remote hiring-country scope
+
+When a remote posting does not list supported hiring countries, inspect the
+official posting, careers information and available hiring policy first.
+The missing country list alone is not evidence of exclusion and must not by
+itself prevent an otherwise worthwhile application. If that research remains
+inconclusive, record the supported country, employing entity and authorization
+checks for the process; use a pre-application gate only for a specific material
+eligibility concern with a practical check before applying.
+
+An explicit exclusion of the candidate's working location is an eligibility
+constraint, not a missing-information case. Apply confirmed geography and
+work-authorization restrictions. Do not turn an EMEA remote label into global
+remote eligibility or infer sponsorship from remote work.
+
 ### Travel willingness
 
 Unknown willingness to undertake ordinary role-related travel does not by
@@ -71,6 +86,12 @@ the material work, career value is meaningful, and no confirmed hard exclusion
 applies. State the unmet duration accurately and test the employer's screening
 flexibility during the process; do not first require evidence that the employer
 will waive it.
+
+A duration-only shortfall and absent core capabilities are different cases.
+Assess the material capabilities separately and identify the evidence supporting
+the core work. When several core capabilities lack evidence, an attractive AI
+direction does not supply the missing hire case; any selective Pursue still
+requires a specific, evidenced bridge for the work rather than enthusiasm.
 
 This is not permission to relabel design tenure as PM tenure, independent
 building as formal production-AI employment, or an unmet requirement as Met.
