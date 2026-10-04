@@ -1,0 +1,463 @@
+{
+  "case_id": "R02",
+  "fictional": true,
+  "review_simulated": true,
+  "job": {
+    "title": "AI Product Manager",
+    "text": "AI workflow PM with customer discovery, product prioritization and evidence of AI prototyping; production depth is preferred."
+  },
+  "positioning": "Position service-design and workflow ownership as a truthful product bridge. Independent AI work is a simulated prototype, never employment or customer production.",
+  "base": {
+    "schema_version": "resume_ir.v1",
+    "source_kind": "parsed_resume",
+    "header": {
+      "name": "Jordan Patel",
+      "name_source_line_id": "source-1",
+      "contacts": [
+        {
+          "kind": "email",
+          "text": "jordan.patel@example.com",
+          "source_line_id": "source-2"
+        },
+        {
+          "kind": "link",
+          "text": "https://example.com/profile/r02",
+          "source_line_id": "source-3"
+        }
+      ]
+    },
+    "sections": [
+      {
+        "id": "summary",
+        "title": "Professional Summary",
+        "kind": "summary",
+        "lines": [
+          {
+            "id": "source-5",
+            "text": "Service designer interested in AI and digital transformation.",
+            "kind": "body",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-5"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "experience",
+        "title": "Professional Experience",
+        "kind": "experience",
+        "entries": [
+          {
+            "id": "entry-1",
+            "header_lines": [
+              {
+                "id": "source-7",
+                "text": "Cedar Studio | Senior Service Designer | 2019-2025",
+                "kind": "metadata",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-7"
+                ]
+              }
+            ],
+            "bullet_lines": [
+              {
+                "id": "source-8",
+                "text": "Led discovery with 30 operations users for a regulated onboarding service.",
+                "kind": "bullet",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-8"
+                ]
+              },
+              {
+                "id": "source-9",
+                "text": "Prioritized workflow changes with engineering and compliance teams.",
+                "kind": "bullet",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-9"
+                ]
+              },
+              {
+                "id": "source-10",
+                "text": "Reduced application completion time by 20% after usability testing.",
+                "kind": "bullet",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-10"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "projects",
+        "title": "Independent Projects",
+        "kind": "projects",
+        "entries": [
+          {
+            "id": "entry-2",
+            "header_lines": [
+              {
+                "id": "source-12",
+                "text": "Independent projects | Builder | 2025-2026",
+                "kind": "metadata",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-12"
+                ]
+              }
+            ],
+            "bullet_lines": [
+              {
+                "id": "source-13",
+                "text": "Built a simulated AI support-triage prototype using public example tickets.",
+                "kind": "bullet",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-13"
+                ]
+              },
+              {
+                "id": "source-14",
+                "text": "Evaluated 60 synthetic tickets for routing errors; no customer production deployment.",
+                "kind": "bullet",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-14"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "education",
+        "title": "Education",
+        "kind": "education",
+        "lines": [
+          {
+            "id": "source-16",
+            "text": "Example University | BA Business | 2011",
+            "kind": "body",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-16"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "skills",
+        "title": "Skills",
+        "kind": "skills",
+        "lines": [
+          {
+            "id": "source-18",
+            "text": "Product strategy, customer research, roadmap prioritization",
+            "kind": "body",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-18"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "languages",
+        "title": "Languages",
+        "kind": "languages",
+        "lines": [
+          {
+            "id": "source-20",
+            "text": "English",
+            "kind": "body",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-20"
+            ]
+          }
+        ]
+      }
+    ],
+    "provenance": {
+      "source_file_id": "R02-base",
+      "source_content_hash": "d70832c93afb0cbbebba4471c6e69c22a61b2c90604f4b648cbdda56f776dc3c",
+      "parser_version": "source-text-v1",
+      "facts": [
+        {
+          "id": "source-1",
+          "text": "Jordan Patel",
+          "fact_kind": "name",
+          "source_kind": "resume",
+          "source_id": "source-1",
+          "source_page": 1
+        },
+        {
+          "id": "source-2",
+          "text": "jordan.patel@example.com",
+          "fact_kind": "contact",
+          "source_kind": "resume",
+          "source_id": "source-2",
+          "source_page": 1
+        },
+        {
+          "id": "source-3",
+          "text": "https://example.com/profile/r02",
+          "fact_kind": "contact",
+          "source_kind": "resume",
+          "source_id": "source-3",
+          "source_page": 1
+        },
+        {
+          "id": "source-4",
+          "text": "PROFESSIONAL SUMMARY",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-4",
+          "source_page": 1
+        },
+        {
+          "id": "source-5",
+          "text": "Service designer interested in AI and digital transformation.",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-5",
+          "source_page": 1
+        },
+        {
+          "id": "source-6",
+          "text": "EXPERIENCE",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-6",
+          "source_page": 1
+        },
+        {
+          "id": "source-7",
+          "text": "Cedar Studio | Senior Service Designer | 2019-2025",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-7",
+          "source_page": 1
+        },
+        {
+          "id": "source-8",
+          "text": "Led discovery with 30 operations users for a regulated onboarding service.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-8",
+          "source_page": 1
+        },
+        {
+          "id": "source-9",
+          "text": "Prioritized workflow changes with engineering and compliance teams.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-9",
+          "source_page": 1
+        },
+        {
+          "id": "source-10",
+          "text": "Reduced application completion time by 20% after usability testing.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-10",
+          "source_page": 1
+        },
+        {
+          "id": "source-11",
+          "text": "PROJECTS",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-11",
+          "source_page": 1
+        },
+        {
+          "id": "source-12",
+          "text": "Independent projects | Builder | 2025-2026",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-12",
+          "source_page": 1
+        },
+        {
+          "id": "source-13",
+          "text": "Built a simulated AI support-triage prototype using public example tickets.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-13",
+          "source_page": 1
+        },
+        {
+          "id": "source-14",
+          "text": "Evaluated 60 synthetic tickets for routing errors; no customer production deployment.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-14",
+          "source_page": 1
+        },
+        {
+          "id": "source-15",
+          "text": "EDUCATION",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-15",
+          "source_page": 1
+        },
+        {
+          "id": "source-16",
+          "text": "Example University | BA Business | 2011",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-16",
+          "source_page": 1
+        },
+        {
+          "id": "source-17",
+          "text": "SKILLS",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-17",
+          "source_page": 1
+        },
+        {
+          "id": "source-18",
+          "text": "Product strategy, customer research, roadmap prioritization",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-18",
+          "source_page": 1
+        },
+        {
+          "id": "source-19",
+          "text": "LANGUAGES",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-19",
+          "source_page": 1
+        },
+        {
+          "id": "source-20",
+          "text": "English",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-20",
+          "source_page": 1
+        }
+      ]
+    }
+  },
+  "state": {
+    "schema_version": "roleward.job-hunting.state.v0",
+    "profile": {
+      "career_evidence": [],
+      "direction": {},
+      "constraints": [],
+      "preferences": [],
+      "sources": []
+    },
+    "search_policy": {},
+    "opportunities": {
+      "opp-example-hiring-team-ai-product-manager-251d68e61f19": {
+        "id": "opp-example-hiring-team-ai-product-manager-251d68e61f19",
+        "company": "Example Hiring Team",
+        "title": "AI Product Manager",
+        "canonical_url": "https://example.com/jobs/r02",
+        "source_snapshots": [
+          {
+            "id": "snap-86b2caa8af148e30",
+            "observed_at": "2026-10-03T17:52:01.372401+00:00",
+            "canonical_url": "https://example.com/jobs/r02",
+            "title": "AI Product Manager",
+            "company": "Example Hiring Team",
+            "location": null,
+            "source_sha256": "86b2caa8af148e300b27122b1b437de8ece8f570083153744e92a3c62c9d9f91",
+            "source_text": "AI workflow PM with customer discovery, product prioritization and evidence of AI prototyping; production depth is preferred.",
+            "live_status": "unverified"
+          }
+        ],
+        "pursuit_assessments": [],
+        "pursuit_decisions": [],
+        "positioning_revisions": [
+          {
+            "id": "positioning-86843f22f5ce",
+            "status": "draft",
+            "created_at": "2026-10-03T17:52:01.372413+00:00",
+            "source_snapshot_id": "snap-86b2caa8af148e30",
+            "pursuit_assessment_id": null,
+            "content": {
+              "thesis": "Position service-design and workflow ownership as a truthful product bridge. Independent AI work is a simulated prototype, never employment or customer production.",
+              "proof_points": [
+                "source-8",
+                "source-13"
+              ],
+              "credibility_gaps": [
+                "Position service-design and workflow ownership as a truthful product bridge. Independent AI work is a simulated prototype, never employment or customer production."
+              ]
+            }
+          },
+          {
+            "id": "positioning-0d6bbf3f031a",
+            "status": "reviewed",
+            "created_at": "2026-10-03T17:52:01.372426+00:00",
+            "parent_revision_id": "positioning-86843f22f5ce",
+            "source_snapshot_id": "snap-86b2caa8af148e30",
+            "pursuit_assessment_id": null,
+            "content": {
+              "thesis": "Position service-design and workflow ownership as a truthful product bridge. Independent AI work is a simulated prototype, never employment or customer production.",
+              "proof_points": [
+                "source-8",
+                "source-13"
+              ],
+              "credibility_gaps": [
+                "Position service-design and workflow ownership as a truthful product bridge. Independent AI work is a simulated prototype, never employment or customer production."
+              ]
+            }
+          }
+        ],
+        "application_artifacts": [],
+        "application": {
+          "status": "not_applied",
+          "outcomes": []
+        },
+        "created_at": "2026-10-03T17:52:01.372406+00:00",
+        "current_snapshot_id": "snap-86b2caa8af148e30",
+        "updated_at": "2026-10-03T17:52:01.372409+00:00",
+        "current_positioning_id": "positioning-0d6bbf3f031a",
+        "current_reviewed_positioning_id": "positioning-0d6bbf3f031a"
+      }
+    },
+    "scan_runs": {},
+    "signals": {
+      "decision_observations": [],
+      "inferred_signals": [],
+      "learned_signals": []
+    },
+    "created_at": "2026-10-03T17:52:01.372368+00:00",
+    "updated_at": "2026-10-03T17:52:01.372368+00:00",
+    "audit_log": [
+      {
+        "event": "positioning_draft_recorded",
+        "opportunity_id": "opp-example-hiring-team-ai-product-manager-251d68e61f19",
+        "positioning_id": "positioning-86843f22f5ce",
+        "at": "2026-10-03T17:52:01.372421+00:00"
+      },
+      {
+        "event": "positioning_reviewed",
+        "opportunity_id": "opp-example-hiring-team-ai-product-manager-251d68e61f19",
+        "positioning_id": "positioning-0d6bbf3f031a",
+        "at": "2026-10-03T17:52:01.372431+00:00"
+      }
+    ]
+  },
+  "opportunity_id": "opp-example-hiring-team-ai-product-manager-251d68e61f19",
+  "protected_line_ids": [
+    "source-8",
+    "source-13"
+  ],
+  "reviewed_positioning_id": "positioning-0d6bbf3f031a"
+}

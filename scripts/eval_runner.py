@@ -19,6 +19,7 @@ ALLOWED_KINDS = {
     "learn_sequence",
     "state_roundtrip",
     "portable_profile_set",
+    "resume_acceptance_set",
 }
 
 
@@ -37,6 +38,19 @@ def validate_fixture(payload: Any, path: Path) -> list[str]:
     if not isinstance(payload.get("input"), dict) or not isinstance(payload.get("expected"), dict):
         errors.append(f"{path}: input and expected must be objects")
         return errors
+    if payload.get("kind") == "resume_acceptance_set":
+        cases = payload["input"].get("cases")
+        if not isinstance(cases, list) or len(cases) != payload["expected"].get("case_count"):
+            errors.append(f"{path}: resume acceptance cases do not match case_count")
+        elif len({row.get('case_id') for row in cases if isinstance(row, dict)}) != len(cases):
+            errors.append(f"{path}: resume case IDs must be unique")
+        else:
+            for row in cases:
+                for field in ("input_file", "source_file"):
+                    if not isinstance(row.get(field), str) or not Path(row[field]).is_file():
+                        errors.append(f"{path}: resume case requires an existing {field}")
+        if payload["expected"].get("semantic_review_required") is not True:
+            errors.append(f"{path}: resume acceptance requires semantic review")
     if payload.get("kind") == "portable_profile_set":
         profiles = (payload.get("input") or {}).get("profiles")
         if not isinstance(profiles, list) or not profiles:

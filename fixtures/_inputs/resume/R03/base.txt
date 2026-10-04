@@ -1,0 +1,23 @@
+Taylor Chen
+taylor.chen@example.com
+https://example.com/profile/r03
+PROFESSIONAL SUMMARY
+Independent AI builder with prior product management experience.
+PROJECTS
+Independent projects | Builder | 2024-2026
+Built an AI note-organizing prototype using synthetic notes.
+Compared prompt variants on 40 example notes; no enterprise deployment.
+EXPERIENCE
+Summit Platform | Senior Product Manager | 2015-2023
+Led migration of 80 enterprise accounts to a consolidated platform.
+Reduced onboarding time from 42 to 28 days by redesigning integration setup.
+Coordinated security, engineering and support across 6 delivery teams.
+EXPERIENCE
+Birch Tools | Product Manager | 2011-2015
+Shipped self-service reporting used by 20 operations teams.
+EDUCATION
+Example University | BA Business | 2011
+SKILLS
+Product strategy, customer research, roadmap prioritization
+LANGUAGES
+English

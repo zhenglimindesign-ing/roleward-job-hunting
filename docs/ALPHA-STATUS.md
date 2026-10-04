@@ -1,54 +1,55 @@
 # Alpha status
 
-As of 2026-10-02, this **Alpha implementation** combines the previously verified
-local integrity fixes with the public conversation and bilingual updates.
-This integration does not declare semantic acceptance or create a formal
-versioned release.
+This **Codex-first Alpha** supports a dedicated local job-search workspace:
+career context, bounded manual Scan or a supplied JD, Pursuit, reviewed
+Positioning, requested materials and Track/Learn. The user reviews consequential
+personal facts and positioning. Applications/messages remain the user's action.
 
-## First Alpha scope
+## What is implemented
 
-Codex with local files: Understand Me, manual Precision Scan or a supplied JD,
-Pursuit, a reviewed Positioning Brief, requested application materials, and
-Track/Learn. Use the dedicated repository workspace described in
-[Getting Started](GETTING-STARTED.md).
+Local helpers preserve context authority, immutable Job/Positioning snapshots,
+application/outcome history and artifact hashes. The resume path uses the selected
+base as its content baseline and one fixed template for DOCX/PDF, with source
+coverage, protected-proof and current revision checks. Resume generation uses an
+optional [local runtime](RESUME-RUNTIME.md); other state helpers remain lightweight.
 
-Manual review of consequential personal facts and positioning remains part of
-the workflow. Applications and professional messages require the user's action.
-Scheduled scanning, backend synchronization, hiring-probability predictions and
-an automatic user-level installation/update flow are outside this Alpha scope.
-
-## What the technical checks establish
-
-The bootstrap commands in the [README](../README.md#for-contributors-and-builders)
-check package structure, local state helpers and synthetic fixtures.
-`smoke_journey.py` exercises the complete deterministic CLI lifecycle in separate
-processes and an isolated workspace. It simulates user approval and outcomes.
-
-The application regressions cover immutable input snapshots, job-source changes,
-review gates and saved-file hashes. The scan regressions cover deduplication,
-live-link status handling and preservation of excluded discovery observations.
-Evidence-ID validation verifies references, not whether a model's prose is true.
-These checks do not establish live search quality or personal usefulness.
+Technical regressions exercise synthetic persistence, Scan selection, arithmetic,
+Pursuit tooling, Application integrity, a separate-process journey and resume
+file invariants. Reference/hash validation does not prove the truth or relevance
+of generated prose. A readable exported file is not automatically submission-ready.
 
 ## Remaining acceptance gates
 
-| Gate | Current evidence | Next step |
+| Gate | Evidence and current disposition | Required next step |
 | --- | --- | --- |
-| Pursuit recommendation stability | Held: a controlled repeat missed the existing real-case threshold | Resolve remote-country uncertainty and combined core-experience gaps, then freeze any policy revision before a new independent evaluation |
-| Score interpretation | Arithmetic replays; requirement grouping and ratings can change scores by 10–20 points | Review grouping/rating anchors; keep scores secondary and avoid probability claims |
-| Personal use and useful materials | One personal workflow has reached reviewed positioning and prepared resume files; synthetic helpers also cover persistence | Gather broader user feedback; prepared files do not prove an application was submitted or that hiring outcomes improved |
-| Live Search precision | Personal live scans have occurred; aggregate worth-review precision has not been established | Evaluate a bounded scan before claiming measured discovery quality |
-| Codex installation and updates | The prior local package was discovered and updated, with private-data preservation checked; this combined package has not replaced it | Reuse prior evidence and check release-specific changes; do not claim a universal one-step installer |
-| Other runtime environments | No second-environment acceptance is established | Validate an environment before advertising support for it |
-| Publication | Public Alpha implementation; MIT license | Confirm the exact branch/commit before sharing; an Alpha announcement does not certify the formal semantic gates |
+| Pursuit recommendation stability | **HOLD.** A later controlled pair scored 11/12 and 10/12 real-case agreement; the existing gate is 11/12. Both scored 10/10 portable cases. Remote-country uncertainty and combined core-experience gaps remain unresolved. | PM adjudicates the two policy boundaries; freeze any revision before one independent evaluation. |
+| Score interpretation | Deterministic arithmetic reproduces; requirement grouping and evidence ratings still move displayed scores. | Keep scores secondary. Review grouping/rating anchors without treating arithmetic as calibration. |
+| Search precision | Three historical pools exist, but their labels remain proposed rather than PM-frozen. Aggregate worth-review precision and current live coverage are not established. | Approve labels and complete raw snapshots, then evaluate selection independently and a bounded live Scan separately. |
+| Resume quality | A five-case invented set and actual export checks extend Application evaluation. The pairwise quality target remains proposed; independent model review is supporting evidence. | Human review of Base/Tailored files and PM adoption of the proposed criterion. |
+| First-user usefulness | Synthetic workflow/disk continuity can be checked; it does not establish a real novice's experience. | One independent user follows README, reaches a meaningful result and continues from saved state. |
+| Distribution | Dedicated Codex repository workspace; MIT license, with retained OFL font terms. | Confirm the exact release commit and authorized public claims before promotion. |
 
-The earlier recommendation to accept Pursuit with residuals predates the
-controlled repeat. It must not be read as current acceptance. Frozen benchmark
-labels and historical outputs remain unchanged; passing deterministic tests does
-not remove the semantic hold.
+The earlier recommendation to accept Pursuit with residuals predates the later
+controlled comparison. It is historical, not current acceptance. The later pair
+used equal substantive inputs, but those inputs differed from the earlier run;
+this does not isolate a historical regression. Frozen labels and outputs remain
+unchanged. Passing deterministic checks does not remove the semantic hold.
+
+## Supported boundary
+
+Codex is the only supported Alpha host. A second host is required before claiming
+that host's compatibility. Global installation, automatic updating, production
+scheduled Scan, a Roleward backend and Web/Skill synchronization are unsupported
+Alpha paths. A prior machine-local install/update was checked with private-data
+preservation, but that evidence does not establish a general installer and is not
+needed to use the documented dedicated workspace.
+
+These supported-path limits do not declare broader canonical External Alpha
+acceptance complete. A public announcement requires explicit PM disposition;
+no release claim follows automatically from a successful script.
 
 ## Feedback
 
-Report problems in [GitHub Issues](https://github.com/zhenglimindesign-ing/roleward-job-hunting/issues).
-Share a sanitized request, expected result, actual result and version when
-available. Do not include resumes, private career details or saved state.
+Use [GitHub Issues](https://github.com/zhenglimindesign-ing/roleward-job-hunting/issues).
+Include a sanitized request, expected/actual result and version or commit.
+Do not include real resumes, career details or saved state.

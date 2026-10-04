@@ -178,6 +178,8 @@ Require explicit user review/correction. Preserve revisions. A confirmed or user
 
 ## Application Pack
 
+For a tailored resume, read `references/resume-policy.md`. Use a usable base resume as the artifact baseline; Career Evidence verifies and safely supplements it. Preserve consequential facts and strongest relevant proof, including older roles. Deliver editable DOCX and PDF through the fixed template when supported, inspect the actual exports, and bind them to the current reviewed Positioning and Job source. Explain runtime limitations before claiming file delivery.
+
 After Positioning Review, generate only what the user needs:
 
 - Tailored CV / Resume

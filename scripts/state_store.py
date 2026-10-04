@@ -108,7 +108,7 @@ def save_state(path: Path, state: dict[str, Any]) -> None:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=["init", "validate", "show"])
     parser.add_argument("--path", default="state/roleward-state.json")
     args = parser.parse_args()
@@ -122,6 +122,10 @@ def main() -> int:
         print(f"Initialized {path}")
         return 0
 
+    if not path.exists():
+        print(json.dumps({"status": "state_missing", "path": str(path.resolve()),
+                          "next_step": "Check the established workspace before using init; init creates a new empty history."}))
+        return 2
     state = load_state(path)
     if args.command == "validate":
         print(f"Valid {SCHEMA_VERSION}: {path}")

@@ -1,0 +1,435 @@
+{
+  "case_id": "R05",
+  "fictional": true,
+  "review_simulated": true,
+  "job": {
+    "title": "Senior Product Manager Payments",
+    "text": "Senior payments PM owning merchant onboarding, fraud controls and cross-functional delivery."
+  },
+  "positioning": "The base resume already makes a clear payments hire case. Use light tailoring; preserve its concrete proof and concise career story.",
+  "base": {
+    "schema_version": "resume_ir.v1",
+    "source_kind": "parsed_resume",
+    "header": {
+      "name": "Morgan Ellis",
+      "name_source_line_id": "source-1",
+      "contacts": [
+        {
+          "kind": "email",
+          "text": "morgan.ellis@example.com",
+          "source_line_id": "source-2"
+        },
+        {
+          "kind": "link",
+          "text": "https://example.com/profile/r05",
+          "source_line_id": "source-3"
+        }
+      ]
+    },
+    "sections": [
+      {
+        "id": "summary",
+        "title": "Professional Summary",
+        "kind": "summary",
+        "lines": [
+          {
+            "id": "source-5",
+            "text": "Senior payments product manager focused on merchant onboarding, risk controls and measurable delivery outcomes.",
+            "kind": "body",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-5"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "experience",
+        "title": "Professional Experience",
+        "kind": "experience",
+        "entries": [
+          {
+            "id": "entry-1",
+            "header_lines": [
+              {
+                "id": "source-7",
+                "text": "Sequoia Payments | Senior Product Manager | 2021-2026",
+                "kind": "metadata",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-7"
+                ]
+              }
+            ],
+            "bullet_lines": [
+              {
+                "id": "source-8",
+                "text": "Owned merchant onboarding and fraud-control roadmaps for a payments platform.",
+                "kind": "bullet",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-8"
+                ]
+              },
+              {
+                "id": "source-9",
+                "text": "Reduced merchant activation time by 35% through onboarding workflow improvements.",
+                "kind": "bullet",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-9"
+                ]
+              },
+              {
+                "id": "source-10",
+                "text": "Led engineering, risk and operations alignment for a phased release across 3 markets.",
+                "kind": "bullet",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-10"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "entry-2",
+            "header_lines": [
+              {
+                "id": "source-12",
+                "text": "Juniper Commerce | Product Manager | 2017-2021",
+                "kind": "metadata",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-12"
+                ]
+              }
+            ],
+            "bullet_lines": [
+              {
+                "id": "source-13",
+                "text": "Launched merchant reconciliation tools adopted by 24 enterprise accounts.",
+                "kind": "bullet",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-13"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "education",
+        "title": "Education",
+        "kind": "education",
+        "lines": [
+          {
+            "id": "source-15",
+            "text": "Example University | BA Business | 2011",
+            "kind": "body",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-15"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "skills",
+        "title": "Skills",
+        "kind": "skills",
+        "lines": [
+          {
+            "id": "source-17",
+            "text": "Product strategy, customer research, roadmap prioritization",
+            "kind": "body",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-17"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "languages",
+        "title": "Languages",
+        "kind": "languages",
+        "lines": [
+          {
+            "id": "source-19",
+            "text": "English",
+            "kind": "body",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-19"
+            ]
+          }
+        ]
+      }
+    ],
+    "provenance": {
+      "source_file_id": "R05-base",
+      "source_content_hash": "8918aec616e88f3d1cbe5998a3c8de422cc8de6c712426c0ef43536eaa2bc031",
+      "parser_version": "source-text-v1",
+      "facts": [
+        {
+          "id": "source-1",
+          "text": "Morgan Ellis",
+          "fact_kind": "name",
+          "source_kind": "resume",
+          "source_id": "source-1",
+          "source_page": 1
+        },
+        {
+          "id": "source-2",
+          "text": "morgan.ellis@example.com",
+          "fact_kind": "contact",
+          "source_kind": "resume",
+          "source_id": "source-2",
+          "source_page": 1
+        },
+        {
+          "id": "source-3",
+          "text": "https://example.com/profile/r05",
+          "fact_kind": "contact",
+          "source_kind": "resume",
+          "source_id": "source-3",
+          "source_page": 1
+        },
+        {
+          "id": "source-4",
+          "text": "PROFESSIONAL SUMMARY",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-4",
+          "source_page": 1
+        },
+        {
+          "id": "source-5",
+          "text": "Senior payments product manager focused on merchant onboarding, risk controls and measurable delivery outcomes.",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-5",
+          "source_page": 1
+        },
+        {
+          "id": "source-6",
+          "text": "EXPERIENCE",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-6",
+          "source_page": 1
+        },
+        {
+          "id": "source-7",
+          "text": "Sequoia Payments | Senior Product Manager | 2021-2026",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-7",
+          "source_page": 1
+        },
+        {
+          "id": "source-8",
+          "text": "Owned merchant onboarding and fraud-control roadmaps for a payments platform.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-8",
+          "source_page": 1
+        },
+        {
+          "id": "source-9",
+          "text": "Reduced merchant activation time by 35% through onboarding workflow improvements.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-9",
+          "source_page": 1
+        },
+        {
+          "id": "source-10",
+          "text": "Led engineering, risk and operations alignment for a phased release across 3 markets.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-10",
+          "source_page": 1
+        },
+        {
+          "id": "source-11",
+          "text": "EXPERIENCE",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-11",
+          "source_page": 1
+        },
+        {
+          "id": "source-12",
+          "text": "Juniper Commerce | Product Manager | 2017-2021",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-12",
+          "source_page": 1
+        },
+        {
+          "id": "source-13",
+          "text": "Launched merchant reconciliation tools adopted by 24 enterprise accounts.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-13",
+          "source_page": 1
+        },
+        {
+          "id": "source-14",
+          "text": "EDUCATION",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-14",
+          "source_page": 1
+        },
+        {
+          "id": "source-15",
+          "text": "Example University | BA Business | 2011",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-15",
+          "source_page": 1
+        },
+        {
+          "id": "source-16",
+          "text": "SKILLS",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-16",
+          "source_page": 1
+        },
+        {
+          "id": "source-17",
+          "text": "Product strategy, customer research, roadmap prioritization",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-17",
+          "source_page": 1
+        },
+        {
+          "id": "source-18",
+          "text": "LANGUAGES",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-18",
+          "source_page": 1
+        },
+        {
+          "id": "source-19",
+          "text": "English",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-19",
+          "source_page": 1
+        }
+      ]
+    }
+  },
+  "state": {
+    "schema_version": "roleward.job-hunting.state.v0",
+    "profile": {
+      "career_evidence": [],
+      "direction": {},
+      "constraints": [],
+      "preferences": [],
+      "sources": []
+    },
+    "search_policy": {},
+    "opportunities": {
+      "opp-example-hiring-team-senior-product-manager-payment-77e49d32aecc": {
+        "id": "opp-example-hiring-team-senior-product-manager-payment-77e49d32aecc",
+        "company": "Example Hiring Team",
+        "title": "Senior Product Manager Payments",
+        "canonical_url": "https://example.com/jobs/r05",
+        "source_snapshots": [
+          {
+            "id": "snap-bc6d13c491391f0c",
+            "observed_at": "2026-10-03T17:52:01.375036+00:00",
+            "canonical_url": "https://example.com/jobs/r05",
+            "title": "Senior Product Manager Payments",
+            "company": "Example Hiring Team",
+            "location": null,
+            "source_sha256": "bc6d13c491391f0cdce06587f788cc5ec96f8813f24e1cb637baf477febd70ce",
+            "source_text": "Senior payments PM owning merchant onboarding, fraud controls and cross-functional delivery.",
+            "live_status": "unverified"
+          }
+        ],
+        "pursuit_assessments": [],
+        "pursuit_decisions": [],
+        "positioning_revisions": [
+          {
+            "id": "positioning-e0290a5a9f82",
+            "status": "draft",
+            "created_at": "2026-10-03T17:52:01.375045+00:00",
+            "source_snapshot_id": "snap-bc6d13c491391f0c",
+            "pursuit_assessment_id": null,
+            "content": {
+              "thesis": "The base resume already makes a clear payments hire case. Use light tailoring; preserve its concrete proof and concise career story.",
+              "proof_points": [
+                "source-8",
+                "source-13"
+              ],
+              "credibility_gaps": []
+            }
+          },
+          {
+            "id": "positioning-ccf5608c9d80",
+            "status": "reviewed",
+            "created_at": "2026-10-03T17:52:01.375056+00:00",
+            "parent_revision_id": "positioning-e0290a5a9f82",
+            "source_snapshot_id": "snap-bc6d13c491391f0c",
+            "pursuit_assessment_id": null,
+            "content": {
+              "thesis": "The base resume already makes a clear payments hire case. Use light tailoring; preserve its concrete proof and concise career story.",
+              "proof_points": [
+                "source-8",
+                "source-13"
+              ],
+              "credibility_gaps": []
+            }
+          }
+        ],
+        "application_artifacts": [],
+        "application": {
+          "status": "not_applied",
+          "outcomes": []
+        },
+        "created_at": "2026-10-03T17:52:01.375040+00:00",
+        "current_snapshot_id": "snap-bc6d13c491391f0c",
+        "updated_at": "2026-10-03T17:52:01.375042+00:00",
+        "current_positioning_id": "positioning-ccf5608c9d80",
+        "current_reviewed_positioning_id": "positioning-ccf5608c9d80"
+      }
+    },
+    "scan_runs": {},
+    "signals": {
+      "decision_observations": [],
+      "inferred_signals": [],
+      "learned_signals": []
+    },
+    "created_at": "2026-10-03T17:52:01.375013+00:00",
+    "updated_at": "2026-10-03T17:52:01.375013+00:00",
+    "audit_log": [
+      {
+        "event": "positioning_draft_recorded",
+        "opportunity_id": "opp-example-hiring-team-senior-product-manager-payment-77e49d32aecc",
+        "positioning_id": "positioning-e0290a5a9f82",
+        "at": "2026-10-03T17:52:01.375052+00:00"
+      },
+      {
+        "event": "positioning_reviewed",
+        "opportunity_id": "opp-example-hiring-team-senior-product-manager-payment-77e49d32aecc",
+        "positioning_id": "positioning-ccf5608c9d80",
+        "at": "2026-10-03T17:52:01.375061+00:00"
+      }
+    ]
+  },
+  "opportunity_id": "opp-example-hiring-team-senior-product-manager-payment-77e49d32aecc",
+  "protected_line_ids": [
+    "source-8",
+    "source-13"
+  ],
+  "reviewed_positioning_id": "positioning-ccf5608c9d80"
+}

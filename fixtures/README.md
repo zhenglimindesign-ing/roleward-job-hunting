@@ -99,3 +99,18 @@ The accepted Alpha benchmark also requires, in the private Roleward repository:
 - Learn sequences, repeat-stability and baseline comparisons.
 
 Private real-user benchmark material must not be copied into this public repo.
+
+## Resume acceptance extension
+
+`resume/acceptance-set-v0.json` adds five invented candidate/job requests to the
+existing Alpha eval runner. Inputs under `_inputs/resume/` include source text,
+baseline IR and explicitly simulated reviewed Positioning/state. They cover
+direct fit, transition, older strongest proof, a production credibility gap and
+an already-strong baseline. Do not treat simulated approval as real user review.
+
+The normal runner checks fixture structure; it does not generate tailored content
+or judge quality. Use an isolated generation context with only raw inputs and the
+frozen Skill. Review the actual Base/Tailored files separately, including the
+pairwise submission question. `scripts/resume_eval.py` summarizes a complete
+review while retaining reviewer type and the proposed criterion's PM-pending
+status. Semantic failures cannot be cleared by passing `smoke_resume.py`.
