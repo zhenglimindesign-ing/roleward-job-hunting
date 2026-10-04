@@ -12,7 +12,7 @@ from application_state import record_positioning_draft, review_positioning
 from opportunity_state import upsert_opportunity
 from resume_artifacts import export_resume, validate_resume
 from resume_ir import ResumeIR
-from resume_renderers import render_docx, render_pdf
+from resume_renderers import render_docx, render_pdf, template_metadata
 from resume_source import extract_source
 
 
@@ -128,6 +128,49 @@ class ResumeTests(unittest.TestCase):
             self.assertEqual(result, repeated)
             self.assertEqual(len(self.case["state"]["opportunities"][self.case["opportunity_id"]]["application_artifacts"]), 2)
             self.assertTrue(result["semantic_review_required"])
+            self.assertEqual(result["template_id"], "standard")
+            self.assertEqual(result["font_family"], template_metadata()["font_family"])
+            self.assertEqual(len(result["template_sha256"]), 64)
+
+    def test_full_template_example_preserves_text_and_continuation(self):
+        from pdfminer.high_level import extract_text
+        from pdfminer.pdfpage import PDFPage
+        from resume_ir import iter_lines
+        fixture = json.loads((self.root / "fixtures/_inputs/resume/standard-template-v1.json").read_text())
+        self.assertTrue(fixture["fictional"])
+        ir = ResumeIR.model_validate(fixture["resume"])
+        pdf, docx = render_pdf(ir), render_docx(ir)
+        self.assertEqual(len(list(PDFPage.get_pages(BytesIO(pdf)))), 2)
+        pdf_text = " ".join(extract_text(BytesIO(pdf)).split())
+        with ZipFile(BytesIO(docx)) as package:
+            from xml.etree import ElementTree as ET
+            xml = ET.fromstring(package.read("word/document.xml"))
+            word_text = " ".join(" ".join(t.text or "" for t in xml.iter("{http://schemas.openxmlformats.org/wordprocessingml/2006/main}t")).split())
+            self.assertNotIn(b"<w:tbl", package.read("word/document.xml"))
+        for line in iter_lines(ir):
+            self.assertIn(" ".join(line.text.split()), pdf_text)
+            self.assertIn(line.text, word_text)
+        self.assertIn("continued", pdf_text)
+        self.assertIn("continued", word_text)
+
+    def test_invalid_or_stranded_page_break_is_rejected(self):
+        fixture = json.loads((self.root / "fixtures/_inputs/resume/standard-template-v1.json").read_text())
+        ir = ResumeIR.model_validate(fixture["resume"])
+        entry = ir.sections[1].entries[0]
+        entry.break_before_line_id = "missing"
+        with self.assertRaisesRegex(ValueError, "existing content"):
+            render_pdf(ir)
+        topic_index = next(i for i,line in enumerate(entry.bullet_lines) if line.layout == "topic")
+        entry.break_before_line_id = entry.bullet_lines[topic_index+1].id
+        with self.assertRaisesRegex(ValueError, "strand"):
+            render_docx(ir)
+
+    def test_presentation_does_not_rewrite_source_claims(self):
+        from resume_ir import iter_lines
+        before = [(line.id,line.text,line.evidence_refs) for line in iter_lines(self.tail)]
+        self.tail.sections[0].lines[0].layout = "intro"
+        self.assertEqual(before, [(line.id,line.text,line.evidence_refs) for line in iter_lines(self.tail)])
+        self.assertTrue(self.check()["source_coverage_complete"])
 
     def test_pdf_and_docx_sources_reopen(self):
         with tempfile.TemporaryDirectory() as tmp:

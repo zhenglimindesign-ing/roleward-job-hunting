@@ -28,12 +28,15 @@ class ResumeLine(BaseModel):
     source_page: int = Field(ge=1, le=20)
     source_bbox: tuple[float, float, float, float] | None = None
     evidence_refs: list[str] = Field(default_factory=list)
+    layout: Literal["auto", "headline", "company", "role", "date", "intro",
+                    "topic", "body", "bullet", "skill", "degree", "school"] = "auto"
 
 
 class ResumeEntry(BaseModel):
     id: str
     header_lines: list[ResumeLine] = Field(default_factory=list)
     bullet_lines: list[ResumeLine] = Field(default_factory=list)
+    break_before_line_id: str | None = None
 
 
 class ResumeSection(BaseModel):

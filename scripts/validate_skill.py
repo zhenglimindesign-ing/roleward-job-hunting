@@ -57,6 +57,8 @@ def validate(root: Path) -> list[str]:
         "references/positioning-policy.md",
         "references/learn-policy.md",
         "references/resume-policy.md",
+        "references/resume-template.md",
+        "assets/resume-standard-v1.json",
         "docs/RESUME-RUNTIME.md",
         "requirements-resume.txt",
         "assets/fonts/OFL.txt",

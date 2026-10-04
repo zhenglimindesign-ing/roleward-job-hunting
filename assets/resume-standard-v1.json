@@ -1,0 +1,27 @@
+{
+  "template_id": "standard",
+  "version": 1,
+  "preferred_font": "Arial",
+  "fallback_font": "Noto Sans",
+  "page_mm": [210, 297],
+  "margins_pt": {"left": 46, "right": 46, "top": 37, "bottom": 42},
+  "colors": {"ink": "222A34", "secondary": "596575", "accent": "285B86", "rule": "CAD9E6"},
+  "styles": {
+    "name": {"size": 24, "leading": 28, "bold": true, "color": "000000", "after": 4},
+    "headline": {"size": 9.6, "leading": 12, "bold": true, "color": "285B86", "after": 5},
+    "contacts": {"size": 9.1, "leading": 12, "color": "596575", "after": 12},
+    "summary": {"size": 10.5, "leading": 14, "color": "222A34", "after": 6},
+    "section": {"size": 9, "leading": 12, "bold": true, "color": "285B86", "before": 13, "after": 8},
+    "company": {"size": 11.7, "leading": 15, "bold": true, "color": "000000", "before": 11, "after": 1},
+    "role": {"size": 10.2, "leading": 13, "color": "596575", "after": 5},
+    "date": {"size": 9.4, "leading": 13, "color": "596575", "after": 1},
+    "intro": {"size": 10.1, "leading": 13.5, "color": "596575", "indent": 10, "after": 4},
+    "topic": {"size": 10.3, "leading": 13.5, "color": "285B86", "indent": 10, "before": 7, "after": 3},
+    "body": {"size": 10.5, "leading": 14, "color": "222A34", "after": 3},
+    "bullet": {"size": 10.5, "leading": 14, "color": "222A34", "indent": 21, "bullet_indent": 10, "after": 3},
+    "skill": {"size": 10.2, "leading": 13.5, "color": "222A34", "after": 4},
+    "degree": {"size": 10.5, "leading": 14, "bold": true, "color": "000000", "before": 3, "after": 1},
+    "school": {"size": 10.2, "leading": 13, "color": "596575", "after": 6},
+    "navigation": {"size": 8, "leading": 10, "color": "596575", "after": 0}
+  }
+}
