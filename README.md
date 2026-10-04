@@ -221,21 +221,22 @@ verified Alpha path today**. Do not read that as a Codex-only product claim:
 Claude and other compatible hosts remain intended portability targets, but a
 second-host acceptance has not yet been completed.
 
-Other open gates include:
+Current limitations include:
 
 - the adopted Pursuit rules met the existing numerical gate in one independent
   run (11/12 real cases, 10/10 portable cases); one verification-timing mismatch
   remains, and broader stability is not established;
-- aggregate live-search worth-review precision is not yet accepted;
+- search quality has bounded independent model-review evidence; human benchmark
+  precision and market-wide coverage are not established;
 - resume files have supporting independent review and rendered-file checks;
   the user still reviews their final content before application;
 - a real first-user check was waived for this acceptance round and is unvalidated;
 - production scheduled Scan, universal installation/update, backend sync and
   automatic external actions are not part of this Alpha.
 
-The overall release disposition remains **HOLD**; the public repository is usable,
-but no tag, release or promotion follows from these checks. Technical checks do
-not establish real hiring outcomes. See [Alpha status](docs/ALPHA-STATUS.md).
+This is an early Public Alpha with a deliberately bounded supported path.
+Technical checks and model reviews do not establish real hiring outcomes.
+See [Alpha status](docs/ALPHA-STATUS.md).
 
 ## Feedback
 
