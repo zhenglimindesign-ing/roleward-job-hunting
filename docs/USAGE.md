@@ -17,6 +17,20 @@ context forward and propose the next useful step without making you manage stage
 | “I was rejected; no reason was given.” | Recorded outcome; rejection cause remains unknown |
 | “Continue from last time.” | Existing state loaded before continuing |
 
+## Run a Scan
+
+The current Public Alpha Scan is manually triggered:
+
+```text
+Find a small set of roles genuinely worth my attention this week.
+Use my confirmed geography and constraints. Do not pad the list.
+```
+
+The Skill's Scan contract is trigger-agnostic and can later be invoked by a
+scheduler, but production scheduled scanning is not currently shipped. Do not
+expect background monitoring unless the host and a later Roleward release
+explicitly provide it.
+
 ## Change a preference without rebuilding your history
 
 ```text
@@ -61,5 +75,6 @@ submit applications/send messages for you.
 
 Without current web access, provide a Job/JD for analysis. Without persistence,
 continuity is limited to the conversation. Without the optional document runtime,
-Roleward must identify undelivered file formats. See [Alpha status](ALPHA-STATUS.md)
-and [Resume runtime](RESUME-RUNTIME.md) for current support.
+Roleward must identify undelivered file formats. The package is portable by
+design, but host-specific support is claimed only after that host is accepted.
+See [Alpha status](ALPHA-STATUS.md) and [Resume runtime](RESUME-RUNTIME.md).
