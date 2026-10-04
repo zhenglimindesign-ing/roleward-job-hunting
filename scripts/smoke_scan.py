@@ -5,7 +5,7 @@ from pathlib import Path
 
 from context_state import AUTH_CONFIRMED, AUTH_SOURCE, apply_extraction, set_field
 from opportunity_state import record_decision
-from scan_state import finalize_scan, ingest_candidates, start_scan
+from scan_state import build_search_plan, finalize_scan, hard_constraint_check, ingest_candidates, start_scan
 from state_store import empty_state, load_state, save_state
 
 payload = json.loads(Path('fixtures/_inputs/scan-candidates.json').read_text())
@@ -43,3 +43,24 @@ with tempfile.TemporaryDirectory() as td:
     assert reloaded['scan_runs'][run['id']]['status'] == 'complete'
     assert reloaded['opportunities'][first_opp]['pursuit_decisions'][0]['decision'] == 'pursue'
     print('Scan trigger/hard-constraint/reservoir/decision smoke passed')
+
+# A preferred country is not an allowlist in a confirmed exclusion scope.
+state = empty_state()
+state['search_policy']['geography'] = {
+    'authority': AUTH_CONFIRMED,
+    'value': {'mode': 'global_excluding', 'excluded_countries': ['China'],
+              'preferred_countries': ['United Arab Emirates']}}
+plan = build_search_plan(state)
+assert plan['geographies'] == []
+assert plan['geography_scope']['preferred_countries'] == ['United Arab Emirates']
+for country in ['United Arab Emirates', 'Germany']:
+    check = hard_constraint_check(state, {'facts': {'geographies': [country]}})
+    assert check['passes']
+check = hard_constraint_check(state, {'facts': {'geographies': ['China']}})
+assert check['violations'] == ['outside_confirmed_geography']
+assert hard_constraint_check(state, {'facts': {'geographies': ['China', 'Germany']}})['passes']
+assert hard_constraint_check(state, {'facts': {}})['needs_verification'] == ['employability', 'geography']
+state['search_policy']['geography']['authority'] = AUTH_SOURCE
+assert build_search_plan(state)['geography_scope'] is None
+assert hard_constraint_check(state, {'facts': {'geographies': ['China']}})['passes']
+print('Structured geography exclusions and source-authority smoke passed')

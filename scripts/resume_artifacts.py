@@ -105,9 +105,14 @@ def validate_resume(base: ResumeIR, tailored: ResumeIR, state: dict, opportunity
             raise ValueError(f"Protected consequential evidence lost or distorted: {line_id}")
     evidence = {item["id"]: item for item in state["profile"].get("career_evidence", []) if item.get("active", True)}
     supplements = set(authorized_supplement_ids or [])
+    reviewed_evidence = set(reviewed.get("content", {}).get("evidence_ids", []))
     for ref in supplements:
-        if ref not in evidence or evidence[ref].get("authority") != "confirmed_truth":
-            raise ValueError("Supplements require explicit authorization and confirmed Career Evidence")
+        item = evidence.get(ref, {})
+        confirmed = item.get("authority") == "confirmed_truth"
+        reviewed_source = (item.get("authority") == "source_material"
+                           and ref in reviewed_evidence and bool(item.get("source_ids")))
+        if not (confirmed or reviewed_source):
+            raise ValueError("Supplements require explicit authorization and confirmed or reviewed source evidence")
     known = {key: fact.text for key, fact in facts.items()}
     known.update({key: evidence[key]["statement"] for key in supplements})
     used_supplements = set()
@@ -124,6 +129,7 @@ def validate_resume(base: ResumeIR, tailored: ResumeIR, state: dict, opportunity
             "base_source_sha256": extracted["source_sha256"], "base_ir_sha256": sha256_json(base),
             "tailored_ir_sha256": sha256_json(tailored), "protected_line_ids": protected_line_ids,
             "supplement_evidence_ids": sorted(used_supplements), "source_coverage_complete": True,
+            "supplement_authority": {ref: evidence[ref]["authority"] for ref in sorted(used_supplements)},
             "semantic_review_required": True}
 
 

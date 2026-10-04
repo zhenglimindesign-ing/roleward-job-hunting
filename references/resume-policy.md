@@ -39,8 +39,11 @@ silently introduce OCR or claim unsupported input has been read correctly.
 Use the portable `resume_ir.v1` structure in `scripts/resume_ir.py`. Map every source line to provenance facts, including section labels; facts
 may be exact fragments of a combined contact line. Map rendered content to
 those facts and retain complete source coverage. Keep baseline entry headers verbatim. Every rewritten/generated
-line cites supporting baseline fact IDs. Authorized supplements cite active,
-confirmed Career Evidence, belong to the matching existing role/project, and
+line cites supporting baseline fact IDs. Authorized supplements cite active
+Career Evidence that is either confirmed truth or traceable source material
+explicitly included in the current reviewed Positioning. Retain its authority
+in the export manifest; review does not convert a source claim into verified
+truth. Supplements belong to the matching existing role/project and
 must not silently add a new career entry. Cross-role supplements require manual
 reconciliation before this helper path. Do not authorize a supplement merely
 because an evidence ID exists.

@@ -11,7 +11,7 @@ from zipfile import ZipFile
 from application_state import record_positioning_draft, review_positioning
 from opportunity_state import upsert_opportunity
 from resume_artifacts import export_resume, validate_resume
-from resume_ir import ResumeIR
+from resume_ir import ResumeIR, ResumeLine
 from resume_renderers import render_docx, render_pdf, template_metadata
 from resume_source import extract_source
 
@@ -92,6 +92,38 @@ class ResumeTests(unittest.TestCase):
         self.tail.sections[0].lines[0].evidence_refs = ["unknown"]
         with self.assertRaisesRegex(ValueError, "authorized grounding"):
             self.check()
+
+    def test_reviewed_source_supplement_keeps_source_authority(self):
+        state = self.case["state"]
+        ref = "evidence-reviewed-project"
+        state["profile"].setdefault("career_evidence", []).append({
+            "id": ref, "authority": "source_material", "active": True,
+            "source_ids": ["source-project-case"], "statement": "Compared prototype outputs using synthetic scenarios."})
+        opp = state["opportunities"][self.case["opportunity_id"]]
+        reviewed = next(p for p in opp["positioning_revisions"] if p["id"] == self.case["reviewed_positioning_id"])
+        reviewed.setdefault("content", {})["evidence_ids"] = [ref]
+        self.tail.sections[1].entries[0].bullet_lines.append(ResumeLine(
+            id="line-reviewed-supplement", text="Compared prototype outputs using synthetic scenarios.",
+            kind="bullet", source_page=1, evidence_refs=[ref]))
+        result = validate_resume(self.base, self.tail, state, self.case["opportunity_id"], self.source, self.case["protected_line_ids"], [ref])
+        self.assertEqual(result["supplement_authority"], {ref: "source_material"})
+        reviewed["content"]["evidence_ids"] = []
+        with self.assertRaisesRegex(ValueError, "reviewed source evidence"):
+            validate_resume(self.base, self.tail, state, self.case["opportunity_id"], self.source, self.case["protected_line_ids"], [ref])
+
+    def test_inactive_or_untraceable_supplements_are_rejected(self):
+        state = self.case["state"]
+        ref = "evidence-missing-source"
+        state["profile"].setdefault("career_evidence", []).append({
+            "id": ref, "authority": "source_material", "source_ids": [], "statement": "Synthetic prototype."})
+        opp = state["opportunities"][self.case["opportunity_id"]]
+        reviewed = next(p for p in opp["positioning_revisions"] if p["id"] == self.case["reviewed_positioning_id"])
+        reviewed.setdefault("content", {})["evidence_ids"] = [ref]
+        with self.assertRaisesRegex(ValueError, "reviewed source evidence"):
+            validate_resume(self.base, self.tail, state, self.case["opportunity_id"], self.source, [], [ref])
+        state["profile"]["career_evidence"][-1].update(source_ids=["source-project"], active=False)
+        with self.assertRaisesRegex(ValueError, "reviewed source evidence"):
+            validate_resume(self.base, self.tail, state, self.case["opportunity_id"], self.source, [], [ref])
 
     def test_old_positioning_cannot_export(self):
         state = self.case["state"]

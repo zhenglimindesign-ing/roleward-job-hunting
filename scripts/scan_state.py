@@ -61,12 +61,34 @@ def _positive_result_limit(value: Any) -> int:
     return limit
 
 
+def _geography_plan(policy: dict[str, Any]) -> tuple[list[str], dict[str, Any] | None]:
+    for key in ("geographies", "geography", "locations", "remote_scope"):
+        value = policy.get(key)
+        if isinstance(value, dict) and "value" in value and value.get("authority") != "confirmed_truth":
+            continue
+        raw = _unwrap(value)
+        if isinstance(raw, dict):
+            if raw.get("mode") != "global_excluding":
+                raise ValueError("Unsupported structured geography mode; reconcile before Scan")
+            for field in ("excluded_countries", "preferred_countries"):
+                values = raw.get(field, [])
+                if not isinstance(values, list) or any(not isinstance(v, str) or not v.strip() for v in values):
+                    raise ValueError("Structured geography countries must be lists of names")
+            return [], {"mode": "global_excluding",
+                        "excluded_countries": raw.get("excluded_countries", []),
+                        "preferred_countries": raw.get("preferred_countries", [])}
+        values = _list(raw)
+        if values:
+            return values, None
+    return [], None
+
+
 def build_search_plan(state: dict[str, Any]) -> dict[str, Any]:
     direction = state["profile"]["direction"]
     policy = state["search_policy"]
     configured_limit = _unwrap(policy.get("max_results"))
     role_terms = _first_list(direction, ("target_roles", "capability_direction", "target_direction"))
-    geographies = _first_list(policy, ("geographies", "geography", "locations", "remote_scope"))
+    geographies, geography_scope = _geography_plan(policy)
     seniority = _first_list(policy, ("seniority", "seniority_range")) or _first_list(direction, ("seniority",))
     authorization_state = None
     for key in ("authorization_state", "work_authorization", "sponsorship_state"):
@@ -76,6 +98,7 @@ def build_search_plan(state: dict[str, Any]) -> dict[str, Any]:
     return {
         "role_terms": role_terms,
         "geographies": geographies,
+        "geography_scope": geography_scope,
         "seniority": seniority,
         "authorization_state": authorization_state,
         "excluded_companies": _confirmed_list(policy, "excluded_companies"),
@@ -126,7 +149,15 @@ def hard_constraint_check(state: dict[str, Any], candidate: dict[str, Any]) -> d
     approved_geographies = {item.casefold() for item in plan["geographies"]}
     candidate_geographies = {item.casefold() for item in _list(facts.get("geographies"))}
     remote_allowed = bool(facts.get("remote_matches_policy"))
-    if approved_geographies:
+    scope = plan.get("geography_scope")
+    if scope:
+        excluded = {item.casefold() for item in scope["excluded_countries"]}
+        if candidate_geographies:
+            if candidate_geographies.issubset(excluded) and not remote_allowed:
+                violations.append("outside_confirmed_geography")
+        else:
+            needs_verification.append("geography")
+    elif approved_geographies:
         if candidate_geographies:
             if not (approved_geographies & candidate_geographies) and not remote_allowed:
                 violations.append("outside_confirmed_geography")
