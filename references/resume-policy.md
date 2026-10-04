@@ -63,6 +63,12 @@ emphasize older proof through bullet selection or a truthful summary rather than
 changing dates. A reviewed positioning reason can change section order while
 preserving section semantics. Do not redesign the layout for each generation.
 
+For a long employment entry covering distinct work areas, preserve or add a
+small set of source-grounded topic headings so a reader can scan its scope.
+Keep the original role and chronology; topics do not create new career entries.
+Compress wording without flattening meaningful work areas into a single long
+bullet list. Use the template's existing `topic` style for these headings.
+
 The default is the `standard` template in [resume template](resume-template.md):
 A4 portrait, left-aligned name, blue navigation, separate employer/role/date
 hierarchy and hanging bullets. Its shared parameters are in

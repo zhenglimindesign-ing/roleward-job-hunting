@@ -2,6 +2,10 @@
 
 Scores are assessment signals, not real-world outcome probabilities. Display in the nearest 5-point increment.
 
+Use `scripts/opportunity_state.py` for the display rounding as well as arithmetic.
+Its exact halfway values use ties to even: 62.5 displays as 60, and 82.5 as 80.
+Retain unrounded components when calculating Overall Match.
+
 ## Capability Match
 
 Question: How completely does demonstrated evidence cover the material capability/scope requirements of the exact role?

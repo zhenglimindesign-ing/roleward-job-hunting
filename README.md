@@ -223,16 +223,19 @@ second-host acceptance has not yet been completed.
 
 Other open gates include:
 
-- Pursuit recommendation stability remains on **HOLD** pending PM adjudication;
+- the adopted Pursuit rules met the existing numerical gate in one independent
+  run (11/12 real cases, 10/10 portable cases); one verification-timing mismatch
+  remains, and broader stability is not established;
 - aggregate live-search worth-review precision is not yet accepted;
-- resume artifact machinery is implemented, but the proposed human quality gate
-  still needs PM acceptance;
-- an independent first-user usefulness check remains open;
+- resume files have supporting independent review and rendered-file checks;
+  the user still reviews their final content before application;
+- a real first-user check was waived for this acceptance round and is unvalidated;
 - production scheduled Scan, universal installation/update, backend sync and
   automatic external actions are not part of this Alpha.
 
-Technical checks do not establish semantic recommendation quality or real hiring
-outcomes. See [Alpha status](docs/ALPHA-STATUS.md).
+The overall release disposition remains **HOLD**; the public repository is usable,
+but no tag, release or promotion follows from these checks. Technical checks do
+not establish real hiring outcomes. See [Alpha status](docs/ALPHA-STATUS.md).
 
 ## Feedback
 
