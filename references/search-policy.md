@@ -41,6 +41,12 @@ Adjacent-role expansion is a recall mechanism, not permission to dilute the shor
 
 Search only within confirmed geography/remote boundaries. Derived passes may expand query wording, sources, and job-title families, but may not silently expand a hard user boundary.
 
+A confirmed `geography` value with `mode: global_excluding` is an exclusion
+scope, not a country allowlist. Its `excluded_countries` are hard exclusions;
+`preferred_countries` guide priority. The Scan helper preserves this structure
+and allows other non-excluded countries. Unknown locations still need checking.
+Do not stringify this object or promote a source-only scope into a hard rule.
+
 ## Actionability
 
 Before treating a role as actionable where tools permit:
