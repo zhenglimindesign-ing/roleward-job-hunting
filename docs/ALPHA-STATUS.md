@@ -26,20 +26,22 @@ submission-ready.
 
 ## Acceptance evidence and remaining limits
 
-The two Pursuit policy boundaries were adopted on 2026-10-04. One authorized
-independent agent then evaluated frozen inputs without reference labels or
-grading feedback. The overall public-release disposition remains **HOLD**: the
-repository is public and usable, but no tag, release or promotion is authorized
-by these results. HOLD is a release-acceptance record, not a runtime access lock.
+The two Pursuit policy boundaries were adopted on 2026-10-04. One independent
+agent evaluated frozen inputs without reference labels or grading feedback.
+A separate reviewer then labeled the full current Search pool without seeing
+the existing shortlist; those labels were frozen before comparison. This
+Codex-first Public Alpha relies on the bounded evidence below. It does not
+claim broad model calibration, human Search benchmark precision or verified
+hiring outcomes.
 
 | Gate | Evidence and current disposition | Required next step |
 | --- | --- | --- |
 | Pursuit recommendation stability | The single independent run scored **11/12 real-case agreement and 10/10 portable cases**, meeting the existing numerical gate. Structural output checks passed. The one mismatch concerned whether role-specific work-permit research precedes application; no confirmed hard exclusion was treated as eligible in the supplied cases. This is bounded evidence, not broad stability calibration. | Apply the adopted rule: read official eligibility information first; use pre-application Verify first for a practical, consequential check, and an explicit during-process fallback when it cannot be resolved. Retain the timing mismatch and frozen labels; do not rerun to obtain a pass. |
 | Score interpretation | All 22 outputs reproduced raw arithmetic. Four displayed halfway values differed from the existing helper's ties-to-even rounding. The policy now directs use of that helper for display as well. Requirement grouping and evidence ratings remain judgment-sensitive. | Keep scores secondary; use unrounded components for Overall Match. The display clarification does not calibrate evidence ratings or change recommendations. |
-| Search precision | One independent selection review covered a versioned 12-role pool with full current-source bodies and recorded link checks. Its five selections overlapped the writer's five on four roles, with no confirmed hard-constraint violation. Historical labels remain proposed, and several older decision-time inputs are incomplete. | Do not call selection overlap an 80% precision result. An accepted precision claim still needs an independently established reference set; the bounded review does not establish market recall or exhaustive search quality. |
-| Resume quality | An actual-file independent review preferred the tailored version but found lost ownership and iteration evidence. A later source-backed revision restored those details and employment topic grouping. Both final formats have source/protected-proof and actual text-transfer checks; all four rendered pages were inspected. This later revision was not sent for a second preference evaluation. | The user reviews whether the final content accurately represents their experience and is suitable for application. Model preference and file checks are supporting evidence, not personal acceptance. |
+| Search precision | A separate blind reference review labeled all 12 supplied roles. All five originally surfaced roles received affirmative worth-review labels; all four critical positives were covered. Fresh official-source checks found no confirmed hard-constraint violation, duplicate or dead/unverified selected link. Two additional borderline positives remain explained reserves. | This is **5/5 model-reviewed precision in one bounded pool**, not the canonical human-labeled metric or population accuracy. The full three-pool human benchmark and market-wide recall remain unestablished. |
+| Resume quality | An actual-file independent review preferred the tailored version and identified lost proof. The source-backed revision restored ownership, iteration details and topic grouping. Final DOCX/PDF text transfer and all four rendered pages passed inspection; the user accepted that delivered revision. | This closes the current example acceptance. Each future user still reviews their own facts and materials; the result is not universal resume-quality validation. |
 | First-user usefulness | **Waived for this acceptance round at the user's request.** Synthetic workflow/disk continuity remains technical evidence; a real novice's experience has not been validated. | No first-user test is required in this round. Preserve the verification limit in public claims. |
-| Distribution | Open Agent Skills package; dedicated Codex repository workspace is the currently verified host path; MIT license with retained OFL font terms. | Confirm the exact release commit and authorized public claims before promotion. |
+| Distribution | Open Agent Skills package; the dedicated Codex workspace is the verified host path; MIT license with retained OFL font terms. Public file/archive and local installed-Skill consistency were verified for the preceding integration commit. | Keep releases pinned to verified commits and preserve the stated support boundary; do not publish private career or evaluation inputs. |
 | Second-host portability | The core is designed to be portable, and Claude/other compatible hosts remain explicit targets. No second-host acceptance evidence is recorded in the current repositories. | Run one bounded second-host smoke before claiming support for that host. |
 
 The preceding controlled pair scored 11/12 and 10/12 real cases and 10/10
@@ -48,7 +50,7 @@ case inputs with the adopted policy, once. Some real-case inputs are summaries;
 the evidence therefore does not establish general reliability. All labels and
 raw outputs remain unchanged. The residual timing error is retained even though
 the numerical gate passed. A successful check does not grant overall release
-acceptance.
+acceptance without the owner's release decision.
 
 ## Supported boundary
 
@@ -69,8 +71,8 @@ preservation, but that evidence does not establish a general installer and is
 not needed to use the documented dedicated workspace.
 
 These supported-path limits do not declare broader canonical External Alpha
-acceptance complete. A public announcement requires explicit PM disposition;
-no release claim follows automatically from a successful script.
+acceptance complete. A successful script or one model review does not establish
+support for an untested host, an untested user population or a new workflow.
 
 ## Feedback
 
