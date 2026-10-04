@@ -31,6 +31,9 @@ def main():
             run(script, *args, expected=1)
             assert path.read_bytes() == before
 
+        missing = json.loads(run('state_store.py', 'show', expected=2, parse=False))
+        assert missing['status'] == 'state_missing' and 'init' in missing['next_step']
+        assert not (workspace/'state/roleward-state.json').exists()
         run('state_store.py', 'init', parse=False)
         assert not run('context_state.py', 'readiness')['ready']
         context = {'career_evidence':[{'domain':'experience','statement':'Owned synthetic enterprise workflows'}],

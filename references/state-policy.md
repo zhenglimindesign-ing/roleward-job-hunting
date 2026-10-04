@@ -39,6 +39,18 @@ shared installed Skill package. Check the established workspace before creating
 an empty state. If the user expects existing history and its location cannot be
 resolved from available context, ask for the workspace; do not claim it is empty.
 
+For a genuinely new workspace, `state_store.py show` returns `state_missing`
+with exit code 2 and does not create a file. After checking the workspace and
+establishing that this is a new history, use `state_store.py init`, then reload
+it. Never treat an invalid or inaccessible existing file as a missing history.
+Ordinary users ask in natural language; the host operates these helpers.
+
+Extraction and assessment JSON use the public contracts in `context_state.py`
+and `opportunity_state.py`, with the state shape in
+`schemas/roleward-state-v0.schema.json`. Read those contracts when preparing a
+payload; CLI flag help alone does not define their fields. Do not infer field
+names or require the user to construct JSON.
+
 At first use or on request, explain briefly: explicit reports of applications
 and outcomes are saved locally; continuity requires access to the same state;
 external job sites and inboxes are not automatically synchronized. Give the

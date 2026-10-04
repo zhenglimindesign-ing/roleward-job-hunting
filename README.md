@@ -2,231 +2,127 @@
 
 **English** | [简体中文](README.zh-CN.md)
 
-**A precision-first AI job hunting skill for deciding where your effort is actually worth spending.**
+**Decide which opportunities deserve your attention, then position yourself truthfully.**
 
-Roleward learns your real career context, helps you find or evaluate opportunities, decides which ones are worth pursuing, and turns that decision into truthful positioning and application materials.
+[Roleward](https://roleward.liminzheng.com/) is an AI career workbench.
+**Roleward Job Hunting** is its open-source, Codex-first job-hunting Skill.
+It helps you invest limited job-search effort in a small number of worthwhile
+opportunities, using both your actual career evidence and the direction you want
+to pursue next. It is designed to help you apply **better, not more**.
 
-It is designed to help you apply **better, not more**.
+> **Alpha · Codex-first.** Use this repository as a dedicated local Codex
+> job-search workspace. Reusable global installation and automatic updating are
+> not supported Alpha paths. See [Alpha status](docs/ALPHA-STATUS.md) for current
+> verification limits.
 
-> **Alpha · Codex-first.** The current recommended Alpha experience is to use this repository as a dedicated local Codex job-search workspace. A prior local user-level installation was discovered and updated with private data preserved. This combined package has not replaced that installation, and a generally reproducible install/update flow remains unverified.
+## Why use it?
 
-## Why Roleward?
+A keyword match cannot decide whether a job is worth your effort. Roleward keeps
+five questions distinct:
 
-General AI can rewrite a resume or summarize a job description. Roleward is designed around a harder question:
+- **Capability Match:** what does your evidence demonstrate?
+- **Screening Legibility:** can a recruiter understand a credible hire case?
+- **Career Value:** does the role advance your current direction?
+- **Employability:** do location, sponsorship or other structural constraints
+  make the opportunity actionable?
+- **Evidence Confidence:** what is known, inferred or still uncertain?
 
-> **Is this opportunity actually worth pursuing for me?**
+The primary decision is **Pursue / Verify first / Pass**. Scores are secondary
+orientation signals, not interview probabilities. Before writing application
+materials, Roleward helps you decide how to present your background truthfully.
 
-It keeps several things separate that are easy to blur together:
+## Who is it for?
 
-- what you can actually do;
-- how legible your hire case is to a recruiter;
-- whether the role advances your current direction;
-- whether location, sponsorship or another constraint makes it actionable;
-- what is known versus inferred;
-- what one rejection means — and what it does **not** mean.
+Job seekers who already use Codex, have a career history worth understanding,
+are considering a transition or new market, and want fewer worthwhile roles.
+You should be willing to correct consequential assumptions and review positioning.
+It is not intended for mass applications, fabricated resume matching or guaranteed
+hiring predictions.
 
-The core loop is:
+## How the workflow works
 
-**Understand Me → Precision Scan → Pursuit → Position → Human Review → Application Pack → Track → Learn**
+**Understand Me → Precision Scan or a supplied Job → Pursuit → Positioning
+Review → requested materials → Track and Learn**
 
-## Who is this for?
+Start with a resume, career notes or a Job/JD. Roleward uses existing information
+before asking for missing facts. A Scan returns a small shortlist; **zero is a
+valid result**. For a pursued role, you review a Positioning Brief before asking
+for a resume, cover letter or outreach draft. Materials are prepared separately
+when useful. Explicit applications and outcomes can then inform future work.
 
-Roleward Alpha is most useful for job seekers who:
+## Start in Codex
 
-- already use AI or Codex as part of their job search;
-- have a non-trivial career history that cannot be reduced to keyword matching;
-- are changing direction, function, industry, geography, or all of the above;
-- want a smaller set of genuinely worthwhile opportunities rather than a long list;
-- care about truthful positioning and want AI outputs grounded in real career evidence;
-- are willing to review important assumptions instead of fully automating the application process.
-
-It is **not** designed for mass application, automatic LinkedIn outreach, fabricated resume matching, or guaranteed interview predictions.
-
-## What can I do with it?
-
-| I want to… | Roleward helps me… |
-| --- | --- |
-| **Set up my career context** | Turn a resume, career notes, or existing AI context into a structured, reviewable career profile |
-| **Find worthwhile opportunities** | Search broadly, then return a deliberately small shortlist — or zero when nothing is good enough |
-| **Evaluate one job** | Decide `Pursue`, `Verify first`, or `Pass` using capability, screening legibility, career value and employability |
-| **Figure out my positioning** | Build a Positioning Brief before rewriting outward materials |
-| **Prepare an application** | Tailor a resume, cover letter, contact shortlist, or outreach draft after positioning is reviewed |
-| **Learn from outcomes** | Track applications and use confirmed outcomes conservatively without turning one rejection into a permanent rule |
-
-## Quick start — Codex Alpha
-
-### 1. Get this repository onto your computer
-
-Clone or download this repository, then open the `roleward-job-hunting` folder as a local project in the Codex app.
-
-If you prefer not to use the terminal, you can ask Codex in an existing local workspace to clone this repository for you:
-
-```text
-Clone https://github.com/zhenglimindesign-ing/roleward-job-hunting into a local folder for me.
-Do not modify the repository after cloning. Tell me the final folder path.
-```
-
-Then open that folder in Codex.
-
-### 2. Start with one prompt
-
-If you already have a resume:
+1. Clone or download [this repository](https://github.com/zhenglimindesign-ing/roleward-job-hunting).
+2. Open the resulting `roleward-job-hunting` folder as a local Codex project.
+3. Attach a resume or paste a Job/JD and start with:
 
 ```text
 Read SKILL.md and use Roleward Job Hunting.
-
-Here is my resume. Help me set up my career context and current job-search direction.
-Do not ask me for information you can already infer safely from the material; show me the important facts, assumptions and missing items to review.
+Help me get started with the material I attached.
+Use what is already there, then ask only what matters for my next step.
 ```
 
-If you want to evaluate a job immediately:
+For a direct job evaluation, replace the last two lines with:
 
 ```text
-Read SKILL.md and use Roleward Job Hunting.
-
 Should I pursue this role?
-<job URL or paste the JD>
+<job URL or pasted JD>
 ```
 
-Roleward will route both requests into the same underlying workflow.
+You can write in any language. Roleward should reply in your language; local
+structured field names remain in English. A first Scan needs your actual career
+background, current direction, geography and authorization state; `Not sure` is
+valid. See [Getting Started](docs/GETTING-STARTED.md) for setup and privacy, and
+[Usage](docs/USAGE.md) for everyday requests.
 
-You can write in any language; Roleward should reply in the language you use. Field names and values saved to local state stay in English.
+## Human review and your control
 
-### 3. Review your context before trusting downstream decisions
+**Human Review is a product principle.** You correct consequential personal
+facts and choose how to position yourself. Positioning Review is the only
+mandatory Application Prep gate. Roleward keeps independent projects distinct
+from formal production experience, preserves important proof in your base
+resume, and uses one fixed template for editable DOCX and PDF when the local
+runtime supports them. You remain responsible for final submission review.
 
-For a first Scan, Roleward needs only enough context to understand:
+Roleward does not submit applications or send professional messages. Scheduled
+production scanning, interview coaching, salary negotiation and a networking
+CRM are outside this Alpha.
 
-- your **Career Anchor** — what you have actually done;
-- your **Direction** — where you are trying to go now;
-- your **Geography** — where you want/can work;
-- your **Authorization state** — for example, no sponsorship needed, sponsorship required, depends, or not sure.
+## Local files and continuity
 
-It should show a **Structured Context Review** rather than forcing you through a long form.
+Your dedicated workspace stores private inputs in `sources/`, structured history
+in `state/roleward-state.json`, and prepared materials in `application-files/`.
+These areas are Git-ignored; do not publish them. A new conversation can continue
+from the same saved state. Local files are not a cloud backup, and the Skill does
+not synchronize with Roleward Web or your job sites/inbox.
 
-### 4. Try a real task
+## What is still Alpha?
 
-```text
-Find a small set of roles genuinely worth my attention this week.
-Focus only on the geographies and constraints we already confirmed.
-```
+Pursuit recommendation stability remains on hold. Live-search precision and
+independent first-user usefulness have not been established. The resume quality
+criterion is proposed and requires human acceptance. Codex is the only supported
+Alpha host; other hosts and universal install/update paths are unvalidated.
+Document generation needs an optional [local resume runtime](docs/RESUME-RUNTIME.md).
+Technical checks do not establish recommendation or generated-content quality.
 
-or:
-
-```text
-I want to pursue this role.
-Before rewriting my resume, help me decide how I should position my background.
-```
-
-See [Getting Started](docs/GETTING-STARTED.md) for setup, local state and privacy, and [Usage Guide](docs/USAGE.md) for more workflows and example prompts.
-
-## What does a Pursuit decision look like?
-
-A typical job-level result is intentionally decision-first:
-
-```text
-PURSUE
-
-Overall Match        80
-Capability Match     75
-Screening Legibility 65
-Career Value         90
-
-Why it may be worth your time
-Your enterprise B2B product and regulated-system background creates a credible bridge into the role.
-
-Main concern
-The JD asks for formal production-AI experience that your current evidence does not fully demonstrate.
-
-Verify during the process
-How strictly the team treats that requirement.
-```
-
-The exact numbers are **orientation signals, not probabilities**. The recommendation and reasoning matter more than a 5–10 point score difference.
-
-## What Roleward will not do
-
-Roleward should not:
-
-- automatically submit applications;
-- automatically send LinkedIn or professional messages;
-- invent experience or upgrade independent projects into formal production experience;
-- silently widen your geography or other hard constraints just to return more jobs;
-- treat an unknown sponsorship fact as a rejection;
-- treat one rejection as proof that an entire role family is wrong for you;
-- claim a calibrated interview probability in the current Alpha.
-
-## Local state and privacy
-
-The Alpha is designed around local structured files.
-
-When you use this repository as the dedicated workspace:
-
-- default structured state: `state/roleward-state.json`;
-- private source material such as CVs or AI-context exports: `sources/`;
-- generated application artifacts: `application-files/`.
-
-Real user files under these runtime directories are ignored by Git. **Do not commit your resume, career context, application history or local state to this public repository.**
-
-See [Getting Started](docs/GETTING-STARTED.md#local-state-and-privacy) for details.
-
-## Current Alpha boundaries
-
-See [Alpha status and remaining checks](docs/ALPHA-STATUS.md) for the current evidence and limitations.
-
-- Primary tested host: **Codex**.
-- Local file access and Python 3.11+ are required for structured persistence/helpers.
-- Current live discovery depends on the host having web/search access.
-- Manual Precision Scan is sufficient for Alpha; production-grade scheduled scanning is not yet part of this public Alpha.
-- A prior local user-level Codex installation, discovery and update were verified with private data preserved. This combined package has not replaced that installation, and a general install/update flow remains unverified; the dedicated repository workspace is the current recommended path.
-- Scores are secondary decision aids and may vary between runs; Roleward is evaluated primarily on recommendation quality, evidence credibility and decision usefulness.
-- No Roleward production backend is required for the current Alpha.
-
-## Feedback
-
-Report problems in [GitHub Issues](https://github.com/zhenglimindesign-ing/roleward-job-hunting/issues). Share your request, expected result, actual result, and version if available. Remove private career details, resumes and local state.
+See [Alpha status](docs/ALPHA-STATUS.md). Report sanitized problems through
+[GitHub Issues](https://github.com/zhenglimindesign-ing/roleward-job-hunting/issues).
 
 ## For contributors and builders
 
-The user-facing entrypoint is `SKILL.md`. Supporting implementation lives in:
+Use Python 3.11+ and PyYAML 6.0.3 for package validation. The optional document
+checks also need `requirements-resume.txt`.
 
-- `references/` — focused workflow policies;
-- `scripts/` — deterministic state and workflow helpers;
-- `schemas/` — local state schema;
-- `fixtures/` — public synthetic/de-identified eval fixtures;
-- `state/`, `sources/`, `application-files/` — Git-ignored local runtime areas.
-
-Bootstrap checks:
-
-```bash
-python3 scripts/validate_skill.py
-python3 scripts/smoke_context.py
-python3 scripts/smoke_opportunity.py
-python3 scripts/smoke_scan.py
-python3 scripts/smoke_application.py
-python3 scripts/smoke_learn.py
-python3 scripts/smoke_eval.py
-python3 scripts/smoke_pursuit_eval.py
-python3 scripts/smoke_application_integrity.py
-python3 scripts/smoke_scan_selection.py
-python3 scripts/smoke_journey.py
-python3 scripts/smoke_search_settings.py
-python3 scripts/eval_runner.py
+```sh
+python -B scripts/validate_skill.py
+python -B scripts/eval_runner.py
+python -B scripts/smoke_journey.py
+python -B scripts/smoke_resume.py
 ```
 
-The package validator requires PyYAML in the selected Python environment.
-`eval_runner.py` distinguishes executable deterministic fixtures from portable
-fixture structure checks and deferred semantic cases. A structure check is not
-evidence of model judgment quality. See `fixtures/README.md` for portable input
-preparation and strict post-generation scoring.
-
-Internal product and eval authority lives in the private canonical Roleward repository. This public repository is the distributable implementation surface.
-
-GitHub PRs and updates to `main` run the same deterministic package, workflow and fixture checks on Python 3.11 and 3.14. These checks do not run a model-quality evaluation.
+The workflow in `.github/workflows/skill-checks.yml` lists the complete regression
+suite. Synthetic fixtures do not prove model quality or real application outcomes.
 
 ## License
 
-This project's original skill instructions, source code, and accompanying
-documentation are licensed under the [MIT License](LICENSE).
-
-Personal resumes, private job-search state, user-provided materials, and
-third-party content retain their respective ownership and licensing terms.
+[MIT](LICENSE). Packaged Noto Sans fonts retain their [SIL OFL terms](assets/fonts/OFL.txt).

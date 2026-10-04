@@ -1,257 +1,90 @@
-# Getting Started with Roleward Job Hunting
+# Getting started
 
 **English** | [简体中文](GETTING-STARTED.zh-CN.md)
 
-Roleward Job Hunting is a Codex-first Alpha for running a more deliberate job search: understand your real background, find fewer but better opportunities, decide what is worth pursuing, position yourself truthfully, and learn from outcomes.
+Use Roleward Job Hunting in a dedicated local Codex workspace. Bring a resume,
+career notes or one job you want to evaluate. You do not need to prepare a full
+profile before beginning.
 
-This guide covers the current recommended Alpha setup.
+## Set up once
 
-## Before you start
-
-You will get the most value if you have at least one of the following:
-
-- a current resume or CV;
-- a LinkedIn/profile export;
-- career notes or an existing AI career-context summary;
-- a clear description of what you want next.
-
-You do **not** need all of them. Roleward should use what already exists before asking you to fill gaps.
-
-Current Alpha requirements:
-
-- Codex with local file access;
-- Python 3.11+ for local persistence and helper scripts;
-- web/search access in the host if you want a fresh live job scan.
-
-The workflow helpers use the Python standard library. PyYAML is needed only for the contributor package validator; it is not a requirement for a normal job-search session.
-
-## Recommended Alpha setup: dedicated Codex workspace
-
-The current recommended path is to use the public repository itself as a dedicated local job-search workspace.
-
-### Step 1 — get the repository locally
-
-Repository:
-
-`https://github.com/zhenglimindesign-ing/roleward-job-hunting`
-
-You can clone/download it yourself, or ask Codex to clone it in an existing local workspace:
+Clone or download [the repository](https://github.com/zhenglimindesign-ing/roleward-job-hunting),
+then open its `roleward-job-hunting` folder as a local Codex project. If you want
+Codex to clone it, ask in an existing local workspace:
 
 ```text
-Clone https://github.com/zhenglimindesign-ing/roleward-job-hunting into a local folder for me.
-Do not modify the repository after cloning. Tell me the final folder path.
+Clone https://github.com/zhenglimindesign-ing/roleward-job-hunting into a local folder.
+Preserve any existing files and tell me the resulting path.
 ```
 
-Then open the resulting `roleward-job-hunting` folder as the current project in Codex.
-
-### Step 2 — start Roleward
-
-For a first setup with an existing resume:
+Open that folder, attach your source material, and say:
 
 ```text
 Read SKILL.md and use Roleward Job Hunting.
-
-Here is my resume. Help me set up my career context and current job-search direction.
-Use the material I already gave you before asking questions.
-Show me the important facts, assumptions, conflicts and missing items that matter for my next action.
+Help me get started from these materials and what I want next.
 ```
 
-If your resume is already saved locally, you can place it under `sources/` and point Codex to the file.
+For a direct Job/JD, ask whether it is worth pursuing. Roleward should use existing
+candidate context and ask only for missing information that changes the decision.
+Reply language follows yours.
 
-If you do not have a useful resume ready:
+## Review what matters
+
+Before a broad Scan, Roleward needs your career background, current direction,
+geography and authorization state. `Not sure` is valid. It should show a concise
+Structured Context Review, distinguishing source claims, confirmed truth and
+inference. Correct consequential mistakes in conversation; there is no requirement
+to confirm every row or fill a profile form.
+
+After you choose to pursue a role, review its Positioning Brief before requesting
+application materials. For resume tailoring, attach or identify the base resume
+you want to use. It should remain the baseline, with important career facts and
+proof preserved. File generation uses an optional [local runtime](RESUME-RUNTIME.md)
+that Codex can inspect and prepare; a draft alone is not a delivered DOCX/PDF.
+
+## Save and continue
+
+Your private inputs, history and materials live in Git-ignored workspace areas:
+
+| Location | Contents |
+| --- | --- |
+| `sources/` | Resumes and source notes |
+| `state/roleward-state.json` | Structured context, opportunities and history |
+| `application-files/` | Prepared application materials and export records |
+
+Do not commit these files. Local state is not a cloud backup and does not sync
+with Roleward Web, job sites or your inbox. If persistence is unavailable,
+Roleward must say that continuity is limited to the current conversation.
+
+For a new conversation, open the same workspace and say:
 
 ```text
 Read SKILL.md and use Roleward Job Hunting.
-
-I want to set up my job search, but I do not have a clean career summary ready.
-Ask only the questions needed to establish my Career Anchor, Direction, Geography and Authorization state.
+Continue from my saved context and the last opportunity we worked on.
 ```
 
-You can talk to Codex in any language. Roleward should reply in the language you use; field names and values saved to local state stay in English.
-
-### Step 3 — review your context
-
-Roleward should not create an opaque profile and immediately start making decisions.
-
-Before the first broad Scan, review at least:
-
-- **Career Anchor** — your actual experience and strongest evidence;
-- **Direction** — the role families, capabilities or transition you want next;
-- **Geography** — approved locations / remote scope;
-- **Authorization state** — for example `No sponsorship`, `Sponsorship required`, `Depends`, or `Not sure`.
-
-Roleward distinguishes:
-
-- **Source Material** — what a CV, file or external source says;
-- **Confirmed Truth** — what you explicitly confirm about yourself;
-- **Inferred Signal** — a bounded hypothesis that must not silently become a hard fact.
-
-If something consequential is wrong, correct it directly in conversation. Roleward should preserve the correction and supersede the earlier state rather than rewriting history.
-
-## Three useful ways to begin
-
-### A. Start from your career context
-
-```text
-Here is my resume and a short note about what I want next.
-Help me build a grounded Roleward career context and tell me what you still need before a first Scan.
-```
-
-Best when you want Roleward to become a persistent job-search companion.
-
-### B. Evaluate one job immediately
-
-```text
-Should I pursue this role?
-<job URL or pasted JD>
-```
-
-Roleward should analyze the job using whatever candidate context already exists. If a missing user-owned fact could materially change the decision, it may ask for that fact.
-
-### C. Run a Precision Scan
-
-```text
-Find a small set of roles genuinely worth my attention this week.
-Use only my confirmed geography and constraints.
-Do not pad the list if nothing is good enough.
-```
-
-The intended result is a **small shortlist or zero**, not a long feed of plausible jobs.
-
-## Local state and privacy
-
-When this repository is used as the dedicated Alpha workspace, the helper scripts expect these local runtime areas:
-
-- `state/roleward-state.json` — structured current state;
-- `sources/` — private source material such as resumes and AI-context exports;
-- `application-files/` — generated application artifacts when persisted locally.
-
-These runtime files are excluded by the repository's `.gitignore`.
-
-Important:
-
-- do not commit your resume, private career context, application history or local state;
-- do not edit `state/roleward-state.json` manually unless you understand the schema;
-- prefer correcting your context conversationally so provenance and supersession can be preserved;
-- if you intentionally want a hard reset, back up your local state first rather than casually deleting history.
-
-Roleward Alpha has no required production backend. Your local state is not automatically synced to the Roleward web product.
-
-## What happens after you choose Pursue?
-
-Roleward should not jump directly to resume rewriting.
-
-The intended sequence is:
-
-1. Job is assessed as `Pursue` (or you explicitly choose to pursue it).
-2. Roleward creates a **Positioning Brief**.
-3. You review/correct the positioning.
-4. Only then does Roleward generate the outward materials you actually need:
-   - tailored resume / CV;
-   - cover letter when useful;
-   - 0–3 credible contacts;
-   - connection note / InMail draft.
-
-This Human Review step exists to keep downstream materials grounded in how you actually want to present your career.
-
-## Updating your search later
-
-You can change your direction or constraints conversationally:
-
-```text
-Update my search direction: UAE is still primary, but I now also want to consider Netherlands roles if sponsorship is available.
-Do not change my existing Career Anchor.
-```
-
-or:
-
-```text
-I no longer want to prioritize this role family. Treat that as a confirmed preference change, not a conclusion from previous rejections.
-```
-
-Roleward should preserve prior state/history and apply the new confirmed state going forward.
-
-## Recording outcomes
-
-Examples:
-
-```text
-I applied to this role today. Mark it as Applied.
-```
-
-```text
-I was rejected after the recruiter screen. They did not give a reason.
-Update the outcome, but do not infer why I was rejected.
-```
-
-```text
-They explicitly said they need deeper enterprise AI deployment experience.
-Record that as the confirmed rejection reason and tell me what — if anything — Roleward should learn from it.
-```
-
-One outcome should not become a permanent market rule.
-
-## Continuing in a new conversation
-
-Open the same job-search workspace and say:
-
-```text
-Read SKILL.md and load my existing Roleward state.
-Show my current search direction and the last opportunity I worked on.
-Continue from there; do not initialize a new profile or discard earlier history.
-```
-
-The local state is the continuity record. A new conversation must load it before
-asking you to repeat your background. If the state is missing, check the selected
-workspace before creating a replacement.
-
-## Updating Roleward itself
-
-If you cloned the repository, use a documented release when updating. Ask Codex
-to inspect local changes first and back up `state/`, `sources/` and
-`application-files/`. Git ignores these private directories, so a code commit is
-not a backup of your job-search history. If there are local code changes, preserve
-and reconcile them before updating. Then load the existing state and check that
-your context and opportunity history remain available.
-
-A prior local user-level installation, discovery and update were verified with private data preserved. This combined package has not replaced that installation, and a general install/update flow remains unverified. The dedicated repository workspace remains the recommended Alpha setup; see [Alpha status](ALPHA-STATUS.md).
-
-## Troubleshooting
-
-### Codex is explaining Roleward instead of using it
-
-Say explicitly:
-
-```text
-Read SKILL.md and use the Roleward Job Hunting workflow for this task. Do not summarize the Skill to me unless needed.
-```
-
-### Roleward keeps asking things already in my resume
-
-Tell it:
-
-```text
-Use existing source material before asking me questions. Ask only for missing information that materially changes the current decision.
-```
-
-Repeated unnecessary questions are a product-quality issue worth reporting.
-
-### A live Scan cannot verify current jobs
-
-The host needs current web/search access. Without it, Roleward can still analyze a JD you provide, but it should not claim it performed a fresh Scan or verified current sponsorship/live-link status.
-
-### The numbers move between runs
-
-Treat the displayed scores as orientation signals, not probabilities. The primary output is the recommendation (`Pursue`, `Verify first`, `Pass`) plus the evidence and reasoning behind it.
-
-### I want Roleward available across all Codex projects
-
-The prior local user-level package was discovered and updated with private data preserved. This combined package has not replaced it, and a generally reproducible one-step install/update experience remains unverified. Use the dedicated workspace path for the current Alpha; see [Alpha status](ALPHA-STATUS.md).
-
-## Reporting a problem
-
-Open a [GitHub issue](https://github.com/zhenglimindesign-ing/roleward-job-hunting/issues). Include what you asked, what you expected, what happened, and the version or commit if available. Remove private career details, resumes and local state before sharing.
-
-## Next
-
-See [Usage Guide](USAGE.md) for concrete workflows and prompts.
+Roleward should load existing state before asking you to rebuild your background.
+If it cannot find your history, check the workspace before initializing a new one.
+
+## Requirements and updates
+
+Use Codex with local files and Python 3.11+ for persistence helpers. Fresh Scan
+needs current web/search access. Ordinary state helpers use the standard library;
+PyYAML is only a contributor-validator dependency. Resume rendering has separate
+optional requirements described above.
+
+The supported Alpha path is this dedicated workspace. Global installation and
+automatic updating are not supported. Before a manual code update, ask Codex to
+inspect local changes and back up private runtime areas; a code commit is not a
+backup of Git-ignored career data. Preserve and reconcile local changes, update
+only the code, then load state and check that history remains available.
+
+## When something goes wrong
+
+Ask Codex to read SKILL.md and use the workflow if it only explains Roleward.
+Without web access, provide the JD; do not expect a verified fresh Scan. Without
+document dependencies, ask for a draft and an honest account of undelivered files.
+Treat scores as orientation, not probabilities. Submit sanitized feedback through
+[GitHub Issues](https://github.com/zhenglimindesign-ing/roleward-job-hunting/issues).
+
+See [Usage](USAGE.md) and [Alpha status](ALPHA-STATUS.md).

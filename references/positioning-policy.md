@@ -33,3 +33,7 @@ assessment only when that assessment uses the same current job snapshot.
 If an artifact specifies a local file, save that file before recording its
 provenance; do not claim a missing file as a delivered artifact. Factual accuracy
 and human approval still require host/user review beyond reference validation.
+
+For resume tailoring and file delivery, read [Resume policy](resume-policy.md).
+Use the base resume as the artifact baseline rather than rebuilding career
+history from Career Evidence.

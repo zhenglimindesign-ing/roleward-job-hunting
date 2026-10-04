@@ -38,3 +38,7 @@ Without scheduler support:
 
 - expose manual Scan only;
 - preserve the same Scan workflow so future scheduled triggers do not require a workflow rewrite.
+
+Without a compatible document runtime, provide a grounded structured draft and
+state which requested files remain undelivered. See [Resume runtime](../docs/RESUME-RUNTIME.md).
+Do not describe prose alone as an exported or submission-ready resume.

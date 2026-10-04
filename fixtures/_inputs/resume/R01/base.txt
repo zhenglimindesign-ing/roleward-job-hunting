@@ -1,0 +1,21 @@
+Alex Morgan
+alex.morgan@example.com
+https://example.com/profile/r01
+PROFESSIONAL SUMMARY
+B2B product manager with experience delivering software and working across teams.
+EXPERIENCE
+Harbor Systems | Senior Product Manager | 2021-2026
+Owned the roadmap for a workflow platform used by 18 enterprise teams.
+Reduced onboarding time from 42 to 28 days through customer research and workflow redesign.
+Increased paid adoption by 25% after prioritizing account-management workflows.
+Facilitated weekly planning meetings and wrote internal release updates.
+EXPERIENCE
+Elm Software | Product Manager | 2017-2021
+Launched a permissions dashboard for 12 customer accounts.
+Interviewed operations managers to prioritize access-control improvements.
+EDUCATION
+Example University | BA Business | 2011
+SKILLS
+Product strategy, customer research, roadmap prioritization
+LANGUAGES
+English

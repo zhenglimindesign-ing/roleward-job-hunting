@@ -1,0 +1,511 @@
+{
+  "case_id": "R03",
+  "fictional": true,
+  "review_simulated": true,
+  "job": {
+    "title": "Enterprise Platform Product Manager",
+    "text": "Own enterprise platform migration, integrations and stakeholder alignment; recent AI exploration is useful but secondary."
+  },
+  "positioning": "Emphasize the older enterprise platform record as the strongest proof. Recent independent prototypes remain separate and secondary.",
+  "base": {
+    "schema_version": "resume_ir.v1",
+    "source_kind": "parsed_resume",
+    "header": {
+      "name": "Taylor Chen",
+      "name_source_line_id": "source-1",
+      "contacts": [
+        {
+          "kind": "email",
+          "text": "taylor.chen@example.com",
+          "source_line_id": "source-2"
+        },
+        {
+          "kind": "link",
+          "text": "https://example.com/profile/r03",
+          "source_line_id": "source-3"
+        }
+      ]
+    },
+    "sections": [
+      {
+        "id": "summary",
+        "title": "Professional Summary",
+        "kind": "summary",
+        "lines": [
+          {
+            "id": "source-5",
+            "text": "Independent AI builder with prior product management experience.",
+            "kind": "body",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-5"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "projects",
+        "title": "Independent Projects",
+        "kind": "projects",
+        "entries": [
+          {
+            "id": "entry-1",
+            "header_lines": [
+              {
+                "id": "source-7",
+                "text": "Independent projects | Builder | 2024-2026",
+                "kind": "metadata",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-7"
+                ]
+              }
+            ],
+            "bullet_lines": [
+              {
+                "id": "source-8",
+                "text": "Built an AI note-organizing prototype using synthetic notes.",
+                "kind": "bullet",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-8"
+                ]
+              },
+              {
+                "id": "source-9",
+                "text": "Compared prompt variants on 40 example notes; no enterprise deployment.",
+                "kind": "bullet",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-9"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "experience",
+        "title": "Professional Experience",
+        "kind": "experience",
+        "entries": [
+          {
+            "id": "entry-2",
+            "header_lines": [
+              {
+                "id": "source-11",
+                "text": "Summit Platform | Senior Product Manager | 2015-2023",
+                "kind": "metadata",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-11"
+                ]
+              }
+            ],
+            "bullet_lines": [
+              {
+                "id": "source-12",
+                "text": "Led migration of 80 enterprise accounts to a consolidated platform.",
+                "kind": "bullet",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-12"
+                ]
+              },
+              {
+                "id": "source-13",
+                "text": "Reduced onboarding time from 42 to 28 days by redesigning integration setup.",
+                "kind": "bullet",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-13"
+                ]
+              },
+              {
+                "id": "source-14",
+                "text": "Coordinated security, engineering and support across 6 delivery teams.",
+                "kind": "bullet",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-14"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "entry-3",
+            "header_lines": [
+              {
+                "id": "source-16",
+                "text": "Birch Tools | Product Manager | 2011-2015",
+                "kind": "metadata",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-16"
+                ]
+              }
+            ],
+            "bullet_lines": [
+              {
+                "id": "source-17",
+                "text": "Shipped self-service reporting used by 20 operations teams.",
+                "kind": "bullet",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-17"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "education",
+        "title": "Education",
+        "kind": "education",
+        "lines": [
+          {
+            "id": "source-19",
+            "text": "Example University | BA Business | 2011",
+            "kind": "body",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-19"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "skills",
+        "title": "Skills",
+        "kind": "skills",
+        "lines": [
+          {
+            "id": "source-21",
+            "text": "Product strategy, customer research, roadmap prioritization",
+            "kind": "body",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-21"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "languages",
+        "title": "Languages",
+        "kind": "languages",
+        "lines": [
+          {
+            "id": "source-23",
+            "text": "English",
+            "kind": "body",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-23"
+            ]
+          }
+        ]
+      }
+    ],
+    "provenance": {
+      "source_file_id": "R03-base",
+      "source_content_hash": "821c924d664acea7da2fc4da09132b57b882f9eb5e9ac68b62687dfc176cdd0f",
+      "parser_version": "source-text-v1",
+      "facts": [
+        {
+          "id": "source-1",
+          "text": "Taylor Chen",
+          "fact_kind": "name",
+          "source_kind": "resume",
+          "source_id": "source-1",
+          "source_page": 1
+        },
+        {
+          "id": "source-2",
+          "text": "taylor.chen@example.com",
+          "fact_kind": "contact",
+          "source_kind": "resume",
+          "source_id": "source-2",
+          "source_page": 1
+        },
+        {
+          "id": "source-3",
+          "text": "https://example.com/profile/r03",
+          "fact_kind": "contact",
+          "source_kind": "resume",
+          "source_id": "source-3",
+          "source_page": 1
+        },
+        {
+          "id": "source-4",
+          "text": "PROFESSIONAL SUMMARY",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-4",
+          "source_page": 1
+        },
+        {
+          "id": "source-5",
+          "text": "Independent AI builder with prior product management experience.",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-5",
+          "source_page": 1
+        },
+        {
+          "id": "source-6",
+          "text": "PROJECTS",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-6",
+          "source_page": 1
+        },
+        {
+          "id": "source-7",
+          "text": "Independent projects | Builder | 2024-2026",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-7",
+          "source_page": 1
+        },
+        {
+          "id": "source-8",
+          "text": "Built an AI note-organizing prototype using synthetic notes.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-8",
+          "source_page": 1
+        },
+        {
+          "id": "source-9",
+          "text": "Compared prompt variants on 40 example notes; no enterprise deployment.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-9",
+          "source_page": 1
+        },
+        {
+          "id": "source-10",
+          "text": "EXPERIENCE",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-10",
+          "source_page": 1
+        },
+        {
+          "id": "source-11",
+          "text": "Summit Platform | Senior Product Manager | 2015-2023",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-11",
+          "source_page": 1
+        },
+        {
+          "id": "source-12",
+          "text": "Led migration of 80 enterprise accounts to a consolidated platform.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-12",
+          "source_page": 1
+        },
+        {
+          "id": "source-13",
+          "text": "Reduced onboarding time from 42 to 28 days by redesigning integration setup.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-13",
+          "source_page": 1
+        },
+        {
+          "id": "source-14",
+          "text": "Coordinated security, engineering and support across 6 delivery teams.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-14",
+          "source_page": 1
+        },
+        {
+          "id": "source-15",
+          "text": "EXPERIENCE",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-15",
+          "source_page": 1
+        },
+        {
+          "id": "source-16",
+          "text": "Birch Tools | Product Manager | 2011-2015",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-16",
+          "source_page": 1
+        },
+        {
+          "id": "source-17",
+          "text": "Shipped self-service reporting used by 20 operations teams.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-17",
+          "source_page": 1
+        },
+        {
+          "id": "source-18",
+          "text": "EDUCATION",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-18",
+          "source_page": 1
+        },
+        {
+          "id": "source-19",
+          "text": "Example University | BA Business | 2011",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-19",
+          "source_page": 1
+        },
+        {
+          "id": "source-20",
+          "text": "SKILLS",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-20",
+          "source_page": 1
+        },
+        {
+          "id": "source-21",
+          "text": "Product strategy, customer research, roadmap prioritization",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-21",
+          "source_page": 1
+        },
+        {
+          "id": "source-22",
+          "text": "LANGUAGES",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-22",
+          "source_page": 1
+        },
+        {
+          "id": "source-23",
+          "text": "English",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-23",
+          "source_page": 1
+        }
+      ]
+    }
+  },
+  "state": {
+    "schema_version": "roleward.job-hunting.state.v0",
+    "profile": {
+      "career_evidence": [],
+      "direction": {},
+      "constraints": [],
+      "preferences": [],
+      "sources": []
+    },
+    "search_policy": {},
+    "opportunities": {
+      "opp-example-hiring-team-enterprise-platform-product-ma-43ad6c29770a": {
+        "id": "opp-example-hiring-team-enterprise-platform-product-ma-43ad6c29770a",
+        "company": "Example Hiring Team",
+        "title": "Enterprise Platform Product Manager",
+        "canonical_url": "https://example.com/jobs/r03",
+        "source_snapshots": [
+          {
+            "id": "snap-c9fb6bbf041fc028",
+            "observed_at": "2026-10-03T17:52:01.373355+00:00",
+            "canonical_url": "https://example.com/jobs/r03",
+            "title": "Enterprise Platform Product Manager",
+            "company": "Example Hiring Team",
+            "location": null,
+            "source_sha256": "c9fb6bbf041fc028f52d36ddc53d44db5a29c0b61408081c73544834f6060190",
+            "source_text": "Own enterprise platform migration, integrations and stakeholder alignment; recent AI exploration is useful but secondary.",
+            "live_status": "unverified"
+          }
+        ],
+        "pursuit_assessments": [],
+        "pursuit_decisions": [],
+        "positioning_revisions": [
+          {
+            "id": "positioning-de8923d942e0",
+            "status": "draft",
+            "created_at": "2026-10-03T17:52:01.373365+00:00",
+            "source_snapshot_id": "snap-c9fb6bbf041fc028",
+            "pursuit_assessment_id": null,
+            "content": {
+              "thesis": "Emphasize the older enterprise platform record as the strongest proof. Recent independent prototypes remain separate and secondary.",
+              "proof_points": [
+                "source-8",
+                "source-12",
+                "source-17"
+              ],
+              "credibility_gaps": []
+            }
+          },
+          {
+            "id": "positioning-7231f6380ff7",
+            "status": "reviewed",
+            "created_at": "2026-10-03T17:52:01.373377+00:00",
+            "parent_revision_id": "positioning-de8923d942e0",
+            "source_snapshot_id": "snap-c9fb6bbf041fc028",
+            "pursuit_assessment_id": null,
+            "content": {
+              "thesis": "Emphasize the older enterprise platform record as the strongest proof. Recent independent prototypes remain separate and secondary.",
+              "proof_points": [
+                "source-8",
+                "source-12",
+                "source-17"
+              ],
+              "credibility_gaps": []
+            }
+          }
+        ],
+        "application_artifacts": [],
+        "application": {
+          "status": "not_applied",
+          "outcomes": []
+        },
+        "created_at": "2026-10-03T17:52:01.373359+00:00",
+        "current_snapshot_id": "snap-c9fb6bbf041fc028",
+        "updated_at": "2026-10-03T17:52:01.373361+00:00",
+        "current_positioning_id": "positioning-7231f6380ff7",
+        "current_reviewed_positioning_id": "positioning-7231f6380ff7"
+      }
+    },
+    "scan_runs": {},
+    "signals": {
+      "decision_observations": [],
+      "inferred_signals": [],
+      "learned_signals": []
+    },
+    "created_at": "2026-10-03T17:52:01.373328+00:00",
+    "updated_at": "2026-10-03T17:52:01.373328+00:00",
+    "audit_log": [
+      {
+        "event": "positioning_draft_recorded",
+        "opportunity_id": "opp-example-hiring-team-enterprise-platform-product-ma-43ad6c29770a",
+        "positioning_id": "positioning-de8923d942e0",
+        "at": "2026-10-03T17:52:01.373372+00:00"
+      },
+      {
+        "event": "positioning_reviewed",
+        "opportunity_id": "opp-example-hiring-team-enterprise-platform-product-ma-43ad6c29770a",
+        "positioning_id": "positioning-7231f6380ff7",
+        "at": "2026-10-03T17:52:01.373381+00:00"
+      }
+    ]
+  },
+  "opportunity_id": "opp-example-hiring-team-enterprise-platform-product-ma-43ad6c29770a",
+  "protected_line_ids": [
+    "source-8",
+    "source-12",
+    "source-17"
+  ],
+  "reviewed_positioning_id": "positioning-7231f6380ff7"
+}
