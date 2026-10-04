@@ -161,6 +161,14 @@ Output hierarchy:
 
 Detailed requirement/evidence traceability is progressive disclosure, not the default response.
 
+Keep the first read compact. Show the recommendation first and group the required
+scores and evidence statuses in a compact supporting line or table. Focus the
+rationale on the truthful hiring reason, the main decision-changing concern,
+and a concrete next action or question. Preserve material qualifications and
+uncertainty; expand when the user asks for detail or several facts change the
+decision. Avoid repeating scores, evidence or runtime caveats across sections.
+State a tool or save limitation once when it affects the user's next action.
+
 Assessment scores are orientation signals, not probabilities. Display them in 5-point increments. Screening Call Probability is not available in Alpha.
 
 ## Positioning Review
