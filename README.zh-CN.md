@@ -253,6 +253,10 @@ target，只是 second-host acceptance 尚未关闭。
 
 ## 面向贡献者与开发者
 
+欢迎贡献。先看[贡献指南](CONTRIBUTING.zh-CN.md)和
+[公开贡献约定](docs/CONTRIBUTOR-CONTRACT.md)（英文）。文档与可复现修复可以直接提交 PR；
+新流程或判断规则先通过 Issue 讨论。尤其欢迎合成行为案例及有理由的分歧，请勿公开私人职业资料。
+
 包验证需要 Python 3.11+ 和 PyYAML 6.0.3。可选文档检查还需要
 `requirements-resume.txt`。
 
