@@ -34,6 +34,9 @@ Schema id: `roleward.job-hunting.state.v0`.
 
 Resolve one absolute state path for the current job-search workspace and reuse it
 across helper calls (`--path` for `state_store.py`, `--state` for workflow helpers).
+Pass it explicitly even when the working directory currently makes the CLI
+default point to that file. Use it for Scan start/log/ingest/finalize and all
+readback calls too; a working-directory change must not select another history.
 The default is `state/roleward-state.json` inside that workspace, not inside the
 shared installed Skill package. Check the established workspace before creating
 an empty state. If the user expects existing history and its location cannot be

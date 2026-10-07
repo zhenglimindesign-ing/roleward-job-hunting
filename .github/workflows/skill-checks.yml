@@ -39,7 +39,7 @@ jobs:
       - name: Run deterministic workflow and fixture checks
         shell: bash
         run: |
-          for check in smoke_context smoke_opportunity smoke_scan smoke_application smoke_learn smoke_eval smoke_pursuit_eval smoke_application_integrity smoke_scan_selection smoke_journey smoke_search_settings smoke_resume_eval eval_runner; do
+          for check in smoke_context smoke_opportunity smoke_scan smoke_application smoke_learn smoke_eval smoke_pursuit_eval smoke_application_integrity smoke_scan_selection smoke_journey smoke_search_settings smoke_resume_eval smoke_host_smoke eval_runner; do
             python -B "scripts/${check}.py"
           done
       - name: Install optional resume runtime for artifact checks

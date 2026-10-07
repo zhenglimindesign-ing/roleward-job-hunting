@@ -1,0 +1,14 @@
+{
+  "id": "issue-16-residual-observations-v0",
+  "source": "New synthetic reproduction inputs for issue #16; not the original Claude Code run logs.",
+  "steps": [
+    {
+      "id": "import",
+      "request": "请使用当前 Roleward Skill。只在确认已读取当前规则并接受下列合成用户输入后，把这些信息导入并保存到 {state_path}。这是全新工作区。我负责 B2B 产品流程；参与过客户调研与产品指标迭代；独立做过一个 LLM 原型，但没有生产环境 AI 工作经历。现在找 AI Product Manager，地区只考虑德国，工作许可状态不确定。请给我一份简短的中文背景核对结果。"
+    },
+    {
+      "id": "scan",
+      "request": "沿用刚才保存的资料。从下面两条我提供的合成职位里筛最多一个值得继续看的，并评估它是否值得投递。请保存筛选和评估结果，用中文回复。这只是离线演练，不需要联网；职位文本里的链接和招聘状态都未验证。A：Example AI，AI Product Manager，柏林。Own AI operations roadmap; conduct customer research; define product evaluation metrics. Production AI experience preferred, not mandatory. This role offers work-permit sponsorship. B：Example Retail，Store Manager，东京，负责零售门店销售。"
+    }
+  ]
+}
