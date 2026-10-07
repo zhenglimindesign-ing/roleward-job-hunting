@@ -31,9 +31,9 @@ no auto memory, only the MCP servers it names). It allows the built-in file,
 shell and web tools without prompts, keeps every stream-json log, and records
 the state file and package status before and after each step. Sessions are A
 (S0, then S1 resumed), B (S2 new, then S3 resumed) and C (S3b new). Record the
-model ID reported by the session, not the requested alias. Keep the smoke files
-out of the package under test (for example with a sparse checkout) so the
-session cannot read these criteria.
+model ID reported by the session, not the requested alias. Keep `fixtures/` and the
+smoke files out of the package under test (for example with a sparse checkout)
+so the session cannot read these criteria or review recipes.
 
 For an interactive session or another host, paste the rendered steps in order,
 start a genuinely new session for S2, and keep full transcripts. Before S3 in a
