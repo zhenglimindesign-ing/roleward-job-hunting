@@ -27,6 +27,24 @@ When asked about settings, summarize the effective values and their authority
 in plain language. Preserve confirmed hard constraints and previous Scan plans.
 Increasing the result limit never relaxes quality or eligibility requirements.
 
+## Search record and per-Scan bounds
+
+Record every web search with `scripts/scan_state.py log-search --kind query`
+and every opened candidate source with `--kind source`, immediately before
+running it. Use the intent it serves: `title_led`, `capability_led`,
+`adjacent_role`, or `verification` for a lookup about an already-found
+candidate, such as its canonical page.
+
+When the user bounds this Scan's searches or sources, pass the bound to
+`scan_state.py start --max-queries` / `--max-sources`. Every search counts,
+including verification lookups. When `log-search` reports
+`search_budget_reached`, do not run that search; ask the user before exceeding
+the bound they set. These bounds apply to one Scan and never change saved
+preferences.
+
+Search details are not default output. When they are reported, take counts
+from the finalized Scan's `search_summary` rather than recollection.
+
 ## Discovery
 
 Use both title-led and capability-led / title-agnostic discovery.

@@ -42,7 +42,7 @@ hiring outcomes.
 | Resume quality | An actual-file independent review preferred the tailored version and identified lost proof. The source-backed revision restored ownership, iteration details and topic grouping. Final DOCX/PDF text transfer and all four rendered pages passed inspection; the user accepted that delivered revision. | This closes the current example acceptance. Each future user still reviews their own facts and materials; the result is not universal resume-quality validation. |
 | First-user usefulness | **Waived for this acceptance round at the user's request.** Synthetic workflow/disk continuity remains technical evidence; a real novice's experience has not been validated. | No first-user test is required in this round. Preserve the verification limit in public claims. |
 | Distribution | Open Agent Skills package; the dedicated Codex workspace is the verified host path; MIT license with retained OFL font terms. Public file/archive and local installed-Skill consistency were verified for the preceding integration commit. | Keep releases pinned to verified commits and preserve the stated support boundary; do not publish private career or evaluation inputs. |
-| Second-host portability | The core is designed to be portable, and Claude/other compatible hosts remain explicit targets. No second-host acceptance evidence is recorded in the current repositories. | Run one bounded second-host smoke before claiming support for that host. |
+| Second-host portability | Bounded Claude Code smokes ran on 2026-10-07 (Claude Code 2.1.218, headless safe-mode, `claude-sonnet-5`, built-in web tools, no MCP or sending tools, synthetic data only). The first run, on commit a2eae55, passed five checks: file and state persistence, direct-JD Pursuit, fresh-session continuity, one live UAE Scan, and no automatic sending. It recorded four deviations, #11–#14, which this release fixes. A full rerun on the fix branch passed with one wording residual. A final run after the wording revision confirmed the fixes in S1–S3 but is incomplete: at S0 the model asked an unnecessary confirmation question. Remaining observations are tracked in #16. | This is not Claude Code support. Interactive sessions, everyday user configurations, other models, Claude Chat, and behavior when sending tools are available remain unverified; accept those paths before claiming support. |
 
 The preceding controlled pair scored 11/12 and 10/12 real cases and 10/10
 portable cases in each run. The newly authorized run used the same substantive
@@ -57,9 +57,9 @@ acceptance without the owner's release decision.
 **Codex is the only host with the complete verified Alpha path today.** This is
 a verification statement, not a product-architecture claim: the core package is
 portable by design. Claude Code / Claude Chat and other compatible hosts remain
-portability targets, but Roleward should not claim support for a named host
-until that host's relevant file, search, persistence and workflow behavior has
-been accepted.
+portability targets. Claude Code has only the bounded smoke evidence above, and
+Roleward should not claim support for a named host until that host's relevant
+file, search, persistence and workflow behavior has been accepted.
 
 Current Public Alpha Scan is manually triggered. The Scan contract already
 supports `manual | scheduled`, but production scheduled Scan is not shipped.

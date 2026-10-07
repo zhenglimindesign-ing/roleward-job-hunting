@@ -4,7 +4,7 @@ import json
 import tempfile
 
 from state_store import empty_state, save_state, load_state
-from context_state import apply_extraction, set_field, readiness, AUTH_CONFIRMED, AUTH_SOURCE
+from context_state import add_source, apply_extraction, set_field, readiness, review_markdown, AUTH_CONFIRMED, AUTH_SOURCE
 
 with tempfile.TemporaryDirectory() as td:
     path=Path(td)/'state.json'
@@ -30,3 +30,20 @@ with tempfile.TemporaryDirectory() as td:
     assert len(r.get('pending_conflicts',[]))==1
     assert readiness(r)['ready'] is True
     print('Context authority/readiness smoke passed')
+
+# Verbatim user wording travels with normalized evidence and must match the source.
+s=empty_state()
+said='参与过客户调研与产品指标迭代。我独立做过一个 LLM 原型。'
+src=add_source(s,source_type='user_statement',label='chat',local_path=None,quote=said)
+apply_extraction(s,{'source_id':src,'career_evidence':[
+    {'domain':'research','statement':'Participated in customer research and product-metric iteration.','source_quote':'参与过客户调研与产品指标迭代'}]},AUTH_CONFIRMED)
+assert s['profile']['sources'][0]['quote']==said
+assert s['profile']['career_evidence'][0]['source_quote']=='参与过客户调研与产品指标迭代'
+assert '| Participated in customer research and product-metric iteration. | 参与过客户调研与产品指标迭代 | Confirmed |' in review_markdown(s)
+try:
+    apply_extraction(s,{'source_id':src,'career_evidence':[
+        {'domain':'research','statement':'Led customer research.','source_quote':'主导客户调研'}]},AUTH_CONFIRMED)
+    raise AssertionError('a source_quote absent from the source wording must be rejected')
+except ValueError as exc:
+    assert 'verbatim' in str(exc)
+print('Context source-wording smoke passed')

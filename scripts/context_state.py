@@ -33,7 +33,9 @@ def _audit(state: dict[str, Any], event: str, **details: Any) -> None:
     state["audit_log"].append({"event": event, "at": utc_now(), **details})
 
 
-def add_source(state: dict[str, Any], *, source_type: str, label: str, local_path: str | None) -> str:
+def add_source(
+    state: dict[str, Any], *, source_type: str, label: str, local_path: str | None, quote: str | None = None
+) -> str:
     _ensure_extensions(state)
     source_id = _id("src")
     record: dict[str, Any] = {
@@ -48,6 +50,12 @@ def add_source(state: dict[str, Any], *, source_type: str, label: str, local_pat
         if path.exists() and path.is_file():
             record["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
             record["size_bytes"] = path.stat().st_size
+    if quote is not None:
+        if not quote.strip():
+            raise ValueError("quote must be non-empty text")
+        # Verbatim user wording, kept in its original language.
+        record["quote"] = quote
+        record["quote_sha256"] = hashlib.sha256(quote.encode("utf-8")).hexdigest()
     state["profile"]["sources"].append(record)
     _audit(state, "source_added", source_id=source_id, source_type=source_type, label=label)
     return source_id
@@ -123,8 +131,24 @@ def set_field(
     return "superseded"
 
 
+def _check_source_quote(state: dict[str, Any], source_ids: list[str], source_quote: str) -> None:
+    if not source_quote.strip():
+        raise ValueError("source_quote must be non-empty text")
+    sources = {item.get("id"): item for item in state["profile"]["sources"]}
+    for source_id in source_ids:
+        quote = (sources.get(source_id) or {}).get("quote")
+        if isinstance(quote, str) and source_quote not in quote:
+            raise ValueError(f"source_quote must appear verbatim in source {source_id}")
+
+
 def add_career_evidence(
-    state: dict[str, Any], *, domain: str, statement: str, authority: str, source_ids: list[str]
+    state: dict[str, Any],
+    *,
+    domain: str,
+    statement: str,
+    authority: str,
+    source_ids: list[str],
+    source_quote: str | None = None,
 ) -> str:
     record = {
         "id": _id("evidence"),
@@ -135,6 +159,9 @@ def add_career_evidence(
         "active": True,
         "created_at": utc_now(),
     }
+    if source_quote is not None:
+        _check_source_quote(state, source_ids, source_quote)
+        record["source_quote"] = source_quote
     state["profile"]["career_evidence"].append(record)
     _audit(state, "career_evidence_added", evidence_id=record["id"], domain=domain, authority=authority)
     return record["id"]
@@ -164,6 +191,7 @@ def apply_extraction(state: dict[str, Any], payload: dict[str, Any], authority: 
     results: dict[str, Any] = {"career_evidence": [], "fields": {}, "constraints": [], "preferences": []}
 
     for item in payload.get("career_evidence", []):
+        source_quote = item.get("source_quote")
         results["career_evidence"].append(
             add_career_evidence(
                 state,
@@ -171,6 +199,7 @@ def apply_extraction(state: dict[str, Any], payload: dict[str, Any], authority: 
                 statement=str(item["statement"]),
                 authority=authority,
                 source_ids=source_ids,
+                source_quote=None if source_quote is None else str(source_quote),
             )
         )
 
@@ -256,11 +285,11 @@ def review_markdown(state: dict[str, Any]) -> str:
         ("Current Direction", state["profile"]["direction"]),
         ("Search Policy", state["search_policy"]),
     ]
-    lines.extend(["## Career Background", "", "| Evidence | Status |", "|---|---|"])
+    lines.extend(["## Career Background", "", "| Evidence | Source wording | Status |", "|---|---|---|"])
     for item in state["profile"]["career_evidence"]:
-        lines.append(f"| {item.get('statement','')} | {_status(item)} |")
+        lines.append(f"| {item.get('statement','')} | {item.get('source_quote') or '—'} | {_status(item)} |")
     if not state["profile"]["career_evidence"]:
-        lines.append("| No structured career evidence yet | Missing |")
+        lines.append("| No structured career evidence yet | — | Missing |")
     lines.append("")
 
     for title, fields in sections:
@@ -311,6 +340,7 @@ def main() -> int:
     p.add_argument("--type", required=True)
     p.add_argument("--label", required=True)
     p.add_argument("--path")
+    p.add_argument("--quote", help="Verbatim user wording in its original language")
 
     p = sub.add_parser("apply-extraction")
     p.add_argument("--input", required=True)
@@ -328,7 +358,7 @@ def main() -> int:
     state = load_state(state_path)
 
     if args.command == "add-source":
-        source_id = add_source(state, source_type=args.type, label=args.label, local_path=args.path)
+        source_id = add_source(state, source_type=args.type, label=args.label, local_path=args.path, quote=args.quote)
         save_state(state_path, state)
         print(source_id)
         return 0
