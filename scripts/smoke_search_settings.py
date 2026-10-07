@@ -7,6 +7,8 @@ import sys
 import tempfile
 from pathlib import Path
 
+from state_store import empty_state, save_state
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -15,14 +17,27 @@ def main():
     work.mkdir(exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="search-settings-", dir=work) as td:
         workspace = Path(td)
-        state_path = workspace / "state" / "roleward-state.json"
+        state_path = workspace / "records" / "roleward.json"
+        other_cwd = workspace / "unrelated directory"
+        other_cwd.mkdir()
+        # A valid decoy makes a dropped path flag silently choose the wrong history.
+        decoy = other_cwd / "state" / "roleward-state.json"
+        decoy_state = empty_state()
+        decoy_state["search_policy"]["max_results"] = 9
+        save_state(decoy, decoy_state)
+        decoy_before = decoy.read_bytes()
+        assert state_path.is_absolute()
+        call_count = 0
 
         def run(script, *args, expected=0, parse=True):
+            nonlocal call_count
             flag = "--path" if script == "state_store.py" else "--state"
+            call_count += 1
             result = subprocess.run(
                 [sys.executable, "-B", str(ROOT / "scripts" / script),
                  flag, str(state_path), *args],
-                cwd=workspace, capture_output=True, text=True,
+                cwd=workspace if call_count % 2 else other_cwd,
+                capture_output=True, text=True,
             )
             assert result.returncode == expected, (script, args, result.stdout, result.stderr)
             return json.loads(result.stdout) if parse and expected == 0 else result.stdout
@@ -79,7 +94,10 @@ def main():
             assert state_path.read_bytes() == before
         set_limit(2)
         run("state_store.py", "validate", parse=False)
+        assert decoy.read_bytes() == decoy_before
+        assert not (workspace / "state" / "roleward-state.json").exists()
     print("Search settings passed: default 5, persisted edits, one-off override, frozen plans, invalid-value isolation")
+    print("Explicit state path passed across changing working directories; decoy history untouched")
 
 
 if __name__ == "__main__":

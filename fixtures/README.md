@@ -89,6 +89,32 @@ input stability metrics. A label-aware test or handcrafted expected-output
 control verifies tooling only; it is not a blind run, baseline comparison, or
 evidence that the Skill improved.
 
+## Issue #16 behavior regression
+
+`_inputs/residual-observations-v0.json` contains new synthetic, label-free
+requests for the four execution residuals. In a fresh host workspace, substitute
+one absolute, non-default `{state_path}` outside the Skill package. Run the
+`import` request once, then the `scan` request in a fresh process using the same
+workspace. Start helpers from a different directory containing a valid decoy
+default state. Keep inputs, actual user-facing messages, helper argv and state
+readback; do not rescue an interrupted import or rerun to obtain a pass.
+
+Review separately after generation: the participation qualifier must cover
+both research and metric iteration in saved evidence and replies; all reply
+prose, progress/receipts and table labels must be Chinese (original JD quotes
+and canonical terms added once are allowed); the authorized import must save
+without a second permission question; every helper must explicitly reuse the
+same absolute state path and leave the decoy unchanged. Ownership-type research
+and metrics requirements remain Partial unless other evidence establishes the
+work. Do not assert Important versus Bonus for the production-AI preference:
+that is the pending policy decision in #16.
+
+`smoke_search_settings.py` exercises the cross-directory path/readback invariant
+in CI. It verifies helpers, not model argv choices. The other three checks need
+actual host outputs and semantic review; deterministic CI does not prove them
+or establish Claude Code support. The motivating observations and prior runs
+remain unchanged.
+
 ## Private real layer
 
 The accepted Alpha benchmark also requires, in the private Roleward repository:

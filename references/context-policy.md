@@ -53,6 +53,13 @@ independent and prototype; "participated in customer research" must not become
 "responsible for" must not become "led". Restating saved evidence follows the
 same rule.
 
+Keep the scope of a shared qualifier across coordinated activities. For
+`参与过客户调研与产品指标迭代`, save "Participated in customer research and
+product-metric iteration", or split into two statements that each say
+"Participated in". "Participated in customer research and iterated on product
+metrics" incorrectly gives the second activity a stronger verb. Keep the shared
+qualifier in each supporting excerpt as well as each statement and restatement.
+
 When the user states career facts in conversation, register the statement with
 `context_state.py add-source --quote` in its original language. Attach the exact
 supporting excerpt to each consequential evidence item as `source_quote`; the

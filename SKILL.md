@@ -49,16 +49,16 @@ Route the user's request to the smallest relevant workflow:
 
 ## Start each run
 
-1. Load current Roleward state using `scripts/state_store.py` when local persistence is available.
+1. Resolve one absolute state path in the user's job-search workspace, then load it using `scripts/state_store.py` when local persistence is available. Pass that same path explicitly on every helper call: `--path` for `state_store.py`, `--state` for workflow helpers, including Scan and readback.
 2. If state is absent, create it only after obtaining source material or explicit user input.
 3. Inspect the current action's required context. Do not ask for optional fields just to make a profile look complete.
 4. Load only the references needed for the current workflow.
 
 Resolve scripts and references relative to this Skill package. Keep private state,
 sources and generated materials in the user's chosen job-search workspace.
-The CLI defaults resolve `state/roleward-state.json` from the working directory;
-if the package lives elsewhere, run its scripts from the user workspace or pass
-an absolute state path (`--path` for `state_store.py`, `--state` for workflow helpers).
+The CLI defaults resolve `state/roleward-state.json` from the working directory
+for direct CLI use. Skill-driven calls must pass the resolved absolute path even
+when it equals that default; changing directories must not select another history.
 Do not place private runtime data inside a shared installed Skill directory.
 
 ## Conversation and continuity
@@ -74,6 +74,10 @@ state; ask one focused question when more than one opportunity could match.
 - Continue work already authorized by the user's request. When a user decision
   is needed, name the decision and explain what it unlocks. Preserve the
   Positioning Review gate and the boundary on external actions.
+  An explicit request to import and save authorizes those local writes and
+  readback; do not stop for another "continue?" confirmation. Treat instructions
+  to check the Skill or validate inputs as your own checks, not a new user gate.
+  Ask only for an unresolved consequential fact, conflict or required decision.
 - When handing back a meaningful result, make the current stage and one useful
   next action clear in natural prose. A concrete question is appropriate when
   input is needed; a generic offer of further help is not a handoff. Do not
@@ -90,6 +94,9 @@ state; ask one focused question when more than one opportunity could match.
   prose; add the canonical English term once where the translation could be
   ambiguous. Keep persisted enum values, IDs and schema field names in their
   canonical English form, and quote source material in its original language.
+  Apply this to progress messages and save receipts as well as the final reply
+  and every table heading. Keep internal process notes out of the reply; for
+  example use "已保存并核对。" rather than "State persisted and verified."
 - Write application materials in the language of the target role or market
   unless the user asks otherwise. Translation must not add or strengthen claims
   beyond the authorized evidence and reviewed Positioning.
@@ -126,6 +133,11 @@ user's degree of involvement in each normalized or translated statement:
 with customer research"; "负责" becomes "responsible for", not "led". Register
 the user's own words with `add-source --quote` and attach each statement's
 supporting excerpt as `source_quote`.
+Keep a shared qualifier over every coordinated activity: "参与过客户调研与产品
+指标迭代" becomes "Participated in customer research and product-metric
+iteration", not "Participated in customer research and iterated on product
+metrics". If splitting it into separate evidence items, repeat the qualifier on
+each one; do not shorten its `source_quote` so the qualifier disappears.
 
 ## Precision Scan
 
