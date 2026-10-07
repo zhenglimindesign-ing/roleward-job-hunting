@@ -47,9 +47,11 @@ Do not require confirmation of every row. Ask only when a missing/conflicting it
 
 Normalizing or translating a career statement must not change the degree of
 involvement, ownership, scope, certainty or recency. Keep qualifiers such as
-participated in, supported, contributed to, exposure to, independent and
-prototype; "participated in customer research" must not become "experience
-with customer research" or "led customer research".
+participated in, supported, contributed to, responsible for, exposure to,
+independent and prototype; "participated in customer research" must not become
+"experience with customer research" or "led customer research", and
+"responsible for" must not become "led". Restating saved evidence follows the
+same rule.
 
 When the user states career facts in conversation, register the statement with
 `context_state.py add-source --quote` in its original language. Attach the exact

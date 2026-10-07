@@ -120,7 +120,12 @@ Minimum readiness for a first Scan:
 
 After import, show a **Structured Context Review**, not an opaque prose summary and not a field-by-field confirmation form. Make provenance/authority inspectable and ask only consequential missing/conflicting items.
 
-Keep the user's degree of involvement when normalizing or translating evidence, and keep their original wording with it; see `references/context-policy.md`.
+When saving career evidence, read `references/context-policy.md` and keep the
+user's degree of involvement in each normalized or translated statement:
+"参与过客户调研" becomes "participated in customer research", not "experience
+with customer research"; "负责" becomes "responsible for", not "led". Register
+the user's own words with `add-source --quote` and attach each statement's
+supporting excerpt as `source_quote`.
 
 ## Precision Scan
 
@@ -247,6 +252,7 @@ Before completing a consequential output:
 - no unknown was treated as negative evidence;
 - no source claim was silently promoted to user-owned truth;
 - no independent-builder evidence was relabeled as formal production experience;
+- no saved or restated career evidence is weaker or stronger than its `source_quote`;
 - job source is current enough for the claim being made;
 - scores match their defined dimensions and do not contaminate each other;
 - user Positioning Review exists before outward application materials;
