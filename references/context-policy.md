@@ -42,3 +42,17 @@ Do not require confirmation of every row. Ask only when a missing/conflicting it
 - Explicit user statements/corrections can update Confirmed Truth.
 - Preferences inferred from behavior remain Inferred Signals until confirmed.
 - Legal/work-authorization truth must come from the user or an authoritative current source appropriate to that fact; never infer it from behavior.
+
+## Evidence wording
+
+Normalizing or translating a career statement must not change the degree of
+involvement, ownership, scope, certainty or recency. Keep qualifiers such as
+participated in, supported, contributed to, exposure to, independent and
+prototype; "participated in customer research" must not become "experience
+with customer research" or "led customer research".
+
+When the user states career facts in conversation, register the statement with
+`context_state.py add-source --quote` in its original language. Attach the exact
+supporting excerpt to each consequential evidence item as `source_quote`; the
+helper rejects an excerpt that does not appear verbatim in the source. The
+Structured Context Review shows that wording beside the normalized statement.

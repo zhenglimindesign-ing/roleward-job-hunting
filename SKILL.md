@@ -82,6 +82,10 @@ state; ask one focused question when more than one opportunity could match.
   verify the persisted record and give a short receipt identifying what changed.
   Follow `references/state-policy.md` for persistence and failure handling.
 - Reply in the language the user writes in, unless they ask for another one.
+  Judge it from the user's own prose: embedded English product terms, stage
+  names, labels, commands or paths do not change it. Helper output, including
+  the Structured Context Review, is material for the reply; translate its
+  headings and prose rather than pasting it in another language.
   Translate stage names, decision labels and score dimensions in user-facing
   prose; add the canonical English term once where the translation could be
   ambiguous. Keep persisted enum values, IDs and schema field names in their
@@ -116,6 +120,8 @@ Minimum readiness for a first Scan:
 
 After import, show a **Structured Context Review**, not an opaque prose summary and not a field-by-field confirmation form. Make provenance/authority inspectable and ask only consequential missing/conflicting items.
 
+Keep the user's degree of involvement when normalizing or translating evidence, and keep their original wording with it; see `references/context-policy.md`.
+
 ## Precision Scan
 
 Read `references/search-policy.md`, `references/pursuit-policy.md`, and `references/tool-boundary.md`. When local persistence is available, use `scripts/scan_state.py` to create trigger-agnostic Scan runs, apply confirmed hard constraints, and persist discovery observations into the Opportunity reservoir.
@@ -123,8 +129,8 @@ Read `references/search-policy.md`, `references/pursuit-policy.md`, and `referen
 Default behavior:
 
 1. Load confirmed Search Policy and relevant bounded inferred signals.
-2. Build a bounded title-led + capability-led search plan across only the user's approved geography/remote scope.
-3. Search current sources using host web tools.
+2. Build a bounded title-led, capability-led and adjacent-role search plan across only the user's approved geography/remote scope.
+3. Search current sources using host web tools. Record each search and opened source, and respect a per-Scan bound the user sets.
 4. Fetch canonical job sources where possible; verify that actionable links are live.
 5. Normalize and deduplicate candidates.
 6. Apply confirmed hard constraints deterministically.

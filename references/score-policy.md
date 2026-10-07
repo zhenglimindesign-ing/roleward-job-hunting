@@ -34,6 +34,18 @@ not establish depth, ownership, tenure, or seniority. Do not mark an entire
 compound requirement Met when only part is supported. Missing job facts are
 not candidate gaps; hard eligibility belongs to Employability.
 
+Match the requirement's verb and scope. When the JD asks the candidate to own,
+lead, conduct, define or deliver work, evidence of participation, support,
+contribution or exposure is Partial unless it shows the candidate did that
+work. Read the evidence's `source_quote`, when present, rather than only its
+normalized statement.
+
+Take materiality from the JD's own wording. Required, must-have and minimum
+items are Core. Strongly preferred items, and preferred items the JD makes
+central to the role's main responsibilities, are Important. Other preferred,
+nice-to-have, plus or bonus items are Bonus. Score a main responsibility as its
+own requirement rather than raising the weight of a related preference.
+
 ## Direction Alignment
 
 Internal component. Measures alignment with the user's confirmed current search/career direction. It excludes employability and longer-term career value.

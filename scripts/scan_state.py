@@ -15,6 +15,13 @@ from state_store import load_state, save_state, utc_now
 TRIGGERS = {"manual", "scheduled"}
 REVIEW_DISPOSITIONS = {"worth_review", "verify_first", "screened_out"}
 DEFAULT_MAX_RESULTS = 5
+# Executed web searches and opened candidate sources; each kind may carry a per-Scan bound.
+SEARCH_KINDS = {"query": "max_queries", "source": "max_sources"}
+SEARCH_INTENTS = {"title_led", "capability_led", "adjacent_role", "verification"}
+
+
+class SearchBudgetReached(ValueError):
+    pass
 
 
 def _unwrap(value: Any) -> Any:
@@ -49,15 +56,15 @@ def _first_list(container: dict[str, Any], keys: tuple[str, ...]) -> list[str]:
     return []
 
 
-def _positive_result_limit(value: Any) -> int:
+def _positive_result_limit(value: Any, name: str = "max_results") -> int:
     if isinstance(value, bool) or not isinstance(value, (int, str)):
-        raise ValueError("max_results must be a positive integer")
+        raise ValueError(f"{name} must be a positive integer")
     try:
         limit = int(value)
     except ValueError as exc:
-        raise ValueError("max_results must be a positive integer") from exc
+        raise ValueError(f"{name} must be a positive integer") from exc
     if limit < 1:
-        raise ValueError("max_results must be a positive integer")
+        raise ValueError(f"{name} must be a positive integer")
     return limit
 
 
@@ -103,16 +110,30 @@ def build_search_plan(state: dict[str, Any]) -> dict[str, Any]:
         "authorization_state": authorization_state,
         "excluded_companies": _confirmed_list(policy, "excluded_companies"),
         "max_results": _positive_result_limit(DEFAULT_MAX_RESULTS if configured_limit is None else configured_limit),
-        "coverage_modes": ["title_led", "capability_led"],
+        "coverage_modes": ["title_led", "capability_led", "adjacent_role"],
     }
 
 
-def start_scan(state: dict[str, Any], trigger: str, *, max_results: int | None = None) -> dict[str, Any]:
+def start_scan(
+    state: dict[str, Any],
+    trigger: str,
+    *,
+    max_results: int | None = None,
+    max_queries: int | None = None,
+    max_sources: int | None = None,
+) -> dict[str, Any]:
     if trigger not in TRIGGERS:
         raise ValueError(f"trigger must be one of {sorted(TRIGGERS)}")
     plan = build_search_plan(state)
     if max_results is not None:
         plan["max_results"] = _positive_result_limit(max_results)
+    budget = {
+        key: _positive_result_limit(value, key)
+        for key, value in (("max_queries", max_queries), ("max_sources", max_sources))
+        if value is not None
+    }
+    if budget:
+        plan["search_budget"] = budget
     state.setdefault("scan_runs", {})
     seed = json.dumps({"plan": plan, "at": utc_now()}, sort_keys=True).encode("utf-8")
     run_id = f"scan-{hashlib.sha256(seed).hexdigest()[:12]}"
@@ -122,6 +143,7 @@ def start_scan(state: dict[str, Any], trigger: str, *, max_results: int | None =
         "status": "running",
         "started_at": utc_now(),
         "plan": plan,
+        "search_log": [],
         "candidates": [],
         "selected_opportunity_ids": [],
     }
@@ -177,6 +199,47 @@ def hard_constraint_check(state: dict[str, Any], candidate: dict[str, Any]) -> d
     }
 
 
+def search_summary(run: dict[str, Any]) -> dict[str, Any]:
+    budget = run["plan"].get("search_budget") or {}
+    summary = {}
+    for kind, limit_key in SEARCH_KINDS.items():
+        entries = [item for item in run.get("search_log") or [] if item.get("kind") == kind]
+        by_intent: dict[str, int] = {}
+        for item in entries:
+            by_intent[item["intent"]] = by_intent.get(item["intent"], 0) + 1
+        summary[f"{kind}_count"] = len(entries)
+        summary[f"{kind}_limit"] = budget.get(limit_key)
+        summary[f"{kind}_by_intent"] = by_intent
+    return summary
+
+
+def log_search(state: dict[str, Any], scan_id: str, *, kind: str, intent: str, text: str) -> dict[str, Any]:
+    """Record one search query or opened source before it is executed.
+
+    A user-stated per-Scan bound is enforced here; the host asks before exceeding it.
+    """
+    if scan_id not in state.get("scan_runs", {}):
+        raise KeyError(f"Unknown scan id: {scan_id}")
+    run = state["scan_runs"][scan_id]
+    if run.get("status") != "running":
+        raise ValueError("Can only log searches for a running scan")
+    if kind not in SEARCH_KINDS:
+        raise ValueError(f"kind must be one of {sorted(SEARCH_KINDS)}")
+    if intent not in SEARCH_INTENTS:
+        raise ValueError(f"intent must be one of {sorted(SEARCH_INTENTS)}")
+    if not text.strip():
+        raise ValueError("text must be the query or source URL")
+    log = run.setdefault("search_log", [])
+    limit = (run["plan"].get("search_budget") or {}).get(SEARCH_KINDS[kind])
+    used = sum(1 for item in log if item.get("kind") == kind)
+    if limit is not None and used >= limit:
+        raise SearchBudgetReached(f"{SEARCH_KINDS[kind]} of {limit} already used for this Scan")
+    entry = {"kind": kind, "intent": intent, "text": text.strip(), "at": utc_now()}
+    log.append(entry)
+    run["updated_at"] = utc_now()
+    return {"scan_id": scan_id, "entry": entry, "summary": search_summary(run)}
+
+
 def ingest_candidates(state: dict[str, Any], scan_id: str, candidates: list[dict[str, Any]]) -> dict[str, Any]:
     state.setdefault("scan_runs", {})
     if scan_id not in state["scan_runs"]:
@@ -223,6 +286,8 @@ def finalize_scan(state: dict[str, Any], scan_id: str) -> dict[str, Any]:
         and item.get("live_status") == "verified_live"
     ][:max_results]
     run["selected_opportunity_ids"] = selected
+    if "search_log" in run:
+        run["search_summary"] = search_summary(run)
     run["status"] = "complete"
     run["completed_at"] = utc_now()
     state.setdefault("audit_log", []).append({"event": "scan_completed", "scan_id": scan_id, "selected_count": len(selected), "at": utc_now()})
@@ -237,6 +302,14 @@ def main() -> int:
     p = sub.add_parser("start")
     p.add_argument("--trigger", choices=sorted(TRIGGERS), default="manual")
     p.add_argument("--max-results", type=int, help="Override this Scan only; leave the saved preference unchanged")
+    p.add_argument("--max-queries", type=int, help="User-stated bound on web searches for this Scan only")
+    p.add_argument("--max-sources", type=int, help="User-stated bound on opened candidate sources for this Scan only")
+
+    p = sub.add_parser("log-search")
+    p.add_argument("--scan-id", required=True)
+    p.add_argument("--kind", choices=sorted(SEARCH_KINDS), required=True)
+    p.add_argument("--intent", choices=sorted(SEARCH_INTENTS), required=True)
+    p.add_argument("--text", required=True, help="The query text or the source URL")
 
     p = sub.add_parser("ingest")
     p.add_argument("--scan-id", required=True)
@@ -250,7 +323,19 @@ def main() -> int:
     state = load_state(path)
 
     if args.command == "start":
-        result = start_scan(state, args.trigger, max_results=args.max_results)
+        result = start_scan(
+            state, args.trigger, max_results=args.max_results, max_queries=args.max_queries, max_sources=args.max_sources
+        )
+    elif args.command == "log-search":
+        try:
+            result = log_search(state, args.scan_id, kind=args.kind, intent=args.intent, text=args.text)
+        except SearchBudgetReached as exc:
+            print(json.dumps({
+                "status": "search_budget_reached",
+                "detail": str(exc),
+                "next_step": "Do not run this search; ask the user before exceeding the bound they set.",
+            }, ensure_ascii=False))
+            return 3
     elif args.command == "ingest":
         payload = json.loads(Path(args.input).read_text(encoding="utf-8"))
         result = ingest_candidates(state, args.scan_id, payload["candidates"])
