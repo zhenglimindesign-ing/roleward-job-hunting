@@ -1,4 +1,5 @@
-# Roleward Job Hunting
+<picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/zhenglimindesign-ing/zhenglimindesign-ing/main/assets/skill-roleward-job-hunting-dark.png"><img src="https://raw.githubusercontent.com/zhenglimindesign-ing/zhenglimindesign-ing/main/assets/skill-roleward-job-hunting-light.png" alt="Roleward Job Hunting — Agent Skill"></picture>
+
 
 **English** | [简体中文](README.zh-CN.md)
 
