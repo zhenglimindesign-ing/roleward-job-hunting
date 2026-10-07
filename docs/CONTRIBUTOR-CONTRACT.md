@@ -33,7 +33,7 @@ evidence; this table is not a claim that every model run satisfies them.
 | Deterministic helper | Reproduce the bug, run the affected smoke check, and cover the meaningful invariant; reuse unchanged evidence |
 | Resume path | Inspect actual affected DOCX/PDF outputs plus source/positioning fidelity; file existence and fact IDs do not establish semantic truth |
 | Skill instruction or decision policy | Show the motivating case and affected tradeoff; obtain product approval for changed semantics; validate meaningful behavior with label-separated inputs when needed |
-| Host, installation or update | Exercise the real path on that host and preserve private state; format compatibility alone does not prove support |
+| Host, installation or update | Exercise the real path on that host and preserve private state; format compatibility alone does not prove support. For a new host or model, run the bounded [host smoke](HOST-SMOKE.md) |
 | Fixture or evaluation tooling | Distinguish structural checks, executable controls and independent model output; preserve case versions and historical results |
 
 Python 3.11+ and PyYAML 6.0.3 are used for package validation:

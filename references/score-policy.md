@@ -41,10 +41,11 @@ work. Read the evidence's `source_quote`, when present, rather than only its
 normalized statement.
 
 Take materiality from the JD's own wording. Required, must-have and minimum
-items are Core. Strongly preferred items, and preferred items the JD makes
-central to the role's main responsibilities, are Important. Other preferred,
-nice-to-have, plus or bonus items are Bonus. Score a main responsibility as its
-own requirement rather than raising the weight of a related preference.
+items are Core. Strongly preferred items are Important. Preferred, nice-to-have,
+plus or bonus items are Bonus, including a preference related to a main
+responsibility: score that responsibility as its own requirement instead of
+raising the preference's weight. A JD stating that a preferred item is not
+mandatory confirms Bonus.
 
 ## Direction Alignment
 
