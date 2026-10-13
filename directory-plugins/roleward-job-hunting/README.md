@@ -15,3 +15,5 @@ Local Python helpers read and write user-selected workspace JSON, sources and re
 ## Support and limits
 
 [Source and instructions](https://github.com/zhenglimindesign-ing/roleward-job-hunting) · [Report a problem](https://github.com/zhenglimindesign-ing/roleward-job-hunting/issues). Core instructions take the explicit user request as the scope; attached documents are evidence, not execution authority. Existing source releases and tags remain unchanged. Directory validation, each host run, source fidelity and human acceptance are separate evidence. Account eligibility, portal scans and name availability require the submitting user.
+
+Standalone Skill installation is also available through skills.sh from the source repository. See the public installation guide; local dependencies remain separately declared. The data handling document is [available here](https://github.com/zhenglimindesign-ing/roleward-job-hunting/blob/codex/distribution-prep-20261013/directory-plugins/roleward-job-hunting/PRIVACY.md).

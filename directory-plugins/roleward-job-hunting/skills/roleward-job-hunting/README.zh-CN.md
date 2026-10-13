@@ -142,6 +142,16 @@ schema 字段仍保持 canonical English。
 设置与隐私见[开始使用](docs/GETTING-STARTED.zh-CN.md)，日常请求见
 [使用指南](docs/USAGE.zh-CN.md)。
 
+### 通过 skills.sh 安装完整 Skill
+
+在准备使用 Skill 的项目目录中运行：
+
+```sh
+DISABLE_TELEMETRY=1 DO_NOT_TRACK=1 npx --yes skills@1.7.2 add zhenglimindesign-ing/roleward-job-hunting --skill roleward-job-hunting --agent codex claude-code --copy --yes
+```
+
+该命令关闭遥测，将 Skill 和资源完整复制到项目的 Codex、Claude Code skill 目录，并跟随仓库当前默认分支。重启宿主或新开会话后描述任务。插件 marketplace 登记及 Python／系统依赖准备是独立步骤，该命令不会代办这些设置。
+
 ## 先决定是否值得投，再准备申请
 
 一个典型机会分析应该先告诉你判断和原因，而不是先扔出一大张 requirement 表：

@@ -134,6 +134,16 @@ persisted schema fields stay in canonical English.
 See [Getting Started](docs/GETTING-STARTED.md) for setup and privacy, and
 [Usage](docs/USAGE.md) for everyday requests.
 
+### Install the complete Skill with skills.sh
+
+From the project where you will use the Skill, run:
+
+```sh
+DISABLE_TELEMETRY=1 DO_NOT_TRACK=1 npx --yes skills@1.7.2 add zhenglimindesign-ing/roleward-job-hunting --skill roleward-job-hunting --agent codex claude-code --copy --yes
+```
+
+This project-level command copies the Skill and its resources into the Codex and Claude Code skill directories with telemetry disabled. It follows the repository’s current default branch. Restart the host or open a fresh session, then describe your task. Plugin marketplace registration and Python/system dependency setup are separate steps; the command does not perform them.
+
 ## Decide first, then prepare the application
 
 A typical opportunity result should lead with the decision and reasoning rather

@@ -6,11 +6,8 @@
   "unchanged_skill_files": {
     "requirements-resume.txt": "655c5c7557a485af87a3789611b342e04c5ed71359ac868fef80da483007b5f2",
     "LICENSE": "272bff50f2a283206dfa708195c9c63ad54584fdf2b229e4ca8e5cf5f0de3f35",
-    "README.md": "19b47e8e7515f101e2d36ea1f524c4c23092f544ebcff7ed45add63046355cf2",
     ".gitignore": "a5b6e75720ebdd79f518d85653ddd891343ac5a8d938b45137f4213be5df4bbe",
     "CONTRIBUTING.md": "daf11c1d9bcc98b1565b80c893c76b20a8c9da13b93aa5d6097bf9bb58c22884",
-    "SKILL.md": "fa84fe15e72299a3d1aa08949d2733660e8582e971acf0055a2c5359e4060436",
-    "README.zh-CN.md": "7337c70ce2bcbe81b7aa9da665f22aafe7e1470391f34dfb478694d03321fcb0",
     "CONTRIBUTING.zh-CN.md": "6d746db28cf6f0d0c98a2b832db3b2d6527ec049d84f8f1166a667aabb3c5033",
     "application-files/README.md": "01ae3c62ff2b52cdc01406d0c83db78dc18fb3f76584341011d9897d9c9a809e",
     "references/pursuit-policy.md": "c9426849f9ead113bca08675db0e8c95fd0a43195c22d7795eda7425d393e31a",
@@ -103,7 +100,24 @@
     "directory manifests",
     "square branding asset",
     "product-scoped OpenAI interface",
-    "bilingual plugin README"
+    "bilingual plugin README",
+    "verified skills.sh README instructions",
+    "license notices retained in standalone Skill copies",
+    "review-branch privacy URL",
+    "separate prerelease wrapper version for the review iteration"
   ],
-  "runtime_claims": "See README. Portal conversion and official directory installation NOT VERIFIED."
+  "runtime_claims": "Codex local and bounded Claude Code tests only; official portal checks are recorded separately. No new ChatGPT/Work execution claim.",
+  "added_license_notices": {},
+  "bounded_instruction_fixes": {
+    "basis": "Actual Claude Sonnet 5 synthetic host failures",
+    "changed_files": {
+      "SKILL.md": {
+        "released_sha256": "fa84fe15e72299a3d1aa08949d2733660e8582e971acf0055a2c5359e4060436",
+        "candidate_sha256": "62d57d72f2842c5e850d4f176fd7ee34e0983e1d010be9312922d7f0bf49a486"
+      }
+    },
+    "scope": "Preserve evidence qualifiers / distinguish universal counterexamples from new patterns; no workflow or history retrieval removed."
+  },
+  "candidate_package_version": "0.1.0-alpha.3-distribution.2",
+  "source_release_unchanged": true
 }
