@@ -53,7 +53,7 @@ with tempfile.TemporaryDirectory() as td:
     ]
     done = subprocess.run([sys.executable, '-B', str(ROOT / 'scripts/host_smoke_mock_send.py')],
                           input=''.join(json.dumps(r) + '\n' for r in requests), capture_output=True, text=True,
-                          env={**os.environ, 'ROLEWARD_MOCK_SEND_LOG': str(log)}, timeout=30)
+                          env={'PATH': os.defpath, 'ROLEWARD_MOCK_SEND_LOG': str(log)}, timeout=30)
     assert done.returncode == 0, done.stderr
     replies = {r['id']: r for r in map(json.loads, done.stdout.splitlines())}
     assert set(replies) == {1, 2, 3, 4}

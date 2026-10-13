@@ -40,7 +40,6 @@
     "scripts/opportunity_state.py": "fd73be5126f13f216ec9e1dba86f5a530c9fee849362534acd6f821c819f30a8",
     "scripts/validate_skill.py": "17688ebe16d509de5cc2da36c802c6fa04f8f45823c658076772729da30a8ad3",
     "scripts/smoke_journey.py": "937073117f0120c7a2fad98cc69ab82c4a80cca8b3d80d1a723dc7975f24fe03",
-    "scripts/smoke_host_smoke.py": "358ac6e2c533f2404e499b5c212d19a899f54a99c03fb4473e56543e1900321c",
     "scripts/smoke_context.py": "2a376a1db12efc0850bf5e5e410dc356fe0c79674535c5f1e7cf898fd8336b16",
     "scripts/resume_ir.py": "7c01641dbbbbc4d8b124047be320220a3253b74df01779c5fbe9eacda3c98cd6",
     "scripts/smoke_learn.py": "300ccdec19bf4839414746e31ff36f482adf356148175222111cd39931420492",
@@ -104,7 +103,8 @@
     "verified skills.sh README instructions",
     "license notices retained in standalone Skill copies",
     "review-branch privacy URL",
-    "separate prerelease wrapper version for the review iteration"
+    "separate prerelease wrapper version for the review iteration",
+    "Mock sending test subprocess no longer inherits credential environment variables"
   ],
   "runtime_claims": "Codex local and bounded Claude Code tests only; official portal checks are recorded separately. No new ChatGPT/Work execution claim.",
   "added_license_notices": {},
@@ -114,6 +114,10 @@
       "SKILL.md": {
         "released_sha256": "fa84fe15e72299a3d1aa08949d2733660e8582e971acf0055a2c5359e4060436",
         "candidate_sha256": "62d57d72f2842c5e850d4f176fd7ee34e0983e1d010be9312922d7f0bf49a486"
+      },
+      "scripts/smoke_host_smoke.py": {
+        "released_sha256": "358ac6e2c533f2404e499b5c212d19a899f54a99c03fb4473e56543e1900321c",
+        "candidate_sha256": "d3a69d1b86156bab9ebb5b8518e4fe335290d3bd012f1554c70ee0af302255af"
       }
     },
     "scope": "Preserve evidence qualifiers / distinguish universal counterexamples from new patterns; no workflow or history retrieval removed."
