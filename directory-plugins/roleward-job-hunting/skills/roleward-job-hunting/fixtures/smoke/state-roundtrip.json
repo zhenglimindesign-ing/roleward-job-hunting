@@ -1,0 +1,11 @@
+{
+  "id": "smoke-state-roundtrip",
+  "kind": "state_roundtrip",
+  "input": {
+    "schema_version": "roleward.job-hunting.state.v0"
+  },
+  "expected": {
+    "history_preserved": true,
+    "reload_equivalent": true
+  }
+}

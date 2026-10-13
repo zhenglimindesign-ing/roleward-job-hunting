@@ -1,0 +1,35 @@
+{
+  "name": "roleward-job-hunting",
+  "version": "0.1.0-alpha.3-distribution.3",
+  "description": "Help a job seeker decide which supplied opportunities deserve attention, position real experience truthfully, and keep an inspectable local record. Current public Alpha requires a local workspace and Python 3.11+ for persistence. Current-job discovery additionally requires host web/search tools. Resume exports need the separately declared requirements-resume.txt dependencies. It does not apply for jobs or send messages. Second-host acceptance and human usefulness remain separate from package validation.",
+  "author": {
+    "name": "Limin Zheng"
+  },
+  "homepage": "https://github.com/zhenglimindesign-ing/roleward-job-hunting",
+  "repository": "https://github.com/zhenglimindesign-ing/roleward-job-hunting",
+  "license": "MIT",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Roleward Job Hunting",
+    "shortDescription": "Choose worthwhile jobs",
+    "longDescription": "Help a job seeker decide which supplied opportunities deserve attention, position real experience truthfully, and keep an inspectable local record. Current public Alpha requires a local workspace and Python 3.11+ for persistence. Current-job discovery additionally requires host web/search tools. Resume exports need the separately declared requirements-resume.txt dependencies. It does not apply for jobs or send messages. Second-host acceptance and human usefulness remain separate from package validation.",
+    "developerName": "Limin Zheng",
+    "category": "Productivity",
+    "capabilities": [
+      "Evaluate a supplied job description",
+      "Preserve candidate evidence",
+      "Track job-search decisions"
+    ],
+    "defaultPrompt": [
+      "Help me assess this fictional job description using only the candidate evidence I provide.",
+      "Help me get started from my resume and current career goals.",
+      "Record the outcome I explicitly report without inferring a permanent preference."
+    ],
+    "websiteURL": "https://github.com/zhenglimindesign-ing/roleward-job-hunting",
+    "supportURL": "https://github.com/zhenglimindesign-ing/roleward-job-hunting/issues",
+    "logo": "./assets/icon.svg",
+    "composerIcon": "./assets/icon.svg",
+    "privacyPolicyURL": "https://github.com/zhenglimindesign-ing/roleward-job-hunting/blob/codex/distribution-prep-20261013/directory-plugins/roleward-job-hunting/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/zhenglimindesign-ing/roleward-job-hunting/blob/main/LICENSE"
+  }
+}

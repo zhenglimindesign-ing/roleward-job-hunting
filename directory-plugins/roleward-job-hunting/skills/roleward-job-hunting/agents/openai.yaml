@@ -1,0 +1,7 @@
+interface:
+  display_name: "Roleward Job Hunting"
+  short_description: "Choose worthwhile jobs"
+  default_prompt: "Help me assess this fictional job description using only the candidate evidence I provide."
+policy:
+  products: ["CODEX"]
+  allow_implicit_invocation: true

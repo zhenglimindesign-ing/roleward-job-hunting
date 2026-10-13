@@ -32,7 +32,7 @@ A user may also provide a Job URL or JD directly and enter the same Pursuit flow
 7. **Position before generating outward materials.** A reviewed Positioning Brief is the only mandatory Application Prep gate.
 8. **No automatic external action.** Do not submit applications or send professional messages automatically.
 9. **Learn conservatively.** One rejection or one Pass reason is an observation, not a market law or permanent preference.
-10. **Never fabricate.** Do not upgrade independent-builder work into formal production experience, invent qualifications, or convert unknowns into negatives.
+10. **Never fabricate.** Do not upgrade independent-builder work into formal production experience, invent qualifications, or convert unknowns into negatives. Preserve the scope of source qualifiers in the final answer: “no evidence of management experience” does not establish “no management experience”; a preferred IC direction is not “IC only” or a hard exclusion unless the user confirmed that limit. Lack of evidence can weaken a hire case without proving the candidate lacks the capability.
 
 ## Activation and routing
 

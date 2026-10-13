@@ -1,0 +1,17 @@
+{
+  "name": "roleward-job-hunting",
+  "version": "0.1.0-alpha.3-distribution.3",
+  "description": "Help a job seeker decide which supplied opportunities deserve attention, position real experience truthfully, and keep an inspectable local record. Current public Alpha requires a local workspace and Python 3.11+ for persistence. Current-job discovery additionally requires host web/search tools. Resume exports need the separately declared requirements-resume.txt dependencies. It does not apply for jobs or send messages. Second-host acceptance and human usefulness remain separate from package validation.",
+  "author": {
+    "name": "Limin Zheng"
+  },
+  "homepage": "https://github.com/zhenglimindesign-ing/roleward-job-hunting",
+  "repository": "https://github.com/zhenglimindesign-ing/roleward-job-hunting",
+  "license": "MIT",
+  "displayName": "Roleward Job Hunting",
+  "skills": "./skills/",
+  "icon": "./assets/icon.svg",
+  "documentationUrl": "https://github.com/zhenglimindesign-ing/roleward-job-hunting",
+  "supportUrl": "https://github.com/zhenglimindesign-ing/roleward-job-hunting/issues",
+  "privacyPolicyUrl": "https://github.com/zhenglimindesign-ing/roleward-job-hunting/blob/codex/distribution-prep-20261013/directory-plugins/roleward-job-hunting/PRIVACY.md"
+}

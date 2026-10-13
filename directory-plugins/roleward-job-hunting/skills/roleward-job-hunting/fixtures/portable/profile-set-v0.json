@@ -1,0 +1,135 @@
+{
+  "id": "portable-profile-set-v0",
+  "kind": "portable_profile_set",
+  "input": {
+    "profiles": [
+      {
+        "profile_id": "P1-direct-enterprise-ai",
+        "career_anchor": "Senior enterprise SaaS PM with direct production LLM workflow ownership, API/platform experience, and no sponsorship constraint in target market.",
+        "direction": "Senior AI platform/product roles with strong ownership.",
+        "geography": ["United Kingdom"],
+        "authorization_state": "eligible_now",
+        "jobs": [
+          {
+            "job_id": "P1-J1",
+            "title": "Senior Product Manager, AI Platform",
+            "summary": "Own enterprise LLM platform roadmap, reliability, developer APIs, and human-review workflows.",
+            "expected_pursuit": "pursue",
+            "stress": "clear direct positive"
+          },
+          {
+            "job_id": "P1-J2",
+            "title": "Consumer Growth PM, AI Social",
+            "summary": "Own viral growth loops and creator monetization for a consumer AI social app.",
+            "expected_pursuit": "pass",
+            "stress": "strong PM capability but wrong confirmed direction"
+          }
+        ]
+      },
+      {
+        "profile_id": "P2-career-transition",
+        "career_anchor": "Senior fintech/infrastructure PM with strong B2B systems evidence and independent LLM/eval projects, but no formal production-AI ownership.",
+        "direction": "Transition into enterprise AI Product without discarding prior seniority and regulated-domain depth.",
+        "geography": ["Germany"],
+        "authorization_state": "sponsorship_required",
+        "jobs": [
+          {
+            "job_id": "P2-J1",
+            "title": "AI Product Manager, Regulated Workflows",
+            "summary": "Own AI-assisted enterprise workflows in financial compliance; production AI experience preferred but regulated product depth is core.",
+            "expected_pursuit": "pursue",
+            "stress": "credible bridge with imperfect literal AI fit"
+          },
+          {
+            "job_id": "P2-J2",
+            "title": "Lead PM, Foundation Model Serving",
+            "summary": "Requires years of direct production model-serving ownership, GPU inference economics, and ML platform leadership.",
+            "expected_pursuit": "pass",
+            "stress": "AI title match but structural capability/screening gap"
+          }
+        ]
+      },
+      {
+        "profile_id": "P3-sponsorship-dependent",
+        "career_anchor": "Experienced data-platform PM with direct role capability match.",
+        "direction": "Senior data/AI platform PM roles.",
+        "geography": ["Netherlands"],
+        "authorization_state": "sponsorship_required",
+        "jobs": [
+          {
+            "job_id": "P3-J1",
+            "title": "Senior Data Platform PM",
+            "summary": "Strong functional match; role explicitly offers sponsorship for international hires.",
+            "expected_pursuit": "pursue",
+            "stress": "role-level sponsorship confirmed"
+          },
+          {
+            "job_id": "P3-J2",
+            "title": "Senior Data Platform PM",
+            "summary": "Strong functional match; employer hires internationally but this role says nothing about sponsorship.",
+            "expected_pursuit": "verify_first",
+            "stress": "employer-level evidence must not become role-level certainty"
+          }
+        ]
+      },
+      {
+        "profile_id": "P4-senior-scope-reset",
+        "career_anchor": "Director-level B2B product leader with 12 years of experience and moderate applied-AI exposure.",
+        "direction": "Senior/Lead AI Product with meaningful ownership; does not want a major long-term scope reset.",
+        "geography": ["United States"],
+        "authorization_state": "eligible_now",
+        "jobs": [
+          {
+            "job_id": "P4-J1",
+            "title": "Associate Product Manager, AI Tools",
+            "summary": "Interesting AI exposure but junior execution role with little ownership.",
+            "expected_pursuit": "pass",
+            "stress": "high topic relevance but unacceptable reset cost"
+          },
+          {
+            "job_id": "P4-J2",
+            "title": "Principal Product Manager, Enterprise AI",
+            "summary": "Own enterprise AI strategy and platform adoption; direct enterprise leadership is core, AI depth can be adjacent.",
+            "expected_pursuit": "pursue",
+            "stress": "career-value and ownership continuity"
+          }
+        ]
+      },
+      {
+        "profile_id": "P5-sparse-uncertain-context",
+        "career_anchor": "Five-year generalist PM resume with limited detail and no reliable work-authorization information.",
+        "direction": "Interested in AI Product but target seniority and trade-offs are still unclear.",
+        "geography": ["Canada"],
+        "authorization_state": "not_sure",
+        "jobs": [
+          {
+            "job_id": "P5-J1",
+            "title": "Product Manager, AI Automation",
+            "summary": "Broad AI workflow PM role; source has limited sponsorship detail and candidate evidence is sparse.",
+            "expected_pursuit": "verify_first",
+            "stress": "low evidence confidence must not become fabricated mismatch"
+          },
+          {
+            "job_id": "P5-J2",
+            "title": "Senior Staff AI Product Lead",
+            "summary": "Requires senior organization-wide AI ownership and deep production track record absent from available evidence.",
+            "expected_pursuit": "pass",
+            "stress": "sparse context still permits clear structural mismatch when source requirement is strong"
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "profile_count": 5,
+    "job_count": 10,
+    "must_cover": [
+      "direct positive",
+      "direction mismatch",
+      "career transition",
+      "sponsorship verification",
+      "seniority reset",
+      "sparse evidence confidence"
+    ]
+  }
+}

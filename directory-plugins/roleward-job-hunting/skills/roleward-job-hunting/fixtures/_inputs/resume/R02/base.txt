@@ -1,0 +1,20 @@
+Jordan Patel
+jordan.patel@example.com
+https://example.com/profile/r02
+PROFESSIONAL SUMMARY
+Service designer interested in AI and digital transformation.
+EXPERIENCE
+Cedar Studio | Senior Service Designer | 2019-2025
+Led discovery with 30 operations users for a regulated onboarding service.
+Prioritized workflow changes with engineering and compliance teams.
+Reduced application completion time by 20% after usability testing.
+PROJECTS
+Independent projects | Builder | 2025-2026
+Built a simulated AI support-triage prototype using public example tickets.
+Evaluated 60 synthetic tickets for routing errors; no customer production deployment.
+EDUCATION
+Example University | BA Business | 2011
+SKILLS
+Product strategy, customer research, roadmap prioritization
+LANGUAGES
+English
