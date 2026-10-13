@@ -104,7 +104,8 @@
     "license notices retained in standalone Skill copies",
     "review-branch privacy URL",
     "separate prerelease wrapper version for the review iteration",
-    "Mock sending test subprocess no longer inherits credential environment variables"
+    "Mock sending test subprocess no longer inherits credential environment variables",
+    "OpenAI scan remediation: termsOfServiceURL points to the existing public software license; no additional legal conditions introduced"
   ],
   "runtime_claims": "Codex local and bounded Claude Code tests only; official portal checks are recorded separately. No new ChatGPT/Work execution claim.",
   "added_license_notices": {},
@@ -122,6 +123,6 @@
     },
     "scope": "Preserve evidence qualifiers / distinguish universal counterexamples from new patterns; no workflow or history retrieval removed."
   },
-  "candidate_package_version": "0.1.0-alpha.3-distribution.2",
+  "candidate_package_version": "0.1.0-alpha.3-distribution.3",
   "source_release_unchanged": true
 }
