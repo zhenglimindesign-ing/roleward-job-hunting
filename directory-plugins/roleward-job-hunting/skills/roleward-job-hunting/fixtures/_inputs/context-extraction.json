@@ -1,0 +1,17 @@
+{
+  "source_id": "smoke-source",
+  "career_evidence": [
+    {"domain": "experience", "statement": "Led B2B product work for regulated financial workflows"}
+  ],
+  "direction": {
+    "target_roles": ["AI Product Manager"],
+    "seniority": ["Senior"]
+  },
+  "search_policy": {
+    "geographies": ["Germany", "Netherlands"],
+    "authorization_state": "not_sure"
+  },
+  "preferences": [
+    "Prefer meaningful product ownership over implementation-only delivery"
+  ]
+}

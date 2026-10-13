@@ -1,0 +1,469 @@
+{
+  "case_id": "R01",
+  "fictional": true,
+  "review_simulated": true,
+  "job": {
+    "title": "Senior Product Manager",
+    "text": "Enterprise B2B platform PM owning roadmap, adoption and customer outcomes."
+  },
+  "positioning": "Lead with enterprise product outcomes and customer discovery. Keep all employer/title/date facts.",
+  "base": {
+    "schema_version": "resume_ir.v1",
+    "source_kind": "parsed_resume",
+    "header": {
+      "name": "Alex Morgan",
+      "name_source_line_id": "source-1",
+      "contacts": [
+        {
+          "kind": "email",
+          "text": "alex.morgan@example.com",
+          "source_line_id": "source-2"
+        },
+        {
+          "kind": "link",
+          "text": "https://example.com/profile/r01",
+          "source_line_id": "source-3"
+        }
+      ]
+    },
+    "sections": [
+      {
+        "id": "summary",
+        "title": "Professional Summary",
+        "kind": "summary",
+        "lines": [
+          {
+            "id": "source-5",
+            "text": "B2B product manager with experience delivering software and working across teams.",
+            "kind": "body",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-5"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "experience",
+        "title": "Professional Experience",
+        "kind": "experience",
+        "entries": [
+          {
+            "id": "entry-1",
+            "header_lines": [
+              {
+                "id": "source-7",
+                "text": "Harbor Systems | Senior Product Manager | 2021-2026",
+                "kind": "metadata",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-7"
+                ]
+              }
+            ],
+            "bullet_lines": [
+              {
+                "id": "source-8",
+                "text": "Owned the roadmap for a workflow platform used by 18 enterprise teams.",
+                "kind": "bullet",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-8"
+                ]
+              },
+              {
+                "id": "source-9",
+                "text": "Reduced onboarding time from 42 to 28 days through customer research and workflow redesign.",
+                "kind": "bullet",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-9"
+                ]
+              },
+              {
+                "id": "source-10",
+                "text": "Increased paid adoption by 25% after prioritizing account-management workflows.",
+                "kind": "bullet",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-10"
+                ]
+              },
+              {
+                "id": "source-11",
+                "text": "Facilitated weekly planning meetings and wrote internal release updates.",
+                "kind": "bullet",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-11"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "entry-2",
+            "header_lines": [
+              {
+                "id": "source-13",
+                "text": "Elm Software | Product Manager | 2017-2021",
+                "kind": "metadata",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-13"
+                ]
+              }
+            ],
+            "bullet_lines": [
+              {
+                "id": "source-14",
+                "text": "Launched a permissions dashboard for 12 customer accounts.",
+                "kind": "bullet",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-14"
+                ]
+              },
+              {
+                "id": "source-15",
+                "text": "Interviewed operations managers to prioritize access-control improvements.",
+                "kind": "bullet",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-15"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "education",
+        "title": "Education",
+        "kind": "education",
+        "lines": [
+          {
+            "id": "source-17",
+            "text": "Example University | BA Business | 2011",
+            "kind": "body",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-17"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "skills",
+        "title": "Skills",
+        "kind": "skills",
+        "lines": [
+          {
+            "id": "source-19",
+            "text": "Product strategy, customer research, roadmap prioritization",
+            "kind": "body",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-19"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "languages",
+        "title": "Languages",
+        "kind": "languages",
+        "lines": [
+          {
+            "id": "source-21",
+            "text": "English",
+            "kind": "body",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-21"
+            ]
+          }
+        ]
+      }
+    ],
+    "provenance": {
+      "source_file_id": "R01-base",
+      "source_content_hash": "b4a5aee53089e2f7929b795c8d54e2d99389d648ed1f21e15a4ca3650c39067d",
+      "parser_version": "source-text-v1",
+      "facts": [
+        {
+          "id": "source-1",
+          "text": "Alex Morgan",
+          "fact_kind": "name",
+          "source_kind": "resume",
+          "source_id": "source-1",
+          "source_page": 1
+        },
+        {
+          "id": "source-2",
+          "text": "alex.morgan@example.com",
+          "fact_kind": "contact",
+          "source_kind": "resume",
+          "source_id": "source-2",
+          "source_page": 1
+        },
+        {
+          "id": "source-3",
+          "text": "https://example.com/profile/r01",
+          "fact_kind": "contact",
+          "source_kind": "resume",
+          "source_id": "source-3",
+          "source_page": 1
+        },
+        {
+          "id": "source-4",
+          "text": "PROFESSIONAL SUMMARY",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-4",
+          "source_page": 1
+        },
+        {
+          "id": "source-5",
+          "text": "B2B product manager with experience delivering software and working across teams.",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-5",
+          "source_page": 1
+        },
+        {
+          "id": "source-6",
+          "text": "EXPERIENCE",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-6",
+          "source_page": 1
+        },
+        {
+          "id": "source-7",
+          "text": "Harbor Systems | Senior Product Manager | 2021-2026",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-7",
+          "source_page": 1
+        },
+        {
+          "id": "source-8",
+          "text": "Owned the roadmap for a workflow platform used by 18 enterprise teams.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-8",
+          "source_page": 1
+        },
+        {
+          "id": "source-9",
+          "text": "Reduced onboarding time from 42 to 28 days through customer research and workflow redesign.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-9",
+          "source_page": 1
+        },
+        {
+          "id": "source-10",
+          "text": "Increased paid adoption by 25% after prioritizing account-management workflows.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-10",
+          "source_page": 1
+        },
+        {
+          "id": "source-11",
+          "text": "Facilitated weekly planning meetings and wrote internal release updates.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-11",
+          "source_page": 1
+        },
+        {
+          "id": "source-12",
+          "text": "EXPERIENCE",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-12",
+          "source_page": 1
+        },
+        {
+          "id": "source-13",
+          "text": "Elm Software | Product Manager | 2017-2021",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-13",
+          "source_page": 1
+        },
+        {
+          "id": "source-14",
+          "text": "Launched a permissions dashboard for 12 customer accounts.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-14",
+          "source_page": 1
+        },
+        {
+          "id": "source-15",
+          "text": "Interviewed operations managers to prioritize access-control improvements.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-15",
+          "source_page": 1
+        },
+        {
+          "id": "source-16",
+          "text": "EDUCATION",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-16",
+          "source_page": 1
+        },
+        {
+          "id": "source-17",
+          "text": "Example University | BA Business | 2011",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-17",
+          "source_page": 1
+        },
+        {
+          "id": "source-18",
+          "text": "SKILLS",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-18",
+          "source_page": 1
+        },
+        {
+          "id": "source-19",
+          "text": "Product strategy, customer research, roadmap prioritization",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-19",
+          "source_page": 1
+        },
+        {
+          "id": "source-20",
+          "text": "LANGUAGES",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-20",
+          "source_page": 1
+        },
+        {
+          "id": "source-21",
+          "text": "English",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-21",
+          "source_page": 1
+        }
+      ]
+    }
+  },
+  "state": {
+    "schema_version": "roleward.job-hunting.state.v0",
+    "profile": {
+      "career_evidence": [],
+      "direction": {},
+      "constraints": [],
+      "preferences": [],
+      "sources": []
+    },
+    "search_policy": {},
+    "opportunities": {
+      "opp-example-hiring-team-senior-product-manager-98e827dfadf0": {
+        "id": "opp-example-hiring-team-senior-product-manager-98e827dfadf0",
+        "company": "Example Hiring Team",
+        "title": "Senior Product Manager",
+        "canonical_url": "https://example.com/jobs/r01",
+        "source_snapshots": [
+          {
+            "id": "snap-4a682fbf1c315af3",
+            "observed_at": "2026-10-03T17:52:01.371506+00:00",
+            "canonical_url": "https://example.com/jobs/r01",
+            "title": "Senior Product Manager",
+            "company": "Example Hiring Team",
+            "location": null,
+            "source_sha256": "4a682fbf1c315af3da4e368ac9b4686df19a7c9dfe3c67792ebc14a3ca773b32",
+            "source_text": "Enterprise B2B platform PM owning roadmap, adoption and customer outcomes.",
+            "live_status": "unverified"
+          }
+        ],
+        "pursuit_assessments": [],
+        "pursuit_decisions": [],
+        "positioning_revisions": [
+          {
+            "id": "positioning-4bb11a3d8362",
+            "status": "draft",
+            "created_at": "2026-10-03T17:52:01.371520+00:00",
+            "source_snapshot_id": "snap-4a682fbf1c315af3",
+            "pursuit_assessment_id": null,
+            "content": {
+              "thesis": "Lead with enterprise product outcomes and customer discovery. Keep all employer/title/date facts.",
+              "proof_points": [
+                "source-8",
+                "source-14"
+              ],
+              "credibility_gaps": []
+            }
+          },
+          {
+            "id": "positioning-d3470b33ca2b",
+            "status": "reviewed",
+            "created_at": "2026-10-03T17:52:01.371536+00:00",
+            "parent_revision_id": "positioning-4bb11a3d8362",
+            "source_snapshot_id": "snap-4a682fbf1c315af3",
+            "pursuit_assessment_id": null,
+            "content": {
+              "thesis": "Lead with enterprise product outcomes and customer discovery. Keep all employer/title/date facts.",
+              "proof_points": [
+                "source-8",
+                "source-14"
+              ],
+              "credibility_gaps": []
+            }
+          }
+        ],
+        "application_artifacts": [],
+        "application": {
+          "status": "not_applied",
+          "outcomes": []
+        },
+        "created_at": "2026-10-03T17:52:01.371513+00:00",
+        "current_snapshot_id": "snap-4a682fbf1c315af3",
+        "updated_at": "2026-10-03T17:52:01.371516+00:00",
+        "current_positioning_id": "positioning-d3470b33ca2b",
+        "current_reviewed_positioning_id": "positioning-d3470b33ca2b"
+      }
+    },
+    "scan_runs": {},
+    "signals": {
+      "decision_observations": [],
+      "inferred_signals": [],
+      "learned_signals": []
+    },
+    "created_at": "2026-10-03T17:52:01.371061+00:00",
+    "updated_at": "2026-10-03T17:52:01.371061+00:00",
+    "audit_log": [
+      {
+        "event": "positioning_draft_recorded",
+        "opportunity_id": "opp-example-hiring-team-senior-product-manager-98e827dfadf0",
+        "positioning_id": "positioning-4bb11a3d8362",
+        "at": "2026-10-03T17:52:01.371530+00:00"
+      },
+      {
+        "event": "positioning_reviewed",
+        "opportunity_id": "opp-example-hiring-team-senior-product-manager-98e827dfadf0",
+        "positioning_id": "positioning-d3470b33ca2b",
+        "at": "2026-10-03T17:52:01.371541+00:00"
+      }
+    ]
+  },
+  "opportunity_id": "opp-example-hiring-team-senior-product-manager-98e827dfadf0",
+  "protected_line_ids": [
+    "source-8",
+    "source-14"
+  ],
+  "reviewed_positioning_id": "positioning-d3470b33ca2b"
+}

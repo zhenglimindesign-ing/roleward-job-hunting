@@ -1,0 +1,19 @@
+Morgan Ellis
+morgan.ellis@example.com
+https://example.com/profile/r05
+PROFESSIONAL SUMMARY
+Senior payments product manager focused on merchant onboarding, risk controls and measurable delivery outcomes.
+EXPERIENCE
+Sequoia Payments | Senior Product Manager | 2021-2026
+Owned merchant onboarding and fraud-control roadmaps for a payments platform.
+Reduced merchant activation time by 35% through onboarding workflow improvements.
+Led engineering, risk and operations alignment for a phased release across 3 markets.
+EXPERIENCE
+Juniper Commerce | Product Manager | 2017-2021
+Launched merchant reconciliation tools adopted by 24 enterprise accounts.
+EDUCATION
+Example University | BA Business | 2011
+SKILLS
+Product strategy, customer research, roadmap prioritization
+LANGUAGES
+English

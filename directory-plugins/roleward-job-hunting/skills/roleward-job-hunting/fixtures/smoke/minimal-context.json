@@ -1,0 +1,14 @@
+{
+  "id": "smoke-minimal-context",
+  "kind": "context",
+  "input": {
+    "career_anchor": "Senior B2B product manager with fintech platform experience",
+    "direction": "Senior AI product roles",
+    "geography": ["Germany"],
+    "authorization_state": "sponsorship-required"
+  },
+  "expected": {
+    "first_scan_ready": true,
+    "must_not_require": ["salary_minimum", "company_size", "work_mode"]
+  }
+}

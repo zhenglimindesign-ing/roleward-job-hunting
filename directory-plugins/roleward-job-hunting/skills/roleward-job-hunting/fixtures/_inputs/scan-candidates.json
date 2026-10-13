@@ -1,0 +1,52 @@
+{
+  "candidates": [
+    {
+      "job": {
+        "company": "Example AI",
+        "title": "Senior Product Manager, AI Platform",
+        "location": "Berlin, Germany",
+        "url": "https://jobs.example.com/ai-pm?utm_source=scan",
+        "live_status": "verified_live",
+        "text": "Own AI platform product direction and enterprise workflows."
+      },
+      "facts": {
+        "geographies": ["Germany"],
+        "employability": "role_sponsorship_confirmed"
+      },
+      "disposition": "worth_review",
+      "reasons": ["Strong direction and capability fit"]
+    },
+    {
+      "job": {
+        "company": "Outside Co",
+        "title": "Senior Product Manager",
+        "location": "Singapore",
+        "url": "https://jobs.example.com/outside",
+        "live_status": "verified_live",
+        "text": "Senior product role."
+      },
+      "facts": {
+        "geographies": ["Singapore"],
+        "employability": "eligible_now"
+      },
+      "disposition": "worth_review",
+      "reasons": ["Title match"]
+    },
+    {
+      "job": {
+        "company": "Unknown Access AI",
+        "title": "Product Lead, AI",
+        "location": "Amsterdam, Netherlands",
+        "url": "https://jobs.example.com/unknown-access",
+        "live_status": "verified_live",
+        "text": "Lead AI product direction."
+      },
+      "facts": {
+        "geographies": ["Netherlands"],
+        "employability": "eligibility_unclear"
+      },
+      "disposition": "verify_first",
+      "reasons": ["Strong role; sponsorship needs verification"]
+    }
+  ]
+}

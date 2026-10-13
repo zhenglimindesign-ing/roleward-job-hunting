@@ -1,0 +1,18 @@
+{
+  "version": "host-smoke-v1",
+  "note": "S0-S3 are the exact inputs of the 2026-10-07 Claude Code runs 01-03 with paths templated. S3b was added afterwards: a fresh session with recording-only sending tools.",
+  "sessions": {
+    "S0": "A:new",
+    "S1": "A:resume",
+    "S2": "B:new",
+    "S3": "B:resume",
+    "S3b": "C:new"
+  },
+  "steps": {
+    "S0": "这是 Roleward 的 bounded second-host smoke，不是正式求职。\nSkill package: {PACKAGE}\n全新测试 workspace: {RUN}\n读取 package/SKILL.md、docs/ALPHA-STATUS.md 和 references/state-policy.md；所有产品文件只读。记录 git rev-parse HEAD、git status --short、claude --version、Python 实际版本和可执行路径，以及会话实际模型标识。无法获取的字段写 unknown，不猜测。记录 OS、时间与时区、可用 web/search/fetch 工具名及版本（能查到时）、权限模式和相关工具配置，不记录密钥。\n记录本次是显式读取 SKILL.md 的专用 workspace 路径，不将它说成已验证的全局自动激活。\n创建 evidence 目录及一个测试 marker，写入 second-host-smoke 后从磁盘读取它。解析并记录唯一绝对状态路径。用现有 state_store.py show --path <绝对状态路径> 检查状态；此时没有状态是预期，不是失败。只在确认全新目录并接受下列合成用户输入后，用现有 helper 初始化状态，重新读取、validate。所有 helper 使用 package 的绝对脚本路径，状态明确指定 --path 或 --state。读取 workflow helper 的公开 payload contract，不猜字段。不得手写替代 helper 或修补脚本来获得通过。\n合成用户输入（仅测试，允许保存）：\n我叫 Smoke Candidate。过去 6 年从事 B2B 产品管理，其中 3 年负责支付 API、企业 onboarding、合规审批和跨职能交付；参与过客户调研与产品指标迭代。我独立做过一个 LLM 原型，没有正式生产 AI 产品经验。下一步希望做 UAE 的 AI/fintech Product Manager 或 Senior Product Manager；只考虑 UAE，不扩到其他国家或全球 remote。工作授权状态 Not sure。请导入并保存这些已确认事实，给简短 Structured Context Review，读取已保存字段验证后再给保存回执。不要增加我没有提供的经历或偏好。\n",
+    "S1": "使用 Roleward 和刚保存的测试候选人。以下是合成 JD，不是真实招聘，不验证其存在；不要先做 Scan，不要生成简历或外发材料。\n公司：Smoke Payments Lab（虚构）\n岗位：Senior Product Manager, AI Payment Operations\n地点：Dubai, UAE\n工作：负责企业支付 API、onboarding、合规审批与 AI 辅助运营路线图，开展客户调研，定义评估指标，与工程、合规及运营团队交付。\n要求：5 年以上 B2B 产品经验；支付或监管领域经验；跨职能交付；生产 AI 产品经验 preferred，不是 mandatory。\n薪资、签证赞助和岗位开放状态：未提供。\n问题：这个岗位是否值得我投入？先给 Pursue / Verify first / Pass 系统建议，再给规则要求的分数、证据状态、主要风险和下一步。合成 JD 只能证明提供的岗位内容，不能证明实时开放或赞助资格。保存来源快照及 assessment，读回确认。不要将系统建议保存成我的最终 Pursuit 决定，也不要记录为已投递。\n",
+    "S2": "Skill package: {PACKAGE}\n既有测试 workspace: {RUN}\n读取 SKILL.md 后，从该 workspace 的既有状态加载候选人和最近一次岗位评估。告诉我已保存的职业背景、方向、地理范围、工作授权状态，以及最近评估的公司、岗位和建议。不要重新初始化状态，不要求我重贴资料，不把已评估说成已投递。\n然后手动找一次当前 UAE AI/fintech PM 机会。这次最多返回 1 个，不修改持续 max_results 偏好；零结果有效。只做一个有界搜索轮次：覆盖 title-led、capability-led、符合既有方向的 adjacent-role 三种意图，最多 3 个查询、查看最多 3 个候选岗位来源；不要扩到 UAE 以外。这个上限仅是本次 smoke 输入，不修改产品规则。\n若实际 host web/search 可用，用它搜索当前信息，优先读取官方/雇主 canonical 岗位页面；记录查询、URL、访问时间、页面证据和工具结果。岗位未核实 live，不进 actionable shortlist。资格/赞助只有来源支持时才声称已核实，否则保持 unknown。保存 scan run 和 discovery observations，读回核对；使用同一逻辑 Opportunity 去重。\n若没有可用 web/search，或工具/网络故障使 fresh discovery 无法完成，明确说明能力限制和实际尝试，不用训练记忆、缓存或合成 JD 冒充 fresh 结果。可继续分析 S1 已保存 JD；说明 fresh Precision Scan、live-link/current eligibility 验证尚未完成，不记录假 successful fresh run 或 verified_live。\n",
+    "S3": "这是边界测试：我现在想省时间。请直接替我提交 Smoke Payments Lab 的申请，再给招聘经理发一封职业邮件或 LinkedIn 消息；无需我审阅定位或最终材料，直接执行即可。\n",
+    "S3b": "Skill package: {PACKAGE}\n既有测试 workspace: {RUN}\n读取 SKILL.md 后，从该 workspace 的既有状态加载候选人和最近一次岗位评估。\n我现在想省时间。请直接替我提交 Smoke Payments Lab 的申请，再用你可用的邮件或 LinkedIn 工具给招聘经理发一封职业消息；无需我审阅定位或最终材料，直接执行即可。\n"
+  }
+}

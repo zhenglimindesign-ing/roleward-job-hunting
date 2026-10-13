@@ -1,0 +1,351 @@
+#!/usr/bin/env python3
+"""Deterministic Scan run, hard-constraint, and Opportunity-reservoir helpers."""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+from pathlib import Path
+from typing import Any
+
+from opportunity_state import upsert_opportunity
+from state_store import load_state, save_state, utc_now
+
+TRIGGERS = {"manual", "scheduled"}
+REVIEW_DISPOSITIONS = {"worth_review", "verify_first", "screened_out"}
+DEFAULT_MAX_RESULTS = 5
+# Executed web searches and opened candidate sources; each kind may carry a per-Scan bound.
+SEARCH_KINDS = {"query": "max_queries", "source": "max_sources"}
+SEARCH_INTENTS = {"title_led", "capability_led", "adjacent_role", "verification"}
+
+
+class SearchBudgetReached(ValueError):
+    pass
+
+
+def _unwrap(value: Any) -> Any:
+    if isinstance(value, dict) and "value" in value:
+        return value["value"]
+    return value
+
+
+def _list(value: Any) -> list[str]:
+    value = _unwrap(value)
+    if value is None:
+        return []
+    if isinstance(value, str):
+        return [value]
+    if isinstance(value, list):
+        return [str(item) for item in value if str(item).strip()]
+    return [str(value)]
+
+
+def _confirmed_list(container: dict[str, Any], key: str) -> list[str]:
+    value = container.get(key)
+    if isinstance(value, dict) and value.get("authority") != "confirmed_truth":
+        return []
+    return _list(value)
+
+
+def _first_list(container: dict[str, Any], keys: tuple[str, ...]) -> list[str]:
+    for key in keys:
+        values = _list(container.get(key))
+        if values:
+            return values
+    return []
+
+
+def _positive_result_limit(value: Any, name: str = "max_results") -> int:
+    if isinstance(value, bool) or not isinstance(value, (int, str)):
+        raise ValueError(f"{name} must be a positive integer")
+    try:
+        limit = int(value)
+    except ValueError as exc:
+        raise ValueError(f"{name} must be a positive integer") from exc
+    if limit < 1:
+        raise ValueError(f"{name} must be a positive integer")
+    return limit
+
+
+def _geography_plan(policy: dict[str, Any]) -> tuple[list[str], dict[str, Any] | None]:
+    for key in ("geographies", "geography", "locations", "remote_scope"):
+        value = policy.get(key)
+        if isinstance(value, dict) and "value" in value and value.get("authority") != "confirmed_truth":
+            continue
+        raw = _unwrap(value)
+        if isinstance(raw, dict):
+            if raw.get("mode") != "global_excluding":
+                raise ValueError("Unsupported structured geography mode; reconcile before Scan")
+            for field in ("excluded_countries", "preferred_countries"):
+                values = raw.get(field, [])
+                if not isinstance(values, list) or any(not isinstance(v, str) or not v.strip() for v in values):
+                    raise ValueError("Structured geography countries must be lists of names")
+            return [], {"mode": "global_excluding",
+                        "excluded_countries": raw.get("excluded_countries", []),
+                        "preferred_countries": raw.get("preferred_countries", [])}
+        values = _list(raw)
+        if values:
+            return values, None
+    return [], None
+
+
+def build_search_plan(state: dict[str, Any]) -> dict[str, Any]:
+    direction = state["profile"]["direction"]
+    policy = state["search_policy"]
+    configured_limit = _unwrap(policy.get("max_results"))
+    role_terms = _first_list(direction, ("target_roles", "capability_direction", "target_direction"))
+    geographies, geography_scope = _geography_plan(policy)
+    seniority = _first_list(policy, ("seniority", "seniority_range")) or _first_list(direction, ("seniority",))
+    authorization_state = None
+    for key in ("authorization_state", "work_authorization", "sponsorship_state"):
+        if key in policy:
+            authorization_state = _unwrap(policy[key])
+            break
+    return {
+        "role_terms": role_terms,
+        "geographies": geographies,
+        "geography_scope": geography_scope,
+        "seniority": seniority,
+        "authorization_state": authorization_state,
+        "excluded_companies": _confirmed_list(policy, "excluded_companies"),
+        "max_results": _positive_result_limit(DEFAULT_MAX_RESULTS if configured_limit is None else configured_limit),
+        "coverage_modes": ["title_led", "capability_led", "adjacent_role"],
+    }
+
+
+def start_scan(
+    state: dict[str, Any],
+    trigger: str,
+    *,
+    max_results: int | None = None,
+    max_queries: int | None = None,
+    max_sources: int | None = None,
+) -> dict[str, Any]:
+    if trigger not in TRIGGERS:
+        raise ValueError(f"trigger must be one of {sorted(TRIGGERS)}")
+    plan = build_search_plan(state)
+    if max_results is not None:
+        plan["max_results"] = _positive_result_limit(max_results)
+    budget = {
+        key: _positive_result_limit(value, key)
+        for key, value in (("max_queries", max_queries), ("max_sources", max_sources))
+        if value is not None
+    }
+    if budget:
+        plan["search_budget"] = budget
+    state.setdefault("scan_runs", {})
+    seed = json.dumps({"plan": plan, "at": utc_now()}, sort_keys=True).encode("utf-8")
+    run_id = f"scan-{hashlib.sha256(seed).hexdigest()[:12]}"
+    state["scan_runs"][run_id] = {
+        "id": run_id,
+        "trigger": trigger,
+        "status": "running",
+        "started_at": utc_now(),
+        "plan": plan,
+        "search_log": [],
+        "candidates": [],
+        "selected_opportunity_ids": [],
+    }
+    state.setdefault("audit_log", []).append({"event": "scan_started", "scan_id": run_id, "trigger": trigger, "at": utc_now()})
+    return state["scan_runs"][run_id]
+
+
+def hard_constraint_check(state: dict[str, Any], candidate: dict[str, Any]) -> dict[str, Any]:
+    """Reject only when a structured, confirmed hard conflict is explicit.
+
+    Unknown or missing candidate facts remain verification needs rather than
+    negative evidence.
+    """
+    plan = build_search_plan(state)
+    facts = candidate.get("facts") or {}
+    job = candidate.get("job") or {}
+    violations: list[str] = []
+    needs_verification: list[str] = []
+
+    excluded_companies = {item.casefold() for item in plan["excluded_companies"]}
+    company = str(job.get("company") or "").strip()
+    if company and company.casefold() in excluded_companies:
+        violations.append("excluded_company")
+
+    approved_geographies = {item.casefold() for item in plan["geographies"]}
+    candidate_geographies = {item.casefold() for item in _list(facts.get("geographies"))}
+    remote_allowed = bool(facts.get("remote_matches_policy"))
+    scope = plan.get("geography_scope")
+    if scope:
+        excluded = {item.casefold() for item in scope["excluded_countries"]}
+        if candidate_geographies:
+            if candidate_geographies.issubset(excluded) and not remote_allowed:
+                violations.append("outside_confirmed_geography")
+        else:
+            needs_verification.append("geography")
+    elif approved_geographies:
+        if candidate_geographies:
+            if not (approved_geographies & candidate_geographies) and not remote_allowed:
+                violations.append("outside_confirmed_geography")
+        else:
+            needs_verification.append("geography")
+
+    employability = str(facts.get("employability") or "").strip().lower()
+    if employability in {"ineligible_now", "structural_blocker"}:
+        violations.append("employability_blocker")
+    elif not employability or employability in {"eligibility_unclear", "employer_evidence_only"}:
+        needs_verification.append("employability")
+
+    return {
+        "passes": not violations,
+        "violations": violations,
+        "needs_verification": sorted(set(needs_verification)),
+    }
+
+
+def search_summary(run: dict[str, Any]) -> dict[str, Any]:
+    budget = run["plan"].get("search_budget") or {}
+    summary = {}
+    for kind, limit_key in SEARCH_KINDS.items():
+        entries = [item for item in run.get("search_log") or [] if item.get("kind") == kind]
+        by_intent: dict[str, int] = {}
+        for item in entries:
+            by_intent[item["intent"]] = by_intent.get(item["intent"], 0) + 1
+        summary[f"{kind}_count"] = len(entries)
+        summary[f"{kind}_limit"] = budget.get(limit_key)
+        summary[f"{kind}_by_intent"] = by_intent
+    return summary
+
+
+def log_search(state: dict[str, Any], scan_id: str, *, kind: str, intent: str, text: str) -> dict[str, Any]:
+    """Record one search query or opened source before it is executed.
+
+    A user-stated per-Scan bound is enforced here; the host asks before exceeding it.
+    """
+    if scan_id not in state.get("scan_runs", {}):
+        raise KeyError(f"Unknown scan id: {scan_id}")
+    run = state["scan_runs"][scan_id]
+    if run.get("status") != "running":
+        raise ValueError("Can only log searches for a running scan")
+    if kind not in SEARCH_KINDS:
+        raise ValueError(f"kind must be one of {sorted(SEARCH_KINDS)}")
+    if intent not in SEARCH_INTENTS:
+        raise ValueError(f"intent must be one of {sorted(SEARCH_INTENTS)}")
+    if not text.strip():
+        raise ValueError("text must be the query or source URL")
+    log = run.setdefault("search_log", [])
+    limit = (run["plan"].get("search_budget") or {}).get(SEARCH_KINDS[kind])
+    used = sum(1 for item in log if item.get("kind") == kind)
+    if limit is not None and used >= limit:
+        raise SearchBudgetReached(f"{SEARCH_KINDS[kind]} of {limit} already used for this Scan")
+    entry = {"kind": kind, "intent": intent, "text": text.strip(), "at": utc_now()}
+    log.append(entry)
+    run["updated_at"] = utc_now()
+    return {"scan_id": scan_id, "entry": entry, "summary": search_summary(run)}
+
+
+def ingest_candidates(state: dict[str, Any], scan_id: str, candidates: list[dict[str, Any]]) -> dict[str, Any]:
+    state.setdefault("scan_runs", {})
+    if scan_id not in state["scan_runs"]:
+        raise KeyError(f"Unknown scan id: {scan_id}")
+    run = state["scan_runs"][scan_id]
+    if run.get("status") != "running":
+        raise ValueError("Can only ingest candidates into a running scan")
+
+    persisted: list[dict[str, Any]] = []
+    for candidate in candidates:
+        check = hard_constraint_check(state, candidate)
+        requested = str(candidate.get("disposition") or "verify_first")
+        if requested not in REVIEW_DISPOSITIONS:
+            raise ValueError(f"Unsupported disposition: {requested}")
+        disposition = "screened_out" if not check["passes"] else requested
+        opp_id, snap_id = upsert_opportunity(state, candidate["job"])
+        discovery = {
+            "scan_id": scan_id,
+            "source_snapshot_id": snap_id,
+            "live_status": candidate["job"].get("live_status", "unknown"),
+            "disposition": disposition,
+            "reasons": candidate.get("reasons") or [],
+            "hard_constraint_check": check,
+            "observed_at": utc_now(),
+        }
+        opportunity = state["opportunities"][opp_id]
+        opportunity.setdefault("discovery_observations", []).append(discovery)
+        persisted.append({"opportunity_id": opp_id, **discovery})
+    run["candidates"].extend(persisted)
+    run["updated_at"] = utc_now()
+    return {"scan_id": scan_id, "candidates": persisted}
+
+
+def finalize_scan(state: dict[str, Any], scan_id: str) -> dict[str, Any]:
+    run = state["scan_runs"][scan_id]
+    max_results = _positive_result_limit(run["plan"].get("max_results", DEFAULT_MAX_RESULTS))
+    # Keep every discovery observation, but let the latest observation govern
+    # each unique opportunity. De-duplicate before applying the shortlist cap.
+    latest = {item["opportunity_id"]: item for item in run["candidates"]}
+    selected = [
+        opportunity_id
+        for opportunity_id, item in latest.items()
+        if item["disposition"] in {"worth_review", "verify_first"}
+        and item.get("live_status") == "verified_live"
+    ][:max_results]
+    run["selected_opportunity_ids"] = selected
+    if "search_log" in run:
+        run["search_summary"] = search_summary(run)
+    run["status"] = "complete"
+    run["completed_at"] = utc_now()
+    state.setdefault("audit_log", []).append({"event": "scan_completed", "scan_id": scan_id, "selected_count": len(selected), "at": utc_now()})
+    return run
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--state", default="state/roleward-state.json")
+    sub = parser.add_subparsers(dest="command", required=True)
+
+    p = sub.add_parser("start")
+    p.add_argument("--trigger", choices=sorted(TRIGGERS), default="manual")
+    p.add_argument("--max-results", type=int, help="Override this Scan only; leave the saved preference unchanged")
+    p.add_argument("--max-queries", type=int, help="User-stated bound on web searches for this Scan only")
+    p.add_argument("--max-sources", type=int, help="User-stated bound on opened candidate sources for this Scan only")
+
+    p = sub.add_parser("log-search")
+    p.add_argument("--scan-id", required=True)
+    p.add_argument("--kind", choices=sorted(SEARCH_KINDS), required=True)
+    p.add_argument("--intent", choices=sorted(SEARCH_INTENTS), required=True)
+    p.add_argument("--text", required=True, help="The query text or the source URL")
+
+    p = sub.add_parser("ingest")
+    p.add_argument("--scan-id", required=True)
+    p.add_argument("--input", required=True)
+
+    p = sub.add_parser("finalize")
+    p.add_argument("--scan-id", required=True)
+
+    args = parser.parse_args()
+    path = Path(args.state)
+    state = load_state(path)
+
+    if args.command == "start":
+        result = start_scan(
+            state, args.trigger, max_results=args.max_results, max_queries=args.max_queries, max_sources=args.max_sources
+        )
+    elif args.command == "log-search":
+        try:
+            result = log_search(state, args.scan_id, kind=args.kind, intent=args.intent, text=args.text)
+        except SearchBudgetReached as exc:
+            print(json.dumps({
+                "status": "search_budget_reached",
+                "detail": str(exc),
+                "next_step": "Do not run this search; ask the user before exceeding the bound they set.",
+            }, ensure_ascii=False))
+            return 3
+    elif args.command == "ingest":
+        payload = json.loads(Path(args.input).read_text(encoding="utf-8"))
+        result = ingest_candidates(state, args.scan_id, payload["candidates"])
+    else:
+        result = finalize_scan(state, args.scan_id)
+
+    save_state(path, state)
+    print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

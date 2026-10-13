@@ -1,0 +1,41 @@
+{
+  "id": "resume-alpha-v0",
+  "kind": "resume_acceptance_set",
+  "input": {
+    "cases": [
+      {
+        "case_id": "R01",
+        "input_file": "fixtures/_inputs/resume/R01/input.json",
+        "source_file": "fixtures/_inputs/resume/R01/base.txt"
+      },
+      {
+        "case_id": "R02",
+        "input_file": "fixtures/_inputs/resume/R02/input.json",
+        "source_file": "fixtures/_inputs/resume/R02/base.txt"
+      },
+      {
+        "case_id": "R03",
+        "input_file": "fixtures/_inputs/resume/R03/input.json",
+        "source_file": "fixtures/_inputs/resume/R03/base.txt"
+      },
+      {
+        "case_id": "R04",
+        "input_file": "fixtures/_inputs/resume/R04/input.json",
+        "source_file": "fixtures/_inputs/resume/R04/base.txt"
+      },
+      {
+        "case_id": "R05",
+        "input_file": "fixtures/_inputs/resume/R05/input.json",
+        "source_file": "fixtures/_inputs/resume/R05/base.txt"
+      }
+    ]
+  },
+  "expected": {
+    "case_count": 5,
+    "semantic_review_required": true,
+    "target_status": "proposed_pending_pm",
+    "zero_hard_failures": true,
+    "tailored_preference_minimum": 4,
+    "remaining_case_no_consequential_regression": true
+  }
+}

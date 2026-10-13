@@ -1,0 +1,1051 @@
+{
+  "fictional": true,
+  "purpose": "Full-length visual example only; not human career evidence or semantic acceptance.",
+  "source_text": "Jordan Avery\njordan.avery@example.com\nBristol, UK\nhttps://example.com/jordan-avery\nSummary\nPRODUCT MANAGER | B2B WORKFLOWS & PLATFORM OPERATIONS\nProduct manager with experience in enterprise workflow software, partner integrations and service operations. Combines customer research with delivery planning to make complex processes easier to understand and operate. Has worked across product and design roles, translating user needs into clear requirements, practical controls and measurable improvements. Comfortable collaborating with engineering, commercial and support teams throughout discovery, launch and iteration.\nExperience\nBayline Systems\nProduct Manager\nMay 2020 - Sep 2025\nOwned workflow capabilities for a fictional enterprise service platform, working with engineering, customer teams and partner organizations from discovery through rollout.\nProduct strategy and customer workflows\nOwned the roadmap for customer onboarding, approval workflows and account administration, balancing user research findings with technical dependencies, delivery capacity and commercial priorities.\nInterviewed customer administrators and support specialists to identify recurring handoff problems; translated findings into requirements, acceptance criteria and a prioritized sequence of product improvements.\nWorked with engineering through planning, specification review and release validation, maintaining a clear record of decisions and following up on customer feedback after each rollout.\nPermissions and approval design\nDesigned a role-based permission model for account owners, supervisors and operators, making access boundaries visible and reducing ambiguity in common administration and approval tasks.\nReworked exception handling for incomplete submissions and rejected approvals, giving users clear next actions while preserving an audit trail for customer service and internal review.\nIntroduced configurable approval routes for different customer teams, testing edge cases with operations specialists before expanding the capability to additional accounts and workflows.\nAPIs and partner integrations\nLed requirements for partner APIs covering account setup, request status and activity records, including error handling, retry behavior and documentation for integration teams.\nWorked with two fictional software partners on integration pilots, capturing failure scenarios and turning findings into clearer API contracts, support guidance and release criteria.\nCreated a shared integration checklist covering permissions, sample requests, environment configuration and operational ownership so delivery teams could prepare launches with fewer missing dependencies.\nReporting and operational tooling\nBuilt reporting requirements for request volume, turnaround time and exception rates, helping customer administrators identify bottlenecks and compare performance across their own service teams.\nDesigned internal tools for reviewing activity records, investigating failed requests and managing notifications, with clear access controls and documented escalation paths for support specialists.\nEstablishing a consistent event taxonomy improved the usefulness of product dashboards and gave the team a clearer basis for prioritizing follow-up research and workflow changes.\nEarlier design responsibility\nDesigned navigation and form patterns for the web platform, considering accessibility and common customer administration tasks.\nCreated reusable workflow guidance and reviewed implementation with engineering to maintain consistency as the platform expanded.\nHarbor Tools\nProduct Designer\nFeb 2016 - Apr 2020\nDesigned enterprise service workflows covering assignment, review and communication between customer administrators and delivery teams.\nUsed usability findings to improve navigation, form completion and request status visibility.\nDocumented interaction patterns and supported product discovery, specifications and implementation review.\nClearway Software\nUX Designer\nJul 2012 - Jan 2016\nDesigned business account-management and reporting interfaces using customer interviews to clarify common tasks.\nCollaborated with engineering to improve onboarding and consistency across frequently used screens.\nPrepared prototypes, specifications and implementation reviews, documenting release decisions.\nEducation\nMSc Human Computer Interaction\nFictional Northbridge University\n2010-2012\nBA Design\nFictional Westmere College\n2006-2010\nSkills\nProduct Management: Customer research, roadmaps, prioritization, requirements, launch planning and iteration.\nEnterprise Workflows: Onboarding, approvals, account administration and exception handling.\nPlatform Integrations: API requirements, partner pilots and integration documentation.\nDesign: Interaction design, prototypes, usability testing and accessibility review.\nData and Operations: Dashboards, service metrics, activity records and support workflows.\nLanguages: English professional working proficiency; French conversational proficiency.\n",
+  "resume": {
+    "schema_version": "resume_ir.v1",
+    "source_kind": "parsed_resume",
+    "header": {
+      "name": "Jordan Avery",
+      "name_source_line_id": "source-1",
+      "contacts": [
+        {
+          "kind": "email",
+          "text": "jordan.avery@example.com",
+          "source_line_id": "source-2"
+        },
+        {
+          "kind": "location",
+          "text": "Bristol, UK",
+          "source_line_id": "source-3"
+        },
+        {
+          "kind": "link",
+          "text": "https://example.com/jordan-avery",
+          "source_line_id": "source-4"
+        }
+      ]
+    },
+    "sections": [
+      {
+        "id": "summary",
+        "title": "Summary",
+        "kind": "summary",
+        "entries": [],
+        "lines": [
+          {
+            "id": "source-6",
+            "text": "PRODUCT MANAGER | B2B WORKFLOWS & PLATFORM OPERATIONS",
+            "kind": "body",
+            "layout": "headline",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-6"
+            ]
+          },
+          {
+            "id": "source-7",
+            "text": "Product manager with experience in enterprise workflow software, partner integrations and service operations. Combines customer research with delivery planning to make complex processes easier to understand and operate. Has worked across product and design roles, translating user needs into clear requirements, practical controls and measurable improvements. Comfortable collaborating with engineering, commercial and support teams throughout discovery, launch and iteration.",
+            "kind": "body",
+            "layout": "auto",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-7"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "experience",
+        "title": "Experience",
+        "kind": "experience",
+        "entries": [
+          {
+            "id": "bayline",
+            "header_lines": [
+              {
+                "id": "source-9",
+                "text": "Bayline Systems",
+                "kind": "metadata",
+                "layout": "company",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-9"
+                ]
+              },
+              {
+                "id": "source-10",
+                "text": "Product Manager",
+                "kind": "metadata",
+                "layout": "role",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-10"
+                ]
+              },
+              {
+                "id": "source-11",
+                "text": "May 2020 - Sep 2025",
+                "kind": "metadata",
+                "layout": "date",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-11"
+                ]
+              }
+            ],
+            "bullet_lines": [
+              {
+                "id": "source-12",
+                "text": "Owned workflow capabilities for a fictional enterprise service platform, working with engineering, customer teams and partner organizations from discovery through rollout.",
+                "kind": "body",
+                "layout": "intro",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-12"
+                ]
+              },
+              {
+                "id": "source-13",
+                "text": "Product strategy and customer workflows",
+                "kind": "metadata",
+                "layout": "topic",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-13"
+                ]
+              },
+              {
+                "id": "source-14",
+                "text": "Owned the roadmap for customer onboarding, approval workflows and account administration, balancing user research findings with technical dependencies, delivery capacity and commercial priorities.",
+                "kind": "bullet",
+                "layout": "auto",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-14"
+                ]
+              },
+              {
+                "id": "source-15",
+                "text": "Interviewed customer administrators and support specialists to identify recurring handoff problems; translated findings into requirements, acceptance criteria and a prioritized sequence of product improvements.",
+                "kind": "bullet",
+                "layout": "auto",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-15"
+                ]
+              },
+              {
+                "id": "source-16",
+                "text": "Worked with engineering through planning, specification review and release validation, maintaining a clear record of decisions and following up on customer feedback after each rollout.",
+                "kind": "bullet",
+                "layout": "auto",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-16"
+                ]
+              },
+              {
+                "id": "source-17",
+                "text": "Permissions and approval design",
+                "kind": "metadata",
+                "layout": "topic",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-17"
+                ]
+              },
+              {
+                "id": "source-18",
+                "text": "Designed a role-based permission model for account owners, supervisors and operators, making access boundaries visible and reducing ambiguity in common administration and approval tasks.",
+                "kind": "bullet",
+                "layout": "auto",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-18"
+                ]
+              },
+              {
+                "id": "source-19",
+                "text": "Reworked exception handling for incomplete submissions and rejected approvals, giving users clear next actions while preserving an audit trail for customer service and internal review.",
+                "kind": "bullet",
+                "layout": "auto",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-19"
+                ]
+              },
+              {
+                "id": "source-20",
+                "text": "Introduced configurable approval routes for different customer teams, testing edge cases with operations specialists before expanding the capability to additional accounts and workflows.",
+                "kind": "bullet",
+                "layout": "auto",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-20"
+                ]
+              },
+              {
+                "id": "source-21",
+                "text": "APIs and partner integrations",
+                "kind": "metadata",
+                "layout": "topic",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-21"
+                ]
+              },
+              {
+                "id": "source-22",
+                "text": "Led requirements for partner APIs covering account setup, request status and activity records, including error handling, retry behavior and documentation for integration teams.",
+                "kind": "bullet",
+                "layout": "auto",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-22"
+                ]
+              },
+              {
+                "id": "source-23",
+                "text": "Worked with two fictional software partners on integration pilots, capturing failure scenarios and turning findings into clearer API contracts, support guidance and release criteria.",
+                "kind": "bullet",
+                "layout": "auto",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-23"
+                ]
+              },
+              {
+                "id": "source-24",
+                "text": "Created a shared integration checklist covering permissions, sample requests, environment configuration and operational ownership so delivery teams could prepare launches with fewer missing dependencies.",
+                "kind": "bullet",
+                "layout": "auto",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-24"
+                ]
+              },
+              {
+                "id": "source-25",
+                "text": "Reporting and operational tooling",
+                "kind": "metadata",
+                "layout": "topic",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-25"
+                ]
+              },
+              {
+                "id": "source-26",
+                "text": "Built reporting requirements for request volume, turnaround time and exception rates, helping customer administrators identify bottlenecks and compare performance across their own service teams.",
+                "kind": "bullet",
+                "layout": "auto",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-26"
+                ]
+              },
+              {
+                "id": "source-27",
+                "text": "Designed internal tools for reviewing activity records, investigating failed requests and managing notifications, with clear access controls and documented escalation paths for support specialists.",
+                "kind": "bullet",
+                "layout": "auto",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-27"
+                ]
+              },
+              {
+                "id": "source-28",
+                "text": "Establishing a consistent event taxonomy improved the usefulness of product dashboards and gave the team a clearer basis for prioritizing follow-up research and workflow changes.",
+                "kind": "bullet",
+                "layout": "auto",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-28"
+                ]
+              },
+              {
+                "id": "source-29",
+                "text": "Earlier design responsibility",
+                "kind": "metadata",
+                "layout": "topic",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-29"
+                ]
+              },
+              {
+                "id": "source-30",
+                "text": "Designed navigation and form patterns for the web platform, considering accessibility and common customer administration tasks.",
+                "kind": "bullet",
+                "layout": "auto",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-30"
+                ]
+              },
+              {
+                "id": "source-31",
+                "text": "Created reusable workflow guidance and reviewed implementation with engineering to maintain consistency as the platform expanded.",
+                "kind": "bullet",
+                "layout": "auto",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-31"
+                ]
+              }
+            ],
+            "break_before_line_id": "source-27"
+          },
+          {
+            "id": "harbor",
+            "header_lines": [
+              {
+                "id": "source-32",
+                "text": "Harbor Tools",
+                "kind": "metadata",
+                "layout": "company",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-32"
+                ]
+              },
+              {
+                "id": "source-33",
+                "text": "Product Designer",
+                "kind": "metadata",
+                "layout": "role",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-33"
+                ]
+              },
+              {
+                "id": "source-34",
+                "text": "Feb 2016 - Apr 2020",
+                "kind": "metadata",
+                "layout": "date",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-34"
+                ]
+              }
+            ],
+            "bullet_lines": [
+              {
+                "id": "source-35",
+                "text": "Designed enterprise service workflows covering assignment, review and communication between customer administrators and delivery teams.",
+                "kind": "bullet",
+                "layout": "auto",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-35"
+                ]
+              },
+              {
+                "id": "source-36",
+                "text": "Used usability findings to improve navigation, form completion and request status visibility.",
+                "kind": "bullet",
+                "layout": "auto",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-36"
+                ]
+              },
+              {
+                "id": "source-37",
+                "text": "Documented interaction patterns and supported product discovery, specifications and implementation review.",
+                "kind": "bullet",
+                "layout": "auto",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-37"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "clearway",
+            "header_lines": [
+              {
+                "id": "source-38",
+                "text": "Clearway Software",
+                "kind": "metadata",
+                "layout": "company",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-38"
+                ]
+              },
+              {
+                "id": "source-39",
+                "text": "UX Designer",
+                "kind": "metadata",
+                "layout": "role",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-39"
+                ]
+              },
+              {
+                "id": "source-40",
+                "text": "Jul 2012 - Jan 2016",
+                "kind": "metadata",
+                "layout": "date",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-40"
+                ]
+              }
+            ],
+            "bullet_lines": [
+              {
+                "id": "source-41",
+                "text": "Designed business account-management and reporting interfaces using customer interviews to clarify common tasks.",
+                "kind": "bullet",
+                "layout": "auto",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-41"
+                ]
+              },
+              {
+                "id": "source-42",
+                "text": "Collaborated with engineering to improve onboarding and consistency across frequently used screens.",
+                "kind": "bullet",
+                "layout": "auto",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-42"
+                ]
+              },
+              {
+                "id": "source-43",
+                "text": "Prepared prototypes, specifications and implementation reviews, documenting release decisions.",
+                "kind": "bullet",
+                "layout": "auto",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-43"
+                ]
+              }
+            ]
+          }
+        ],
+        "lines": []
+      },
+      {
+        "id": "education",
+        "title": "Education",
+        "kind": "education",
+        "entries": [
+          {
+            "id": "masters",
+            "header_lines": [
+              {
+                "id": "source-45",
+                "text": "MSc Human Computer Interaction",
+                "kind": "metadata",
+                "layout": "degree",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-45"
+                ]
+              },
+              {
+                "id": "source-46",
+                "text": "Fictional Northbridge University",
+                "kind": "metadata",
+                "layout": "school",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-46"
+                ]
+              },
+              {
+                "id": "source-47",
+                "text": "2010-2012",
+                "kind": "metadata",
+                "layout": "date",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-47"
+                ]
+              }
+            ],
+            "bullet_lines": []
+          },
+          {
+            "id": "bachelors",
+            "header_lines": [
+              {
+                "id": "source-48",
+                "text": "BA Design",
+                "kind": "metadata",
+                "layout": "degree",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-48"
+                ]
+              },
+              {
+                "id": "source-49",
+                "text": "Fictional Westmere College",
+                "kind": "metadata",
+                "layout": "school",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-49"
+                ]
+              },
+              {
+                "id": "source-50",
+                "text": "2006-2010",
+                "kind": "metadata",
+                "layout": "date",
+                "source_page": 1,
+                "evidence_refs": [
+                  "source-50"
+                ]
+              }
+            ],
+            "bullet_lines": []
+          }
+        ],
+        "lines": []
+      },
+      {
+        "id": "skills",
+        "title": "Skills",
+        "kind": "skills",
+        "entries": [],
+        "lines": [
+          {
+            "id": "source-52",
+            "text": "Product Management: Customer research, roadmaps, prioritization, requirements, launch planning and iteration.",
+            "kind": "body",
+            "layout": "skill",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-52"
+            ]
+          },
+          {
+            "id": "source-53",
+            "text": "Enterprise Workflows: Onboarding, approvals, account administration and exception handling.",
+            "kind": "body",
+            "layout": "skill",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-53"
+            ]
+          },
+          {
+            "id": "source-54",
+            "text": "Platform Integrations: API requirements, partner pilots and integration documentation.",
+            "kind": "body",
+            "layout": "skill",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-54"
+            ]
+          },
+          {
+            "id": "source-55",
+            "text": "Design: Interaction design, prototypes, usability testing and accessibility review.",
+            "kind": "body",
+            "layout": "skill",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-55"
+            ]
+          },
+          {
+            "id": "source-56",
+            "text": "Data and Operations: Dashboards, service metrics, activity records and support workflows.",
+            "kind": "body",
+            "layout": "skill",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-56"
+            ]
+          },
+          {
+            "id": "source-57",
+            "text": "Languages: English professional working proficiency; French conversational proficiency.",
+            "kind": "body",
+            "layout": "skill",
+            "source_page": 1,
+            "evidence_refs": [
+              "source-57"
+            ]
+          }
+        ]
+      }
+    ],
+    "provenance": {
+      "source_file_id": "fictional-standard-example",
+      "source_content_hash": "5465b73bf03a1e9d08a5397a611666ccacb2e69ea25786537f23a2424913dfe7",
+      "parser_version": "fictional-layout-example-v1",
+      "facts": [
+        {
+          "id": "source-1",
+          "text": "Jordan Avery",
+          "fact_kind": "name",
+          "source_kind": "resume",
+          "source_id": "source-1",
+          "source_page": 1
+        },
+        {
+          "id": "source-2",
+          "text": "jordan.avery@example.com",
+          "fact_kind": "contact",
+          "source_kind": "resume",
+          "source_id": "source-2",
+          "source_page": 1
+        },
+        {
+          "id": "source-3",
+          "text": "Bristol, UK",
+          "fact_kind": "contact",
+          "source_kind": "resume",
+          "source_id": "source-3",
+          "source_page": 1
+        },
+        {
+          "id": "source-4",
+          "text": "https://example.com/jordan-avery",
+          "fact_kind": "contact",
+          "source_kind": "resume",
+          "source_id": "source-4",
+          "source_page": 1
+        },
+        {
+          "id": "source-5",
+          "text": "Summary",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-5",
+          "source_page": 1
+        },
+        {
+          "id": "source-6",
+          "text": "PRODUCT MANAGER | B2B WORKFLOWS & PLATFORM OPERATIONS",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-6",
+          "source_page": 1
+        },
+        {
+          "id": "source-7",
+          "text": "Product manager with experience in enterprise workflow software, partner integrations and service operations. Combines customer research with delivery planning to make complex processes easier to understand and operate. Has worked across product and design roles, translating user needs into clear requirements, practical controls and measurable improvements. Comfortable collaborating with engineering, commercial and support teams throughout discovery, launch and iteration.",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-7",
+          "source_page": 1
+        },
+        {
+          "id": "source-8",
+          "text": "Experience",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-8",
+          "source_page": 1
+        },
+        {
+          "id": "source-9",
+          "text": "Bayline Systems",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-9",
+          "source_page": 1
+        },
+        {
+          "id": "source-10",
+          "text": "Product Manager",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-10",
+          "source_page": 1
+        },
+        {
+          "id": "source-11",
+          "text": "May 2020 - Sep 2025",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-11",
+          "source_page": 1
+        },
+        {
+          "id": "source-12",
+          "text": "Owned workflow capabilities for a fictional enterprise service platform, working with engineering, customer teams and partner organizations from discovery through rollout.",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-12",
+          "source_page": 1
+        },
+        {
+          "id": "source-13",
+          "text": "Product strategy and customer workflows",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-13",
+          "source_page": 1
+        },
+        {
+          "id": "source-14",
+          "text": "Owned the roadmap for customer onboarding, approval workflows and account administration, balancing user research findings with technical dependencies, delivery capacity and commercial priorities.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-14",
+          "source_page": 1
+        },
+        {
+          "id": "source-15",
+          "text": "Interviewed customer administrators and support specialists to identify recurring handoff problems; translated findings into requirements, acceptance criteria and a prioritized sequence of product improvements.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-15",
+          "source_page": 1
+        },
+        {
+          "id": "source-16",
+          "text": "Worked with engineering through planning, specification review and release validation, maintaining a clear record of decisions and following up on customer feedback after each rollout.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-16",
+          "source_page": 1
+        },
+        {
+          "id": "source-17",
+          "text": "Permissions and approval design",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-17",
+          "source_page": 1
+        },
+        {
+          "id": "source-18",
+          "text": "Designed a role-based permission model for account owners, supervisors and operators, making access boundaries visible and reducing ambiguity in common administration and approval tasks.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-18",
+          "source_page": 1
+        },
+        {
+          "id": "source-19",
+          "text": "Reworked exception handling for incomplete submissions and rejected approvals, giving users clear next actions while preserving an audit trail for customer service and internal review.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-19",
+          "source_page": 1
+        },
+        {
+          "id": "source-20",
+          "text": "Introduced configurable approval routes for different customer teams, testing edge cases with operations specialists before expanding the capability to additional accounts and workflows.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-20",
+          "source_page": 1
+        },
+        {
+          "id": "source-21",
+          "text": "APIs and partner integrations",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-21",
+          "source_page": 1
+        },
+        {
+          "id": "source-22",
+          "text": "Led requirements for partner APIs covering account setup, request status and activity records, including error handling, retry behavior and documentation for integration teams.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-22",
+          "source_page": 1
+        },
+        {
+          "id": "source-23",
+          "text": "Worked with two fictional software partners on integration pilots, capturing failure scenarios and turning findings into clearer API contracts, support guidance and release criteria.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-23",
+          "source_page": 1
+        },
+        {
+          "id": "source-24",
+          "text": "Created a shared integration checklist covering permissions, sample requests, environment configuration and operational ownership so delivery teams could prepare launches with fewer missing dependencies.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-24",
+          "source_page": 1
+        },
+        {
+          "id": "source-25",
+          "text": "Reporting and operational tooling",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-25",
+          "source_page": 1
+        },
+        {
+          "id": "source-26",
+          "text": "Built reporting requirements for request volume, turnaround time and exception rates, helping customer administrators identify bottlenecks and compare performance across their own service teams.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-26",
+          "source_page": 1
+        },
+        {
+          "id": "source-27",
+          "text": "Designed internal tools for reviewing activity records, investigating failed requests and managing notifications, with clear access controls and documented escalation paths for support specialists.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-27",
+          "source_page": 1
+        },
+        {
+          "id": "source-28",
+          "text": "Establishing a consistent event taxonomy improved the usefulness of product dashboards and gave the team a clearer basis for prioritizing follow-up research and workflow changes.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-28",
+          "source_page": 1
+        },
+        {
+          "id": "source-29",
+          "text": "Earlier design responsibility",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-29",
+          "source_page": 1
+        },
+        {
+          "id": "source-30",
+          "text": "Designed navigation and form patterns for the web platform, considering accessibility and common customer administration tasks.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-30",
+          "source_page": 1
+        },
+        {
+          "id": "source-31",
+          "text": "Created reusable workflow guidance and reviewed implementation with engineering to maintain consistency as the platform expanded.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-31",
+          "source_page": 1
+        },
+        {
+          "id": "source-32",
+          "text": "Harbor Tools",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-32",
+          "source_page": 1
+        },
+        {
+          "id": "source-33",
+          "text": "Product Designer",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-33",
+          "source_page": 1
+        },
+        {
+          "id": "source-34",
+          "text": "Feb 2016 - Apr 2020",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-34",
+          "source_page": 1
+        },
+        {
+          "id": "source-35",
+          "text": "Designed enterprise service workflows covering assignment, review and communication between customer administrators and delivery teams.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-35",
+          "source_page": 1
+        },
+        {
+          "id": "source-36",
+          "text": "Used usability findings to improve navigation, form completion and request status visibility.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-36",
+          "source_page": 1
+        },
+        {
+          "id": "source-37",
+          "text": "Documented interaction patterns and supported product discovery, specifications and implementation review.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-37",
+          "source_page": 1
+        },
+        {
+          "id": "source-38",
+          "text": "Clearway Software",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-38",
+          "source_page": 1
+        },
+        {
+          "id": "source-39",
+          "text": "UX Designer",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-39",
+          "source_page": 1
+        },
+        {
+          "id": "source-40",
+          "text": "Jul 2012 - Jan 2016",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-40",
+          "source_page": 1
+        },
+        {
+          "id": "source-41",
+          "text": "Designed business account-management and reporting interfaces using customer interviews to clarify common tasks.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-41",
+          "source_page": 1
+        },
+        {
+          "id": "source-42",
+          "text": "Collaborated with engineering to improve onboarding and consistency across frequently used screens.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-42",
+          "source_page": 1
+        },
+        {
+          "id": "source-43",
+          "text": "Prepared prototypes, specifications and implementation reviews, documenting release decisions.",
+          "fact_kind": "bullet",
+          "source_kind": "resume",
+          "source_id": "source-43",
+          "source_page": 1
+        },
+        {
+          "id": "source-44",
+          "text": "Education",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-44",
+          "source_page": 1
+        },
+        {
+          "id": "source-45",
+          "text": "MSc Human Computer Interaction",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-45",
+          "source_page": 1
+        },
+        {
+          "id": "source-46",
+          "text": "Fictional Northbridge University",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-46",
+          "source_page": 1
+        },
+        {
+          "id": "source-47",
+          "text": "2010-2012",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-47",
+          "source_page": 1
+        },
+        {
+          "id": "source-48",
+          "text": "BA Design",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-48",
+          "source_page": 1
+        },
+        {
+          "id": "source-49",
+          "text": "Fictional Westmere College",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-49",
+          "source_page": 1
+        },
+        {
+          "id": "source-50",
+          "text": "2006-2010",
+          "fact_kind": "entry_header",
+          "source_kind": "resume",
+          "source_id": "source-50",
+          "source_page": 1
+        },
+        {
+          "id": "source-51",
+          "text": "Skills",
+          "fact_kind": "section_title",
+          "source_kind": "resume",
+          "source_id": "source-51",
+          "source_page": 1
+        },
+        {
+          "id": "source-52",
+          "text": "Product Management: Customer research, roadmaps, prioritization, requirements, launch planning and iteration.",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-52",
+          "source_page": 1
+        },
+        {
+          "id": "source-53",
+          "text": "Enterprise Workflows: Onboarding, approvals, account administration and exception handling.",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-53",
+          "source_page": 1
+        },
+        {
+          "id": "source-54",
+          "text": "Platform Integrations: API requirements, partner pilots and integration documentation.",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-54",
+          "source_page": 1
+        },
+        {
+          "id": "source-55",
+          "text": "Design: Interaction design, prototypes, usability testing and accessibility review.",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-55",
+          "source_page": 1
+        },
+        {
+          "id": "source-56",
+          "text": "Data and Operations: Dashboards, service metrics, activity records and support workflows.",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-56",
+          "source_page": 1
+        },
+        {
+          "id": "source-57",
+          "text": "Languages: English professional working proficiency; French conversational proficiency.",
+          "fact_kind": "body",
+          "source_kind": "resume",
+          "source_id": "source-57",
+          "source_page": 1
+        }
+      ]
+    }
+  }
+}
