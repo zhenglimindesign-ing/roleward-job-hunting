@@ -18,6 +18,10 @@ DEFAULT_MAX_RESULTS = 5
 # Executed web searches and opened candidate sources; each kind may carry a per-Scan bound.
 SEARCH_KINDS = {"query": "max_queries", "source": "max_sources"}
 SEARCH_INTENTS = {"title_led", "capability_led", "adjacent_role", "verification"}
+INGEST_SHAPE = ('JSON object {"candidates": [{"job": {"company", "title", "url", "location", "text", "live_status"}, '
+                '"facts": {"geographies": [names exactly as saved in search_policy, e.g. "UAE" not "Dubai"], '
+                '"remote_matches_policy": bool, "employability": ...}, '
+                '"disposition": "worth_review|verify_first|screened_out", "reasons": [...]}]}')
 
 
 class SearchBudgetReached(ValueError):
@@ -313,7 +317,7 @@ def main() -> int:
 
     p = sub.add_parser("ingest")
     p.add_argument("--scan-id", required=True)
-    p.add_argument("--input", required=True)
+    p.add_argument("--input", required=True, help=INGEST_SHAPE)
 
     p = sub.add_parser("finalize")
     p.add_argument("--scan-id", required=True)
@@ -338,7 +342,12 @@ def main() -> int:
             return 3
     elif args.command == "ingest":
         payload = json.loads(Path(args.input).read_text(encoding="utf-8"))
-        result = ingest_candidates(state, args.scan_id, payload["candidates"])
+        candidates = payload.get("candidates") if isinstance(payload, dict) else None
+        if not isinstance(candidates, list) or not all(isinstance(c, dict) and isinstance(c.get("job"), dict) for c in candidates):
+            print(json.dumps({"status": "invalid_ingest_payload", "expected": INGEST_SHAPE,
+                              "next_step": "Fix the payload and ingest again before finalize; nothing was saved."}))
+            return 2
+        result = ingest_candidates(state, args.scan_id, candidates)
     else:
         result = finalize_scan(state, args.scan_id)
 

@@ -165,6 +165,9 @@ def confirm_preference(state: dict[str, Any], signal_id: str) -> dict[str, Any]:
     signal = next((item for item in state["signals"]["inferred_signals"] if item.get("id") == signal_id), None)
     if signal is None:
         raise KeyError(f"Unknown inferred signal: {signal_id}")
+    if signal.get("status") == "confirmed_by_user" and signal.get("confirmed_preference_id"):
+        # A repeated confirmation is the same user decision, not a second preference.
+        return {"signal_id": signal_id, "preference_id": signal["confirmed_preference_id"]}
     preference_id = add_list_signal(
         state,
         target="preferences",

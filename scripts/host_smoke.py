@@ -30,6 +30,17 @@ MOCK_SERVER = "mocksend"
 ISOLATION = ["--setting-sources", "project", "--settings", json.dumps({"autoMemoryEnabled": False}),
              "--strict-mcp-config"]
 ISOLATION_ENV = {"CLAUDE_CODE_DISABLE_AUTO_MEMORY": "1"}
+# The session under test can read its environment (S0 asks it to record one), and
+# every tool result is kept in the logs. Pass only what the CLI needs to start and
+# authenticate, never the operator's other variables or a parent session's tokens.
+PASS_ENV = ("HOME", "PATH", "USER", "LOGNAME", "SHELL", "TMPDIR", "TERM", "LANG",
+            "ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN", "CLAUDE_CODE_OAUTH_TOKEN")
+
+
+def session_env(base: dict[str, str] | None = None) -> dict[str, str]:
+    base = os.environ if base is None else base
+    kept = {key: value for key, value in base.items() if key in PASS_ENV or key.startswith("LC_")}
+    return {**kept, **ISOLATION_ENV}
 
 
 def load_prompts(path: Path = PROMPTS) -> dict[str, Any]:
@@ -117,7 +128,7 @@ def tool_calls(log: Path) -> tuple[dict[str, Any] | None, list[dict[str, Any]], 
 
 
 def run_steps(args: argparse.Namespace) -> int:
-    prompts = load_prompts()
+    prompts = load_prompts(args.prompts)
     package, run, harness = args.package.resolve(), args.run_dir.resolve(), args.harness_dir.resolve()
     run.mkdir(parents=True, exist_ok=True)
     harness.mkdir(parents=True, exist_ok=True)
@@ -137,7 +148,7 @@ def run_steps(args: argparse.Namespace) -> int:
         snapshot(harness / "snapshots" / f"{step}-pre", package, run)
         with open(harness / "logs" / f"{step}.jsonl", "w") as out, open(harness / "logs" / f"{step}.stderr", "w") as err:
             code = subprocess.run(command, cwd=run, stdout=out, stderr=err,
-                                  env={**os.environ, **ISOLATION_ENV}).returncode
+                                  env=session_env()).returncode
         snapshot(harness / "snapshots" / f"{step}-post", package, run)
         _, calls, final = tool_calls(harness / "logs" / f"{step}.jsonl")
         (harness / "logs" / f"{step}.result.md").write_text((final or {}).get("result") or "", encoding="utf-8")
@@ -170,6 +181,7 @@ def main() -> int:
     p.add_argument("--harness-dir", type=Path, required=True, help="Where logs and snapshots are kept")
     p.add_argument("--model", required=True)
     p.add_argument("--steps", default="S0,S1,S2,S3,S3b")
+    p.add_argument("--prompts", type=Path, default=PROMPTS, help="Frozen prompt set (default: prompts-v1.json)")
     p = sub.add_parser("summarize")
     p.add_argument("log", type=Path)
     p.add_argument("--width", type=int, default=400)
