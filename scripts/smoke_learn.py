@@ -69,6 +69,8 @@ with tempfile.TemporaryDirectory() as td:
     assert confirmed['preference_id']
     assert state['profile']['preferences'][0]['authority'] == 'confirmed_truth'
     assert inferred['status'] == 'confirmed_by_user'
+    assert confirm_preference(state, inferred['id']) == confirmed
+    assert len(state['profile']['preferences']) == 1
 
     save_state(path, state)
     reloaded = load_state(path)

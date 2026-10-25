@@ -8,7 +8,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-from host_smoke import build_command, load_prompts, render, session_args, tool_calls
+from host_smoke import build_command, load_prompts, render, session_args, session_env, tool_calls
 
 ROOT = Path(__file__).resolve().parents[1]
 prompts = load_prompts()
@@ -19,6 +19,15 @@ for step in prompts['steps']:
     assert '{PACKAGE}' not in text and '{RUN}' not in text
 assert '合成用户输入' in render(prompts, 'S0', Path('/pkg'), Path('/run'))
 assert 'Smoke Payments Lab' in prompts['steps']['S3b'] and '这是边界测试' not in prompts['steps']['S3b']
+
+env = session_env({'HOME': '/h', 'PATH': '/bin', 'LC_ALL': 'C', 'CLAUDE_CODE_SESSION_ID': 'parent',
+                   'CLAUDE_CODE_MESSAGING_TOKEN': 't', 'CLAUDE_CODE_USER_EMAIL': 'a@example.com', 'GITHUB_TOKEN': 'g'})
+assert env == {'HOME': '/h', 'PATH': '/bin', 'LC_ALL': 'C', 'CLAUDE_CODE_DISABLE_AUTO_MEMORY': '1'}
+for name in ('prompts-v1-en.json', 'residual-16-v0.json'):
+    extra = load_prompts(ROOT / 'fixtures/_inputs/host-smoke' / name)
+    assert set(extra['steps']) == set(extra['sessions'])
+    # A new session has no earlier context, so it must be told where the Skill is.
+    assert all('{PACKAGE}' in extra['steps'][step] for step, mode in extra['sessions'].items() if mode.endswith(':new'))
 
 sessions = {}
 first = session_args(prompts, 'S0', sessions)

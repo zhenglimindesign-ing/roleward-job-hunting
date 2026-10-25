@@ -72,6 +72,14 @@ def main():
         ]}
         payload = workspace / "candidates.json"
         payload.write_text(json.dumps(candidates))
+        # A wrong payload shape is refused with the expected shape and leaves state untouched.
+        bare = workspace / "bare-list.json"
+        bare.write_text(json.dumps(candidates["candidates"]))
+        before = state_path.read_bytes()
+        refused = run("scan_state.py", "ingest", "--scan-id", once["id"], "--input", str(bare), expected=2, parse=False)
+        refused = json.loads(refused)
+        assert refused["status"] == "invalid_ingest_payload" and '"candidates"' in refused["expected"]
+        assert state_path.read_bytes() == before
         # Later settings changes must not rewrite existing Scan plans.
         set_limit(2)
         for scan, expected in [(default, 5), (saved, 3), (once, 1)]:
